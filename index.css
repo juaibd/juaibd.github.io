@@ -165,7 +165,7 @@ ul.lists li {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(#0017bd, #0283ff);
+  background: linear-gradient(#0b6a32, #1ab33d);
 }
 .clip-path .clip-path-inner {
   width: 130px;
@@ -175,7 +175,7 @@ ul.lists li {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: linear-gradient(#0283ff, #0017bd);
+  background: linear-gradient(#1ab33d, #0b6a32);
 }
 .owl-carousel {
   padding: 0 10px;
