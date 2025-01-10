@@ -1,0 +1,523 @@
+* {
+  font-family: SolaimanLipi;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+.nav-link {
+  color: #fff;
+}
+
+.sticky-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + body {
+  padding-top: 60px;
+}
+
+
+ul,
+li {
+  list-style: none;
+}
+.c-border {
+  border: none;
+  border-bottom: 1px dashed #000;
+}
+.theme-bg {
+  background-color: #e0e4f6;
+}
+
+.prime-color {
+  background-color: #3f497f;
+}
+
+.wrapper {
+  width: 100%;
+  /* box-shadow: 0 15px 40px rgba(0,0,0,0.12); */
+}
+.wrapper header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+}
+header .icons {
+  display: flex;
+}
+header .icons span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.icons span:last-child {
+  margin-right: -10px;
+}
+header .icons span:hover {
+  background: #f2f2f2;
+}
+header .current-date {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+.calendar {
+  padding: 5px;
+}
+.calendar ul {
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .days {
+  margin-bottom: 20px;
+}
+.calendar li {
+  color: #333;
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.calendar .weeks li {
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .days li {
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.days li.inactive {
+  color: #aaa;
+}
+.days li.active {
+  color: #fff;
+}
+.days li::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.days li.active::before {
+  background: #9b59b6;
+}
+.days li:not(.active):hover::before {
+  background: #f2f2f2;
+}
+@media (max-width: 990px) {
+  .b-bottom {
+    border-bottom: 1px solid #dee2e6 !important;
+  }
+  .b-top {
+    border-top: 1px solid #dee2e6 !important;
+  }
+}
+/*@media (min-width: 990px) {
+  .navbar-nav li.nav-item {
+    border-right: 1px solid #dee2e6 !important;
+  }
+  .navbar-nav li.nav-item:last-child {
+    border-right: 1px solid #3f497f !important;
+  }
+}*/
+ul.lists {
+  width: 55px;
+
+  text-align: center;
+
+  border-radius: 10px;
+
+  padding: 10px 12px;
+}
+ul.lists li {
+  font-size: 12px;
+}
+.media-body span {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+.media-body a {
+  font-size: 14px;
+}
+.clip-path {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#0017bd, #0283ff);
+}
+.clip-path .clip-path-inner {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(#0283ff, #0017bd);
+}
+.owl-carousel {
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.row.owl-carousel .col {
+  margin-right: 20px;
+}
+
+.blog {
+
+  background: #fff;
+
+  border-radius: 18px;
+
+  margin-bottom: 25px;
+
+  padding: 15px;
+
+  position: relative
+
+}
+
+
+
+.grid-blog .blog-image {
+
+  margin-bottom: 20px;
+
+  border-radius: 10px
+
+}
+
+
+
+.blog-image,
+
+.blog-image>a,
+
+.blog-image img {
+
+  display: block;
+
+  position: relative;
+
+  width: 100%;
+
+  height: auto
+
+}
+
+
+
+.blog-image img {
+
+  border-radius: 10px;
+
+  -webkit-transform: translateZ(0);
+
+  -moz-transform: translateZ(0);
+
+  transform: translateZ(0);
+
+  -moz-transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;
+
+  -ms-transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;
+
+  -o-transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;
+
+  -webkit-transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;
+
+  transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms
+
+}
+
+
+
+.blog-content {
+
+  position: relative;
+
+  margin-bottom: 10px
+
+}
+
+
+
+.grid-blog .entry-meta {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 0;
+
+  padding: 0
+
+}
+
+
+
+.table tbody tr:last-child {
+
+  border-color: transparent
+
+}
+
+
+
+.categories-table tr:last-child td {
+
+  padding-bottom: 0
+
+}
+
+
+
+.grid-blog .entry-meta li {
+
+  margin-bottom: 15px
+
+}
+
+
+
+.entry-meta li {
+
+  display: inline-block;
+
+  margin-right: 15px
+
+}
+
+
+
+.grid-blog .post-author {
+
+  width: 189px;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis
+
+}
+
+
+
+.back-btn {
+
+  font-weight: 600;
+
+  font-size: 16px;
+
+  color: #3d5ee1;
+
+  display: inline-block;
+
+  margin-bottom: 18px
+
+}
+
+
+
+.post-author span:nth-child(1):hover {
+
+  color: #3d5ee1
+
+}
+
+
+
+.post-author a {
+
+  display: flex;
+
+  display: -ms-flexbox;
+
+  align-items: center
+
+}
+
+
+
+.post-author img {
+
+  border-radius: 5px;
+
+  width: 42px;
+
+  height: 42px;
+
+  margin-right: 10px
+
+}
+
+
+
+.grid-blog .blog-title {
+
+  font-size: 16px;
+
+  margin: 0 0 6px
+
+}
+
+
+
+.grid-blog .blog-title a {
+
+  color: #333
+
+}
+
+
+
+.grid-blog .blog-content p {
+
+  font-size: 12px;
+
+  margin: 0 0 15px;
+
+  color: #71717a
+
+}
+
+
+
+.post-title {
+
+  display: block;
+
+  color: #131523;
+
+  font-weight: 600
+
+}
+
+
+
+.post-date {
+
+  font-size: 12px;
+
+  color: #7e84a3
+
+}
+
+
+
+.blog-views {
+
+  position: absolute;
+
+  top: 20px;
+
+  left: 15px;
+
+  background: #f5f6fa;
+
+  border-radius: 6px;
+
+  padding: 2px 5px;
+
+  display: flex;
+
+  display: -ms-flexbox;
+
+  align-items: center;
+
+  font-size: 12px
+
+}
+
+
+
+.blog-catagories {
+
+  position: absolute;
+
+  top: 15px;
+
+  right: 15px;
+
+  background: #3d5ee1;
+
+  border-radius: 6px;
+
+  min-width: 92px;
+
+  padding: 6px 10px;
+
+  display: flex;
+
+  display: -ms-flexbox;
+
+  align-items: center;
+
+  justify-content: center
+
+}
+
+
+
+.blog-catagories p {
+
+  color: #fff;
+
+  font-weight: 600;
+
+  font-size: 14px;
+
+  margin-bottom: 0
+
+}
+
+
+
+.blog-views img {
+
+  width: auto;
+
+  margin-right: 5px
+
+}
+
+
+
+.post-list .post-author a span:hover {
+
+  color: #3d5ee1
+
+}
+
+
+
+.logo-img{
+      height: 30px;
+}
