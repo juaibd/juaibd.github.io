@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ক্লাস রুটিন - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .routine-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .tab-button.active {
+      background-color: #065F46;
+      color: white;
+    }
+    
+    .download-btn:hover {
+      background-color: #064e3b;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+  
+  <!-- হিরো সেকশন -->
+  <section class="bg-green-700 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">ক্লাস রুটিন</h1>
+      <p class="text-xl mb-6">সকল শ্রেণীর ক্লাস শিডিউল ও সময়সূচী</p>
+    </div>
+  </section>
+  
+  <!-- রুটিন সেকশন -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- শ্রেণী ফিল্টার ট্যাব -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="tab-button active px-4 py-2 rounded-lg" data-tab="all">সকল শ্রেণী</button>
+        <button class="tab-button px-4 py-2 rounded-lg" data-tab="primary">প্রাথমিক স্তর</button>
+        <button class="tab-button px-4 py-2 rounded-lg" data-tab="secondary">মাধ্যমিক স্তর</button>
+        <button class="tab-button px-4 py-2 rounded-lg" data-tab="alim">আলিম বিভাগ</button>
+        <button class="tab-button px-4 py-2 rounded-lg" data-tab="hifz">হিফজ বিভাগ</button>
+      </div>
+      
+      <!-- সার্চ বক্স -->
+      <div class="max-w-md mx-auto mb-8">
+        <div class="relative">
+          <input type="text" id="routine-search" placeholder="শ্রেণী অনুসন্ধান করুন..." class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+          <div class="absolute right-3 top-3 text-gray-400">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- রুটিন কার্ড গ্রিড -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="routine-container">
+        <!-- রুটিন কার্ড 1 -->
+        <div class="routine-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300" data-category="primary">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-green-800">প্রাথমিক স্তর (১ম-৫ম শ্রেণী)</h3>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">প্রাথমিক</span>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">সময়সূচী:</h4>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li><i class="fas fa-clock text-green-500 mr-2"></i> সকাল ৮:৩০ - দুপুর ১২:৩০</li>
+                <li><i class="fas fa-calendar-alt text-green-500 mr-2"></i> শনি-বৃহস্পতি</li>
+              </ul>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">মূল বিষয়সমূহ:</h4>
+              <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                <li>কুরআন মাজিদ ও তাজবিদ</li>
+                <li>ইসলামিক স্টাডিজ</li>
+                <li>বাংলা, ইংরেজি, গণিত</li>
+              </ul>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">আপডেট: ১৫ জুন ২০২৪</span>
+              <a href="downloads/primary-routine.pdf" download class="download-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                ডাউনলোড
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- রুটিন কার্ড 2 -->
+        <div class="routine-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300" data-category="secondary">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-green-800">মাধ্যমিক স্তর (৬ষ্ঠ-১০ম শ্রেণী)</h3>
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">মাধ্যমিক</span>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">সময়সূচী:</h4>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li><i class="fas fa-clock text-green-500 mr-2"></i> সকাল ৮:৩০ - দুপুর ১:৩০</li>
+                <li><i class="fas fa-calendar-alt text-green-500 mr-2"></i> শনি-বৃহস্পতি</li>
+              </ul>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">মূল বিষয়সমূহ:</h4>
+              <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                <li>কুরআন ও হাদিস</li>
+                <li>আরবি ভাষা</li>
+                <li>বিজ্ঞান, গণিত, ইংরেজি</li>
+                <li>ইসলামিক ইতিহাস</li>
+              </ul>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">আপডেট: ১০ জুন ২০২৪</span>
+              <a href="downloads/secondary-routine.pdf" download class="download-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                ডাউনলোড
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- রুটিন কার্ড 3 -->
+        <div class="routine-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300" data-category="alim">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-green-800">আলিম প্রথম বর্ষ</h3>
+              <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">আলিম</span>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">সময়সূচী:</h4>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li><i class="fas fa-clock text-green-500 mr-2"></i> সকাল ৮:০০ - দুপুর ২:০০</li>
+                <li><i class="fas fa-calendar-alt text-green-500 mr-2"></i> শনি-বুধ</li>
+                <li><i class="fas fa-star text-green-500 mr-2"></i> বৃহস্পতি: বিশেষ ক্লাস</li>
+              </ul>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">মূল বিষয়সমূহ:</h4>
+              <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                <li>তাফসীরুল কুরআন</li>
+                <li>হাদিস শরীফ</li>
+                <li>ফিকহ ও উসুলুল ফিকহ</li>
+                <li>আরবি সাহিত্য</li>
+              </ul>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">আপডেট: ৫ জুন ২০২৪</span>
+              <a href="downloads/alim-first-year-routine.pdf" download class="download-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                ডাউনলোড
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- রুটিন কার্ড 4 -->
+        <div class="routine-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300" data-category="alim">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-green-800">আলিম দ্বিতীয় বর্ষ</h3>
+              <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">আলিম</span>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">সময়সূচী:</h4>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li><i class="fas fa-clock text-green-500 mr-2"></i> সকাল ৮:০০ - দুপুর ২:০০</li>
+                <li><i class="fas fa-calendar-alt text-green-500 mr-2"></i> শনি-বুধ</li>
+                <li><i class="fas fa-star text-green-500 mr-2"></i> বৃহস্পতি: বিশেষ ক্লাস</li>
+              </ul>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">মূল বিষয়সমূহ:</h4>
+              <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                <li>উচ্চতর হাদিস</li>
+                <li>ফিকহের জটিল মাসায়েল</li>
+                <li>তাজবিদ ও কিরাত</li>
+                <li>ইসলামী দর্শন</li>
+              </ul>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">আপডেট: ৫ জুন ২০২৪</span>
+              <a href="downloads/alim-second-year-routine.pdf" download class="download-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                ডাউনলোড
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- রুটিন কার্ড 5 -->
+        <div class="routine-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300" data-category="hifz">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-green-800">হিফজুল কুরআন প্রোগ্রাম</h3>
+              <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">হিফজ</span>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">সময়সূচী:</h4>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li><i class="fas fa-clock text-green-500 mr-2"></i> সকাল ৭:৩০ - দুপুর ১:৩০</li>
+                <li><i class="fas fa-calendar-alt text-green-500 mr-2"></i> শনি-বৃহস্পতি</li>
+                <li><i class="fas fa-moon text-green-500 mr-2"></i> বিশেষ সন্ধ্যা ক্লাস</li>
+              </ul>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">ক্লাস স্ট্রাকচার:</h4>
+              <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                <li>নতুন সূরা মুখস্থকরণ</li>
+                <li>পূর্ববর্তী সূরা রিভিশন</li>
+                <li>তাজবিদ চর্চা</li>
+                <li>সাপ্তাহিক মূল্যায়ন</li>
+              </ul>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">আপডেট: ১ জুন ২০২৪</span>
+              <a href="downloads/hifz-program-routine.pdf" download class="download-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                ডাউনলোড
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- রুটিন কার্ড 6 -->
+        <div class="routine-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300" data-category="secondary">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-green-800">এসএসসি প্রস্তুতি ক্লাস</h3>
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">মাধ্যমিক</span>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">সময়সূচী:</h4>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li><i class="fas fa-clock text-green-500 mr-2"></i> বিকাল ৩:০০ - সন্ধ্যা ৬:০০</li>
+                <li><i class="fas fa-calendar-alt text-green-500 mr-2"></i> শনি-বুধ</li>
+                <li><i class="fas fa-flask text-green-500 mr-2"></i> শুক্রবার: বিশেষ প্র্যাকটিক্যাল</li>
+              </ul>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-700 mb-2">বিশেষ সুবিধা:</h4>
+              <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                <li>মডেল টেস্ট</li>
+                <li>গাইডেন্স সেশন</li>
+                <li>পূর্ববর্তী প্রশ্নপত্র বিশ্লেষণ</li>
+                <li>বিশেষ কোচিং</li>
+              </ul>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">আপডেট: ৩ জুন ২০২৪</span>
+              <a href="downloads/ssc-preparation-routine.pdf" download class="download-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                ডাউনলোড
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+  
+  
+  <script src="./src/index.js"></script>
+  <script>
+    // ট্যাব ফিল্টারিং ফাংশনালিটি
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', function() {
+        // সক্রিয় বাটন স্টাইল আপডেট
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-tab');
+        const routines = document.querySelectorAll('.routine-card');
+        
+        routines.forEach(routine => {
+          if (filter === 'all' || routine.getAttribute('data-category') === filter) {
+            routine.style.display = 'block';
+          } else {
+            routine.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // সার্চ ফাংশনালিটি
+    document.getElementById('routine-search').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const routines = document.querySelectorAll('.routine-card');
+      
+      routines.forEach(routine => {
+        const title = routine.querySelector('h3').textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+          routine.style.display = 'block';
+        } else {
+          routine.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

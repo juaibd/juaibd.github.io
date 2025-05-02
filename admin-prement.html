@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ফি কালেকশন সিস্টেম - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="feeSystem.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .sidebar {
+      transition: all 0.3s;
+    }
+    
+    .receipt {
+      width: 80mm;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      
+      #receipt-print,
+      #receipt-print * {
+        visibility: visible;
+      }
+      
+      #receipt-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+    
+    [x-cloak] {
+      display: none !important;
+    }
+    
+    .fee-paid {
+      background-color: #D1FAE5;
+      color: #065F46;
+    }
+    
+    .fee-pending {
+      background-color: #FEE2E2;
+      color: #B91C1C;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100" x-data="feeCollectionSystem()" x-cloak>
+  <div class="flex h-screen">
+    <!-- সাইডবার -->
+    <div class="hidden sidebar bg-green-800 text-white w-64 space-y-6 py-7 px-2">
+      <!-- একাডেমি লোগো ও নাম -->
+      <div class="flex items-center space-x-2 px-4">
+        <img src="https://via.placeholder.com/40" alt="লোগো" class="h-10">
+        <span class="text-xl font-bold">আল-হেরা</span>
+      </div>
+      
+      <!-- এডমিন প্রোফাইল -->
+      <div class="flex flex-col items-center px-4 py-4 border-b border-green-700">
+        <img src="https://via.placeholder.com/80" alt="প্রোফাইল" class="h-20 w-20 rounded-full border-2 border-white mb-3">
+        <h4 class="font-bold">মুহাম্মদ ইব্রাহীম</h4>
+        <p class="text-sm text-green-200">এডমিন</p>
+        <p class="text-sm text-green-200">অ্যাকাউন্ট: সক্রিয়</p>
+      </div>
+      
+      <!-- নেভিগেশন মেনু -->
+      <nav>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-tachometer-alt w-5"></i>
+          <span>ড্যাশবোর্ড</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-user-graduate w-5"></i>
+          <span>শিক্ষার্থী ব্যবস্থাপনা</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 bg-green-700 rounded">
+          <i class="fas fa-money-bill-wave w-5"></i>
+          <span>ফি কালেকশন</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-chart-pie w-5"></i>
+          <span>ফি রিপোর্ট</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-chalkboard-teacher w-5"></i>
+          <span>ক্লাস ব্যবস্থাপনা</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-clipboard-list w-5"></i>
+          <span>পরীক্ষা ব্যবস্থাপনা</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-cog w-5"></i>
+          <span>সেটিংস</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded mt-4 border-t border-green-700">
+          <i class="fas fa-sign-out-alt w-5"></i>
+          <span>লগ আউট</span>
+        </a>
+      </nav>
+    </div>
+    
+    <!-- মূল কন্টেন্ট -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- হেডার -->
+      <header class="bg-white shadow-sm">
+        <div class="flex items-center justify-between px-6 py-3">
+          <div class="flex items-center">
+            <h2 class="text-xl font-semibold text-gray-800">ফি কালেকশন সিস্টেম</h2>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+              <img src="https://via.placeholder.com/40" alt="প্রোফাইল" class="h-8 w-8 rounded-full mr-2">
+              <span class="text-gray-700">মুহাম্মদ ইব্রাহীম</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- কন্টেন্ট এরিয়া -->
+      <main class="flex-1 overflow-y-auto p-4 bg-gray-100">
+        <!-- সার্চ সেকশন -->
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-search text-green-600 mr-2"></i>
+            শিক্ষার্থী খুঁজুন
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">শিক্ষার্থী আইডি</label>
+              <input type="text" x-model="searchId" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="AHIA-2023-XXXX">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">রোল নম্বর</label>
+              <input type="text" x-model="searchRoll" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="রোল নম্বর">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">শ্রেণী</label>
+              <select x-model="searchClass" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option value="">সব শ্রেণী</option>
+                <option value="6">৬ষ্ঠ শ্রেণী</option>
+                <option value="7">৭ম শ্রেণী</option>
+                <option value="8">৮ম শ্রেণী</option>
+                <option value="9">৯ম শ্রেণী</option>
+                <option value="10">১০ম শ্রেণী</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button @click="searchStudent" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded h-10 w-full">
+                <i class="fas fa-search mr-1"></i> খুঁজুন
+              </button>
+            </div>
+          </div>
+          
+          <!-- সার্চ রেজাল্ট -->
+          <div x-show="studentFound" class="mt-6 border-t pt-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <img :src="student.photo || 'https://via.placeholder.com/80'" alt="প্রোফাইল" class="h-16 w-16 rounded-full border-2 border-green-200">
+                <div>
+                  <h4 class="font-bold text-lg" x-text="student.name"></h4>
+                  <p class="text-sm text-gray-600" x-text="'আইডি: ' + student.id"></p>
+                  <p class="text-sm text-gray-600" x-text="student.class + ', ' + student.section"></p>
+                  <p class="text-sm text-gray-600" x-text="'ভর্তির তারিখ: ' + student.admissionDate"></p>
+                </div>
+              </div>
+              <div class="bg-red-100 text-red-800 px-4 py-2 rounded-lg">
+                <p class="text-sm">মোট বকেয়া</p>
+                <p class="font-bold" x-text="formatCurrency(student.totalDue)"></p>
+              </div>
+            </div>
+            
+            <!-- ফি হিস্ট্রি -->
+            <div class="mt-6">
+              <h4 class="font-bold mb-3 text-lg flex items-center">
+                <i class="fas fa-history text-green-600 mr-2"></i>
+                ফি পরিশোধের ইতিহাস
+              </h4>
+              
+              <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">মাস/পরীক্ষা</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">পরিমাণ</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">স্ট্যাটাস</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">পরিশোধের তারিখ</th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    <template x-for="(month, index) in dueMonths" :key="index">
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap" x-text="month.name + ' ' + month.year"></td>
+                        <td class="px-6 py-4 whitespace-nowrap" x-text="formatCurrency(month.amount)"></td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <span x-show="month.paid" class="fee-paid px-2 py-1 rounded-full text-xs font-medium">পরিশোধিত</span>
+                          <span x-show="!month.paid" class="fee-pending px-2 py-1 rounded-full text-xs font-medium">বাকি</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap" x-text="month.paidDate || '--'"></td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ফি কালেকশন ফর্ম -->
+        <div x-show="studentFound" class="bg-white rounded-lg shadow p-6 mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-money-bill-wave text-green-600 mr-2"></i>
+            ফি পরিশোধ ফর্ম
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- ফি বিবরণ -->
+            <div class="md:col-span-2">
+              <!-- মাসিক বেতন সেকশন -->
+              <div class="border border-gray-200 rounded-lg p-4 mb-4">
+                <h4 class="font-bold mb-3 text-lg">মাসিক বেতন</h4>
+                
+                <div class="space-y-3">
+                  <template x-for="(month, index) in pendingMonths" :key="index">
+                    <div class="flex items-center justify-between">
+                      <label class="flex items-center">
+                        <input type="checkbox" class="form-checkbox h-5 w-5 text-green-600" x-model="month.selected">
+                        <span class="ml-2" x-text="month.name + ' (' + month.year + ')'"></span>
+                      </label>
+                      <div>
+                        <span x-text="formatCurrency(month.amount)"></span>
+                      </div>
+                    </div>
+                  </template>
+                  
+                  <div class="pt-3 mt-3 border-t">
+                    <div class="flex justify-between font-bold">
+                      <span>সর্বমোট:</span>
+                      <span x-text="formatCurrency(calculateSelectedMonths().total)"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- অন্যান্য ফি -->
+              <div class="border border-gray-200 rounded-lg p-4 mb-4">
+                <h4 class="font-bold mb-3 text-lg">অন্যান্য ফি</h4>
+                
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                      <input type="checkbox" class="form-checkbox h-5 w-5 text-green-600" x-model="selectedFees.exam">
+                      <span class="ml-2">পরীক্ষা ফি</span>
+                    </label>
+                    <span x-show="selectedFees.exam" x-text="formatCurrency(1200)"></span>
+                  </div>
+                  
+                  <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                      <input type="checkbox" class="form-checkbox h-5 w-5 text-green-600" x-model="selectedFees.other">
+                      <span class="ml-2">অন্যান্য ফি</span>
+                    </label>
+                    <div x-show="selectedFees.other" class="flex items-center">
+                      <input type="number" x-model="otherFeeAmount" class="w-24 px-2 py-1 border border-gray-300 rounded" min="0">
+                      <span class="ml-2">টাকা</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- পেমেন্ট মেথড -->
+              <div class="border border-gray-200 rounded-lg p-4">
+                <h4 class="font-bold mb-3 text-lg">পেমেন্ট পদ্ধতি</h4>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <label class="flex items-center space-x-2 p-2 border rounded cursor-pointer" :class="{'border-green-500 bg-green-50': paymentMethod === 'cash'}">
+                    <input type="radio" name="paymentMethod" value="cash" x-model="paymentMethod" class="h-5 w-5 text-green-600">
+                    <span>নগদ</span>
+                  </label>
+                  
+                  <label class="flex items-center space-x-2 p-2 border rounded cursor-pointer" :class="{'border-green-500 bg-green-50': paymentMethod === 'bkash'}">
+                    <input type="radio" name="paymentMethod" value="bkash" x-model="paymentMethod" class="h-5 w-5 text-green-600">
+                    <span>বিকাশ</span>
+                  </label>
+                  
+                  <label class="flex items-center space-x-2 p-2 border rounded cursor-pointer" :class="{'border-green-500 bg-green-50': paymentMethod === 'nagad'}">
+                    <input type="radio" name="paymentMethod" value="nagad" x-model="paymentMethod" class="h-5 w-5 text-green-600">
+                    <span>নগদ</span>
+                  </label>
+                  
+                  <label class="flex items-center space-x-2 p-2 border rounded cursor-pointer" :class="{'border-green-500 bg-green-50': paymentMethod === 'bank'}">
+                    <input type="radio" name="paymentMethod" value="bank" x-model="paymentMethod" class="h-5 w-5 text-green-600">
+                    <span>ব্যাংক</span>
+                  </label>
+                </div>
+                
+                <div x-show="paymentMethod !== 'cash'" class="mt-3">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">ট্রানজেকশন আইডি</label>
+                  <input type="text" x-model="transactionId" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="TrxID123456">
+                </div>
+                
+                <div class="mt-3">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">মন্তব্য</label>
+                  <textarea x-model="comment" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" rows="2" placeholder="যেকোনো বিশেষ নির্দেশনা..."></textarea>
+                </div>
+              </div>
+            </div>
+            
+            <!-- পেমেন্ট সামারি -->
+            <div>
+              <div class="border border-gray-200 rounded-lg p-4 sticky top-4">
+                <h4 class="font-bold mb-3 text-lg">পেমেন্ট সামারি</h4>
+                
+                <div class="space-y-2">
+                  <!-- নির্বাচিত মাসগুলোর বেতন -->
+                  <template x-for="(month, index) in selectedMonths" :key="index">
+                    <div class="flex justify-between">
+                      <span x-text="month.name + ' বেতন'"></span>
+                      <span x-text="formatCurrency(month.amount)"></span>
+                    </div>
+                  </template>
+                  
+                  <!-- অন্যান্য ফি -->
+                  <div class="flex justify-between" x-show="selectedFees.exam">
+                    <span>পরীক্ষা ফি:</span>
+                    <span x-text="formatCurrency(1200)"></span>
+                  </div>
+                  <div class="flex justify-between" x-show="selectedFees.other && otherFeeAmount > 0">
+                    <span>অন্যান্য ফি:</span>
+                    <span x-text="formatCurrency(otherFeeAmount)"></span>
+                  </div>
+                  
+                  <div class="border-t pt-2 mt-2">
+                    <div class="flex justify-between font-bold">
+                      <span>সর্বমোট:</span>
+                      <span x-text="formatCurrency(calculateTotal())"></span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- আংশিক পেমেন্ট সিস্টেম -->
+                <div class="mt-4">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">পরিশোধিত অর্থ</label>
+                  <input type="number" x-model="paidAmount" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" min="0" :max="calculateTotal()">
+                </div>
+                
+                <div class="mt-2" x-show="paidAmount > 0">
+                  <div class="flex justify-between">
+                    <span>বাকি:</span>
+                    <span x-text="formatCurrency(calculateTotal() - paidAmount)" :class="{ 'text-red-600': (calculateTotal() - paidAmount) > 0 }"></span>
+                  </div>
+                </div>
+                
+                <div class="mt-6">
+                  <button @click="processPayment" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded w-full flex items-center justify-center">
+                    <i class="fas fa-check-circle mr-1"></i> পেমেন্ট নিশ্চিত করুন
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <!-- রশিদ মডাল -->
+  <div x-show="showReceipt" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" x-transition>
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b p-4 sticky top-0 bg-white z-10">
+        <h3 class="text-xl font-bold">ফি পরিশোধ রশিদ</h3>
+        <button @click="showReceipt = false" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="p-6">
+        <div id="receipt-print" class="receipt mx-auto bg-white p-6 border border-gray-200">
+          <div class="text-center mb-4">
+            <h2 class="text-xl font-bold">আল-হেরা ইসলামিক একাডেমি</h2>
+            <p class="text-sm">১২৩ ইসলামপুর রোড, মোহাম্মদপুর, ঢাকা-১২০৭</p>
+            <p class="text-sm">ফোন: ০১৭১২৩৪৫৬৭৮, ০১৯১২৩৪৫৬৭৮</p>
+            <p class="text-sm">ইমেইল: info@alhera.edu.bd</p>
+          </div>
+          
+          <div class="border-t border-b py-2 my-2 text-center font-bold">
+            ফি পরিশোধ রশিদ
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <p><span class="font-bold">রশিদ নং:</span> <span x-text="receipt.receiptNo"></span></p>
+              <p><span class="font-bold">তারিখ:</span> <span x-text="receipt.date"></span></p>
+              <p><span class="font-bold">পেমেন্ট মেথড:</span> <span x-text="receipt.paymentMethod"></span></p>
+              <p x-show="receipt.transactionId"><span class="font-bold">ট্রানজেকশন আইডি:</span> <span x-text="receipt.transactionId"></span></p>
+            </div>
+            <div>
+              <p><span class="font-bold">শিক্ষার্থী আইডি:</span> <span x-text="receipt.studentId"></span></p>
+              <p><span class="font-bold">শিক্ষার্থীর নাম:</span> <span x-text="receipt.studentName"></span></p>
+              <p><span class="font-bold">শ্রেণী:</span> <span x-text="receipt.class"></span></p>
+              <p><span class="font-bold">রোল:</span> <span x-text="receipt.roll"></span></p>
+            </div>
+          </div>
+          
+          <table class="w-full border-collapse mb-4">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border py-2 px-3 text-left">বিবরণ</th>
+                <th class="border py-2 px-3 text-right">পরিমাণ (টাকা)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- মাসিক বেতন -->
+              <template x-for="(item, index) in receipt.items" :key="index">
+                <tr>
+                  <td class="border py-2 px-3" x-text="item.description"></td>
+                  <td class="border py-2 px-3 text-right" x-text="item.amount"></td>
+                </tr>
+              </template>
+              
+              <!-- মোট -->
+              <tr class="font-bold">
+                <td class="border py-2 px-3 text-right">মোট:</td>
+                <td class="border py-2 px-3 text-right" x-text="receipt.total"></td>
+              </tr>
+              
+              <!-- পরিশোধিত -->
+              <tr>
+                <td class="border py-2 px-3 text-right">পরিশোধিত:</td>
+                <td class="border py-2 px-3 text-right" x-text="receipt.paid"></td>
+              </tr>
+              
+              <!-- বাকি -->
+              <tr x-show="receipt.remaining > 0">
+                <td class="border py-2 px-3 text-right">বাকি:</td>
+                <td class="border py-2 px-3 text-right text-red-600" x-text="receipt.remaining"></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div class="text-center text-sm mt-6">
+            <p x-show="receipt.comment"><span class="font-bold">মন্তব্য:</span> <span x-text="receipt.comment"></span></p>
+            <p class="mt-4">ধন্যবাদান্তে,</p>
+            <p class="font-bold mt-4">আল-হেরা ইসলামিক একাডেমি</p>
+            <p class="mt-8">----------------------------------</p>
+            <p>অনুমোদিত স্বাক্ষর</p>
+          </div>
+        </div>
+        
+        <div class="flex justify-center space-x-4 mt-6">
+          <button @click="printReceipt" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+            <i class="fas fa-print mr-1"></i> প্রিন্ট করুন
+          </button>
+          <button @click="downloadReceipt" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+            <i class="fas fa-download mr-1"></i> ডাউনলোড করুন
+          </button>
+          <button @click="showReceipt = false" class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded">
+            <i class="fas fa-times mr-1"></i> বন্ধ করুন
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function feeCollectionSystem() {
+      return {
+        // সার্চ রিলেটেড ভ্যারিয়েবল
+        searchId: '',
+        searchRoll: '',
+        searchClass: '',
+        studentFound: false,
+        student: {
+          id: 'AHIA-2023-0456',
+          name: 'আব্দুর রহমান',
+          class: '৯ম শ্রেণী',
+          section: 'বিজ্ঞান বিভাগ',
+          roll: '১২',
+          photo: 'https://via.placeholder.com/80',
+          admissionDate: '১০ জানুয়ারি ২০২৩',
+          totalDue: 5000
+        },
+        
+        // ফি সিলেকশন রিলেটেড
+        dueMonths: [],
+        selectedFees: {
+          exam: false,
+          other: false
+        },
+        otherFeeAmount: 0,
+        
+        // পেমেন্ট রিলেটেড
+        paymentMethod: 'cash',
+        transactionId: '',
+        comment: '',
+        paidAmount: 0,
+        
+        // রশিদ রিলেটেড
+        showReceipt: false,
+        receipt: {},
+        
+        // কম্পিউটেড প্রপার্টিজ
+        get pendingMonths() {
+          return this.dueMonths.filter(m => !m.paid);
+        },
+        
+        get selectedMonths() {
+          return this.pendingMonths.filter(m => m.selected);
+        },
+        
+        get canProcessPayment() {
+          return this.paidAmount > 0;
+        },
+        
+        // মেথডস
+        searchStudent() {
+          if (this.searchId || this.searchRoll) {
+            // In a real app, you would fetch student data from server
+            this.studentFound = true;
+            this.resetForm();
+            
+            // Simulate fetching due months from server
+            this.dueMonths = [
+              { name: 'জানুয়ারী', year: '২০২৩', amount: 2500, paid: true, paidDate: '১৫ জানুয়ারি ২০২৩' },
+              { name: 'ফেব্রুয়ারী', year: '২০২৩', amount: 2500, paid: true, paidDate: '১২ ফেব্রুয়ারি ২০২৩' },
+              { name: 'মার্চ', year: '২০২৩', amount: 2500, paid: true, paidDate: '১০ মার্চ ২০২৩' },
+              { name: 'এপ্রিল', year: '২০২৩', amount: 2500, paid: false },
+              { name: 'মে', year: '২০২৩', amount: 2500, paid: false },
+              { name: 'জুন', year: '২০২৩', amount: 2500, paid: true, paidDate: '৮ জুন ২০২৩' },
+              { name: 'জুলাই', year: '২০২৩', amount: 2500, paid: false },
+              { name: 'আগস্ট', year: '২০২৩', amount: 2500, paid: false },
+              { name: 'সেপ্টেম্বর', year: '২০২৩', amount: 2500, paid: true, paidDate: '৫ সেপ্টেম্বর ২০২৩' },
+              { name: 'অক্টোবর', year: '২০২৩', amount: 2500, paid: false },
+              { name: 'নভেম্বর', year: '২০২৩', amount: 2500, paid: false },
+              { name: 'ডিসেম্বর', year: '২০২৩', amount: 2500, paid: false }
+            ];
+            
+            // Calculate total due
+            this.student.totalDue = this.pendingMonths.reduce((sum, month) => sum + month.amount, 0);
+          } else {
+            alert('দয়া করে শিক্ষার্থী আইডি বা রোল নম্বর দিন');
+          }
+        },
+        
+        resetForm() {
+          this.dueMonths.forEach(month => {
+            month.selected = false;
+          });
+          this.selectedFees = { exam: false, other: false };
+          this.otherFeeAmount = 0;
+          this.paymentMethod = 'cash';
+          this.transactionId = '';
+          this.comment = '';
+          this.paidAmount = 0;
+        },
+        
+        calculateSelectedMonths() {
+          return this.selectedMonths.reduce((acc, month) => {
+            acc.total += month.amount;
+            return acc;
+          }, { total: 0 });
+        },
+        
+        calculateTotal() {
+          let total = this.calculateSelectedMonths().total;
+          if (this.selectedFees.exam) total += 1200;
+          if (this.selectedFees.other) total += parseInt(this.otherFeeAmount || 0);
+          return total;
+        },
+        
+        formatCurrency(amount) {
+          return amount.toLocaleString('bn-BD') + ' টাকা';
+        },
+        
+        getPaymentMethodName(method) {
+          const methods = {
+            'cash': 'নগদ',
+            'bkash': 'বিকাশ',
+            'nagad': 'নগদ',
+            'bank': 'ব্যাংক ট্রান্সফার'
+          };
+          return methods[method] || method;
+        },
+        
+        processPayment() {
+          if (!this.canProcessPayment) {
+            alert('অনুগ্রহ করে পরিশোধিত অর্থের পরিমাণ লিখুন');
+            return;
+          }
+          
+          const totalAmount = this.calculateTotal();
+          const paidAmount = parseInt(this.paidAmount);
+          const remainingAmount = totalAmount - paidAmount;
+          
+          this.receipt = {
+            receiptNo: 'AHIA-' + new Date().getTime().toString().slice(-6),
+            date: new Date().toLocaleDateString('bn-BD', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              weekday: 'long'
+            }) + ' ' + new Date().toLocaleTimeString('bn-BD'),
+            studentId: this.student.id,
+            studentName: this.student.name,
+            class: this.student.class,
+            roll: this.student.roll,
+            paymentMethod: this.getPaymentMethodName(this.paymentMethod),
+            transactionId: this.transactionId,
+            items: [],
+            total: this.formatCurrency(totalAmount),
+            paid: this.formatCurrency(paidAmount),
+            remaining: remainingAmount > 0 ? this.formatCurrency(remainingAmount) : '০ টাকা',
+            comment: this.comment
+          };
+          
+          // Add selected months to receipt
+          this.selectedMonths.forEach(month => {
+            this.receipt.items.push({
+              description: `${month.name} বেতন`,
+              amount: this.formatCurrency(month.amount)
+            });
+            
+            // Mark as paid in the main list
+            month.paid = true;
+            month.paidDate = new Date().toLocaleDateString('bn-BD');
+          });
+          
+          // Add other fees
+          if (this.selectedFees.exam) {
+            this.receipt.items.push({
+              description: 'পরীক্ষা ফি',
+              amount: this.formatCurrency(1200)
+            });
+          }
+          
+          if (this.selectedFees.other && this.otherFeeAmount > 0) {
+            this.receipt.items.push({
+              description: 'অন্যান্য ফি',
+              amount: this.formatCurrency(this.otherFeeAmount)
+            });
+          }
+          
+          // Update student's total due
+          this.student.totalDue = this.pendingMonths.reduce((sum, month) => sum + month.amount, 0);
+          
+          this.showReceipt = true;
+        },
+        
+        printReceipt() {
+          window.print();
+        },
+        
+        downloadReceipt() {
+          // In a real app, this would generate a PDF
+          const receiptData = JSON.stringify(this.receipt, null, 2);
+          const blob = new Blob([receiptData], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `fee_receipt_${this.receipt.receiptNo}.json`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          
+          alert('রশিদ ডাউনলোড করা হয়েছে (ডেমো ডাটা)');
+        }
+      }
+      
+    }
+  </script>
+</body>
+
+</html>

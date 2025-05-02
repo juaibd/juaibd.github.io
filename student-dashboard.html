@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>স্টুডেন্ট ড্যাশবোর্ড - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <script>
+    let loggedinUser = localStorage.getItem('logged_in_user');
+    if (!loggedinUser) {
+      location.assign('./student-login')
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .sidebar {
+      transition: all 0.3s;
+    }
+    
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .active-tab {
+      border-bottom: 3px solid #065F46;
+      color: #065F46;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <div class="flex h-screen">
+    <!-- সাইডবার -->
+    <div class="sidebar bg-green-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+      <!-- একাডেমি লোগো ও নাম -->
+      <div class="flex items-center space-x-2 px-4">
+        <img src="./images/logo.jpg" alt="লোগো" class="h-10 rounded-full">
+        <span class="text-xl font-bold">আল-হেরা</span>
+      </div>
+      
+      <!-- স্টুডেন্ট প্রোফাইল -->
+      <div class="flex flex-col items-center px-4 py-4 border-b border-green-700">
+        <img src="./images/logo.jpg" alt="প্রোফাইল" class="h-20 w-20 rounded-full border-2 border-white mb-3">
+        <h4 class="font-bold">আব্দুর রহমান</h4>
+        <p class="text-sm text-green-200">আইডি: AHIA-2023-0456</p>
+        <p class="text-sm text-green-200">৯ম শ্রেণী, বিভাগ: বিজ্ঞান</p>
+      </div>
+      
+      <!-- নেভিগেশন মেনু -->
+      <nav>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 bg-green-700 rounded">
+          <i class="fas fa-tachometer-alt w-5"></i>
+          <span>ড্যাশবোর্ড</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-user-graduate w-5"></i>
+          <span>প্রোফাইল</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-book w-5"></i>
+          <span>ক্লাস রুটিন</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-clipboard-list w-5"></i>
+          <span>একাডেমিক রেকর্ড</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-chart-line w-5"></i>
+          <span>পরীক্ষার ফলাফল</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-money-bill-wave w-5"></i>
+          <span>ফি পরিশোধ</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-calendar-alt w-5"></i>
+          <span>ইভেন্ট ক্যালেন্ডার</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded">
+          <i class="fas fa-cog w-5"></i>
+          <span>সেটিংস</span>
+        </a>
+        <a onclick="logout()" class="flex items-center space-x-2 py-3 px-4 hover:bg-green-700 rounded mt-4 border-t border-green-700">
+          <i class="fas fa-sign-out-alt w-5"></i>
+          <span>লগ আউট</span>
+        </a>
+      </nav>
+    </div>
+    
+    <!-- মূল কন্টেন্ট -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- হেডার -->
+      <header class="bg-white shadow-sm">
+        <div class="flex items-center justify-between px-6 py-3">
+          <div class="flex items-center">
+            <button class="md:hidden text-gray-500 mr-2">
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h2 class="text-xl font-semibold text-gray-800">স্টুডেন্ট ড্যাশবোর্ড</h2>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button class="text-gray-500 relative">
+              <i class="fas fa-bell text-xl"></i>
+              <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+            </button>
+            <div class="flex items-center">
+              <img src="./images/logo.jpg" alt="প্রোফাইল" class="h-8 w-8 rounded-full mr-2">
+              <span class="text-gray-700">আব্দুর রহমান</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- কন্টেন্ট এরিয়া -->
+      <main class="flex-1 overflow-y-auto p-4 bg-gray-100">
+        <!-- ওয়েলকাম সেকশন -->
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <h1 class="text-2xl font-bold text-gray-800 mb-2">আসসালামু আলাইকুম, আব্দুর রহমান</h1>
+              <p class="text-gray-600">আপনার একাডেমিক তথ্য এবং কার্যক্রম এখানে দেখানো হচ্ছে</p>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">সক্রিয়</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ড্যাশবোর্ড কার্ড -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          <div class="dashboard-card bg-white rounded-lg shadow p-6 transition duration-300">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-500">বর্তমান শ্রেণী</p>
+                <h3 class="text-2xl font-bold text-gray-800 mt-1">৯ম শ্রেণী</h3>
+              </div>
+              <div class="bg-green-100 p-3 rounded-full text-green-600">
+                <i class="fas fa-graduation-cap text-xl"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-card bg-white rounded-lg shadow p-6 transition duration-300">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-500">পরবর্তী পরীক্ষা</p>
+                <h3 class="text-2xl font-bold text-gray-800 mt-1">১৫ জুন</h3>
+                <p class="text-sm text-gray-500 mt-1">মধ্যবর্তী পরীক্ষা</p>
+              </div>
+              <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                <i class="fas fa-calendar-alt text-xl"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-card bg-white rounded-lg shadow p-6 transition duration-300">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-500">ফি স্ট্যাটাস</p>
+                <h3 class="text-2xl font-bold text-gray-800 mt-1">পরিশোধিত</h3>
+                <p class="text-sm text-gray-500 mt-1">পরবর্তী ফি: ৫ জুলাই</p>
+              </div>
+              <div class="bg-purple-100 p-3 rounded-full text-purple-600">
+                <i class="fas fa-money-bill-wave text-xl"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-card bg-white rounded-lg shadow p-6 transition duration-300">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-500">বর্তমান GPA</p>
+                <h3 class="text-2xl font-bold text-gray-800 mt-1">৪.৮৩</h3>
+                <p class="text-sm text-gray-500 mt-1">শ্রেণীতে অবস্থান: ৩য়</p>
+              </div>
+              <div class="bg-yellow-100 p-3 rounded-full text-yellow-600">
+                <i class="fas fa-medal text-xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ট্যাব নেভিগেশন -->
+        <div class="bg-white rounded-lg shadow mb-6">
+          <div class="border-b border-gray-200">
+            <nav class="flex -mb-px">
+              <a href="#" class="py-4 px-6 text-center border-b-2 font-medium text-sm active-tab">
+                <i class="fas fa-user-circle mr-2"></i>
+                প্রোফাইল
+              </a>
+              <a href="#" class="py-4 px-6 text-center border-b-2 font-medium text-sm text-gray-500 hover:text-green-600 hover:border-green-500">
+                <i class="fas fa-book mr-2"></i>
+                একাডেমিক তথ্য
+              </a>
+              <a href="#" class="py-4 px-6 text-center border-b-2 font-medium text-sm text-gray-500 hover:text-green-600 hover:border-green-500">
+                <i class="fas fa-chart-bar mr-2"></i>
+                ফলাফল বিশ্লেষণ
+              </a>
+              <a href="#" class="py-4 px-6 text-center border-b-2 font-medium text-sm text-gray-500 hover:text-green-600 hover:border-green-500">
+                <i class="fas fa-file-invoice-dollar mr-2"></i>
+                ফি হিসাব
+              </a>
+            </nav>
+          </div>
+        </div>
+        
+        <!-- প্রোফাইল সেকশন -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- ব্যক্তিগত তথ্য -->
+          <div class="lg:col-span-2 bg-white rounded-lg shadow p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-user-circle text-green-600 mr-2"></i>
+              ব্যক্তিগত তথ্য
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p class="text-sm text-gray-500">পূর্ণ নাম</p>
+                <p class="font-medium">আব্দুর রহমান</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">জন্ম তারিখ</p>
+                <p class="font-medium">১৫ মার্চ ২০০৮</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">পিতার নাম</p>
+                <p class="font-medium">মুহাম্মদ আলী</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">মাতার নাম</p>
+                <p class="font-medium">আয়েশা বেগম</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">লিঙ্গ</p>
+                <p class="font-medium">পুরুষ</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">রক্তের গ্রুপ</p>
+                <p class="font-medium">B+</p>
+              </div>
+              <div class="md:col-span-2">
+                <p class="text-sm text-gray-500">ঠিকানা</p>
+                <p class="font-medium">১২৩ ইসলামপুর রোড, মোহাম্মদপুর, ঢাকা-১২০৭</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">মোবাইল নম্বর</p>
+                <p class="font-medium">০১৭১২৩৪৫৬৭৮</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">ইমেইল</p>
+                <p class="font-medium">student@example.com</p>
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded flex items-center">
+                <i class="fas fa-edit mr-2"></i>
+                তথ্য আপডেট করুন
+              </button>
+            </div>
+          </div>
+          
+          <!-- একাডেমিক তথ্য -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-graduation-cap text-green-600 mr-2"></i>
+              একাডেমিক তথ্য
+            </h3>
+            
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm text-gray-500">রোল নম্বর</p>
+                <p class="font-medium">১২</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">স্টুডেন্ট আইডি</p>
+                <p class="font-medium">AHIA-2023-0456</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">শ্রেণী</p>
+                <p class="font-medium">৯ম শ্রেণী, বিভাগ: বিজ্ঞান</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">শাখা</p>
+                <p class="font-medium">সকাল (৮:৩০ - ১:৩০)</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">ভর্তির তারিখ</p>
+                <p class="font-medium">১০ জানুয়ারি ২০২৩</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">ক্লাস টিচার</p>
+                <p class="font-medium">মাওলানা মুহাম্মদ ইব্রাহীম</p>
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <h4 class="font-bold text-gray-700 mb-2">বর্তমান বিষয়সমূহ</h4>
+              <ul class="list-disc list-inside text-gray-600 space-y-1">
+                <li>কুরআন মাজিদ ও তাজবিদ</li>
+                <li>হাদিস শরীফ</li>
+                <li>ইসলামিক ইতিহাস</li>
+                <li>গণিত</li>
+                <li>বিজ্ঞান</li>
+                <li>ইংরেজি</li>
+                <li>বাংলা</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- সাম্প্রতিক পরীক্ষার ফলাফল -->
+        <div class="bg-white rounded-lg shadow p-6 mt-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-chart-line text-green-600 mr-2"></i>
+            সাম্প্রতিক পরীক্ষার ফলাফল
+          </h3>
+          
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">পরীক্ষার নাম</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">তারিখ</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">প্রাপ্ত নম্বর</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GPA</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">শ্রেণীতে অবস্থান</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">বিস্তারিত</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">বার্ষিক পরীক্ষা ২০২৩</td>
+                  <td class="px-6 py-4 whitespace-nowrap">১৫ নভেম্বর ২০২৩</td>
+                  <td class="px-6 py-4 whitespace-nowrap">৮৫০/১০০০</td>
+                  <td class="px-6 py-4 whitespace-nowrap">৪.৯২</td>
+                  <td class="px-6 py-4 whitespace-nowrap">২য়</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <a href="#" class="text-green-600 hover:text-green-800">দেখুন</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">মধ্যবর্তী পরীক্ষা ২০২৪</td>
+                  <td class="px-6 py-4 whitespace-nowrap">২০ মার্চ ২০২৪</td>
+                  <td class="px-6 py-4 whitespace-nowrap">৭৮০/১০০০</td>
+                  <td class="px-6 py-4 whitespace-nowrap">৪.৭৫</td>
+                  <td class="px-6 py-4 whitespace-nowrap">৩য়</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <a href="#" class="text-green-600 hover:text-green-800">দেখুন</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">সাপ্তাহিক পরীক্ষা - ১২</td>
+                  <td class="px-6 py-4 whitespace-nowrap">১০ মে ২০২৪</td>
+                  <td class="px-6 py-4 whitespace-nowrap">১৯০/২০০</td>
+                  <td class="px-6 py-4 whitespace-nowrap">৫.০০</td>
+                  <td class="px-6 py-4 whitespace-nowrap">১ম</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <a href="#" class="text-green-600 hover:text-green-800">দেখুন</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <include src="./src/components/bottom-nav"></include>
+  <script src="./src/index.js"></script>
+  
+  <script>
+    // মোবাইল ডিভাইসে সাইডবার টগল করার জন্য
+    document.querySelector('.fa-bars').addEventListener('click', function() {
+      document.querySelector('.sidebar').classList.toggle('-translate-x-full');
+    });
+    
+    // ট্যাব বাটন ক্লিক ইভেন্ট
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // সব ট্যাব বাটন থেকে active ক্লাস রিমুভ
+        tabButtons.forEach(btn => btn.classList.remove('active', 'bg-green-600', 'text-white'));
+        // শুধু ক্লিক করা বাটনে active ক্লাস অ্যাড
+        this.classList.add('active', 'bg-green-600', 'text-white');
+        
+        // সব ট্যাব কন্টেন্ট হাইড
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.add('hidden');
+        });
+        // সংশ্লিষ্ট ট্যাব কন্টেন্ট শো
+        const tabId = this.getAttribute('data-tab');
+        document.getElementById(tabId).classList.remove('hidden');
+      });
+    });
+    
+    // ট্যাব নেভিগেশন
+    const profileTabs = document.querySelectorAll('.border-b-2');
+    profileTabs.forEach(tab => {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        // সব ট্যাব থেকে active ক্লাস রিমুভ
+        profileTabs.forEach(t => t.classList.remove('active-tab', 'text-green-600', 'border-green-500'));
+        // শুধু ক্লিক করা ট্যাবে active ক্লাস অ্যাড
+        this.classList.add('active-tab', 'text-green-600', 'border-green-500');
+      });
+    });
+    
+    function logout() {
+      localStorage.removeItem('logged_in_user');
+      setTimeout(() => {
+        location.assign('/student-login.html')
+      }, 1500)
+    }
+  </script>
+</body>
+
+</html>

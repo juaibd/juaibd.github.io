@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>নামাজে মনোযোগ বৃদ্ধির উপায় - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .article-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    
+    .article-content h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 2rem 0 1rem;
+      color: #065f46;
+    }
+    
+    .article-content ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .article-content blockquote {
+      border-left: 4px solid #059669;
+      padding-left: 1rem;
+      color: #4b5563;
+      font-style: italic;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+  
+  <!-- আর্টিকেল ডিটেইল সেকশন -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <!-- ব্রেডক্রাম্ব -->
+      <nav class="flex mb-6" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="index.html" class="inline-flex items-center text-sm text-green-600 hover:text-green-800">
+              <i class="fas fa-home mr-2"></i>
+              হোম
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+              <a href="blog.html" class="ml-1 text-sm text-green-600 hover:text-green-800 md:ml-2">ব্লগ</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+              <span class="ml-1 text-sm text-gray-500 md:ml-2">নামাজে মনোযোগ</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+      
+      <!-- আর্টিকেল হেডার -->
+      <div class="mb-8">
+        <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mb-4 inline-block">ফিকহ ও ফতওয়া</span>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">নামাজে মনোযোগ বৃদ্ধির ১০টি কার্যকরী উপায়</h1>
+        
+        <div class="flex flex-wrap items-center justify-between mb-6">
+          <div class="flex items-center">
+            <img src="https://via.placeholder.com/40" alt="লেখক" class="h-10 w-10 rounded-full mr-3">
+            <div>
+              <p class="font-medium text-gray-800">মুফতি আব্দুর রহমান</p>
+              <p class="text-sm text-gray-500">ফিকহ বিভাগ, আল-হেরা ইসলামিক একাডেমি</p>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 text-sm text-gray-500">
+            <i class="far fa-calendar-alt mr-1"></i> প্রকাশিত: ১৫ জুন ২০২৪
+            <span class="mx-2">•</span>
+            <i class="far fa-clock mr-1"></i> ১০ মিনিটের পড়া
+          </div>
+        </div>
+        
+        <img src="https://via.placeholder.com/800x450?text=নামাজ+মনোযোগ" alt="নামাজে মনোযোগ" class="w-full rounded-lg shadow-md mb-6">
+        
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">নামাজ</span>
+          <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">খুশু-খুজু</span>
+          <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">ফিকহ</span>
+          <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">ইবাদত</span>
+        </div>
+      </div>
+      
+      <!-- আর্টিকেল কন্টেন্ট -->
+      <div class="article-content text-gray-700 mb-12">
+        <p class="lead">নামাজ ইসলামের দ্বিতীয় স্তম্ভ এবং আল্লাহর সাথে বান্দার সরাসরি সংযোগের মাধ্যম। কিন্তু আধুনিক জীবনের ব্যস্ততা ও নানান চিন্তাভাবনার কারণে নামাজে মনোযোগ ধরে রাখা অনেকের জন্যই কঠিন হয়ে পড়েছে। এই আর্টিকেলে আমরা নামাজে খুশু-খুজু অর্জনের জন্য কিছু কার্যকরী পদ্ধতি আলোচনা করব।</p>
+        
+        <h2>১. নামাজের প্রস্তুতি নেওয়া</h2>
+        <p>নামাজে মনোযোগের প্রথম শর্ত হলো যথাযথ প্রস্তুতি নেওয়া। এজন্য:</p>
+        <ul>
+          <li>ওজুর সময় কিবলার দিকে মুখ করে ওজু করুন</li>
+          <li>ওজুর সময় কালিমা বা জিকির পড়ুন</li>
+          <li>পরিষ্কার-পরিচ্ছন্ন ও সুগন্ধি ব্যবহার করুন</li>
+          <li>নামাজের স্থান ও পোশাক পরিষ্কার রাখুন</li>
+        </ul>
+        
+        <blockquote>
+          রাসূল (সা.) বলেছেন, "যখন কোনো মুসলিম ভালোভাবে ওজু করে, তারপর দাঁড়িয়ে নামাজ পড়ে, আল্লাহ তার সব গুনাহ মাফ করে দেন।" (সহিহ বুখারী)
+        </blockquote>
+        
+        <img src="https://via.placeholder.com/600x400?text=নামাজের+প্রস্তুতি" alt="নামাজের প্রস্তুতি" class="w-full rounded-lg my-6">
+        
+        <h2>২. নামাজের অর্থ বুঝে পড়া</h2>
+        <p>আরবি না জানার কারণে অনেকেই নামাজের অর্থ বুঝতে পারেন না। এজন্য:</p>
+        <ul>
+          <li>সুরা ফাতিহা ও ছোট সুরাগুলোর বাংলা অর্থ শিখুন</li>
+          <li>তাশাহহুদ ও দরুদ শরীফের অর্থ জানুন</li>
+          <li>রুকু-সিজদার জিকিরের অর্থ বুঝে পড়ুন</li>
+        </ul>
+        
+        <h2>৩. নামাজের সময় মোবাইল দূরে রাখা</h2>
+        <p>আধুনিক যুগে মোবাইল নামাজে মনোযোগ নষ্টের প্রধান কারণ। এজন্য:</p>
+        <ul>
+          <li>নামাজের আগে মোবাইল সাইলেন্ট বা বন্ধ করে রাখুন</li>
+          <li>প্রয়োজন না হলে মোবাইল অন্য রুমে রাখুন</li>
+          <li>জরুরি কলের জন্য একটি নির্দিষ্ট ফোন রাখতে পারেন</li>
+        </ul>
+        
+        <h2>৪. ধীরে সুস্থে নামাজ পড়া</h2>
+        <p>রাসূল (সা.) ধীরে সুস্থে নামাজ পড়তেন। এজন্য:</p>
+        <ul>
+          <li>প্রত্যেকটি তাসবীহ পরিপূর্ণভাবে পড়ুন</li>
+          <li>রুকু-সিজদা যথেষ্ট সময় নিয়ে করুন</li>
+          <li>কাতার সোজা করে দাঁড়ান</li>
+        </ul>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-6">
+          <div class="flex">
+            <div class="flex-shrink-0 text-blue-500">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-blue-800">প্রাকটিক্যাল টিপস</h3>
+              <div class="mt-2 text-sm text-blue-700">
+                <p>নামাজের সময় চোখ বন্ধ করে রাখলে মনোযোগ বাড়তে পারে। তবে ফরজ নামাজে সিজদার স্থানে তাকিয়ে থাকাই উত্তম।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h2>৫. নামাজের আগে দুআ পড়া</h2>
+        <p>নামাজের আগে এই দুআটি পড়তে পারেন:</p>
+        <p class="text-right text-xl my-4 font-arabic" dir="rtl">اللهم إني أعوذ بك من الشيطان الرجيم من همزه ونفخه ونفثه</p>
+        <p>"হে আল্লাহ! আমি আপনার কাছে আশ্রয় চাই অভিশপ্ত শয়তানের থেকে, তার উসকানি থেকে, তার অহংকার থেকে এবং তার কুমন্ত্রণা থেকে।"</p>
+        
+        <h2>৬. নামাজের সময় চিন্তা নিয়ন্ত্রণ</h2>
+        <p>নামাজের সময় অন্যান্য চিন্তা আসলে:</p>
+        <ul>
+          <li>আস্তে 'আউজুবিল্লাহ' বলুন</li>
+          <li>সিজদায় গিয়ে বেশি দুআ করুন</li>
+          <li>নামাজকে আল্লাহর সাথে কথোপকথন হিসেবে ভাবুন</li>
+        </ul>
+        
+        <h2>৭. নিয়মিত তাহাজ্জুদ পড়া</h2>
+        <p>তাহাজ্জুদ নামাজ নামাজে মনোযোগ বাড়াতে সাহায্য করে। কারণ:</p>
+        <ul>
+          <li>রাতের শান্ত পরিবেশে নামাজ পড়া যায়</li>
+          <li>কাউকে জাগিয়ে নামাজ পড়তে হয় না</li>
+          <li>একান্তে আল্লাহর সাথে কথা বলার সুযোগ হয়</li>
+        </ul>
+        
+        <div class="bg-green-50 border-l-4 border-green-400 p-4 my-6">
+          <div class="flex">
+            <div class="flex-shrink-0 text-green-500">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-green-800">উস্তাদের পরামর্শ</h3>
+              <div class="mt-2 text-sm text-green-700">
+                <p>"নামাজে মনোযোগ বাড়ানোর জন্য প্রতিদিন কমপক্ষে একটি সুরার নতুন তাফসীর শিখুন এবং নামাজে সেই সুরা পড়ার সময় তাফসীরের কথা মনে করুন।" - মুফতি আব্দুর রহমান</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h2>৮. জামাতের সাথে নামাজ পড়া</h2>
+        <p>জামাতে নামাজ পড়লে মনোযোগ বাড়ে, কারণ:</p>
+        <ul>
+          <li>ইমামের পিছনে মনোযোগ দিতে হয়</li>
+          <li>কাতার সোজা করতে হয়</li>
+          <li>অন্যান্য মুসল্লিদের দেখে উৎসাহ পাওয়া যায়</li>
+        </ul>
+        
+        <h2>৯. নামাজের পর দুআ ও জিকির</h2>
+        <p>নামাজের পর নিয়মিত এই আমলগুলো করুন:</p>
+        <ul>
+          <li>আয়াতুল কুরসি পড়ুন</li>
+          <li>৩৩ বার সুবহানাল্লাহ, ৩৩ বার আলহামদুলিল্লাহ, ৩৩ বার আল্লাহু আকবার পড়ুন</li>
+          <li>নামাজের পরের মাসনুন দুআগুলো পড়ুন</li>
+        </ul>
+        
+        <h2>১০. ধারাবাহিকতা বজায় রাখা</h2>
+        <p>নামাজে মনোযোগ একটি ধারাবাহিক প্রক্রিয়া। এজন্য:</p>
+        <ul>
+          <li>প্রতিদিন কমপক্ষে একটি নামাজে বিশেষ মনোযোগ দিন</li>
+          <li>সপ্তাহে একদিন নামাজের খুতবা বা বয়ান শুনুন</li>
+          <li>মাসে একবার নামাজ বিষয়ক বই পড়ুন</li>
+        </ul>
+        
+        <p class="font-medium mt-8">উপসংহার: নামাজে মনোযোগ বা খুশু-খুজু একদিনে অর্জিত হয় না। এটি নিয়মিত চর্চার বিষয়। উপরোক্ত পদ্ধতিগুলো ধারাবাহিকভাবে অনুসরণ করলে ইনশাআল্লাহ নামাজের স্বাদ ও আনন্দ পাওয়া যাবে।</p>
+      </div>
+      
+      <!-- শেয়ার বাটন -->
+      <div class="mb-12 border-t border-b border-gray-200 py-6">
+        <h3 class="text-lg font-bold text-gray-800 mb-4">এই পোস্টটি শেয়ার করুন</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="#" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#" class="bg-gray-700 text-white p-3 rounded-full hover:bg-gray-800">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- লেখক প্রোফাইল -->
+      <div class="bg-gray-50 p-6 rounded-lg mb-12">
+        <div class="flex flex-col md:flex-row items-center">
+          <img src="https://via.placeholder.com/120" alt="লেখক" class="h-24 w-24 rounded-full mb-4 md:mb-0 md:mr-6">
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">মুফতি আব্দুর রহমান</h3>
+            <p class="text-green-600 font-medium mb-2">ফিকহ বিভাগ প্রধান, আল-হেরা ইসলামিক একাডেমি</p>
+            <p class="text-gray-600 mb-4">দারুল উলুম দেওবন্দ থেকে ফিকহে হানাফিতে স্নাতকোত্তর ডিগ্রীপ্রাপ্ত। ১৫ বছর যাবত ইসলামিক ফিকহ ও ফতওয়া বিষয়ে গবেষণা ও অধ্যাপনা করছেন।</p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-500 hover:text-green-600">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-green-600">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-green-600">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- সম্পর্কিত আর্টিকেল -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-green-800 mb-6 border-b pb-2">সম্পর্কিত আর্টিকেল</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- আর্টিকেল ১ -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="https://via.placeholder.com/400x250?text=ওজুর+ফজিলত" alt="আর্টিকেল ছবি" class="w-full h-40 object-cover">
+            <div class="p-4">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">ফিকহ ও ফতওয়া</span>
+              <h4 class="font-bold text-lg mb-2">ওজুর ফজিলত ও গুরুত্ব</h4>
+              <p class="text-gray-600 text-sm mb-3">ওজু নামাজের চাবিকাঠি। এই আর্টিকেলে ওজুর ফজিলত ও সঠিক পদ্ধতি বর্ণনা করা হয়েছে...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>৮ মিনিটের পড়া</span>
+                <span>১০ জুন ২০২৪</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- আর্টিকেল ২ -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="https://via.placeholder.com/400x250?text=তাহাজ্জুদ" alt="আর্টিকেল ছবি" class="w-full h-40 object-cover">
+            <div class="p-4">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">তাজকিয়া ও আত্মশুদ্ধি</span>
+              <h4 class="font-bold text-lg mb-2">তাহাজ্জুদ নামাজের বিস্তারিত গাইড</h4>
+              <p class="text-gray-600 text-sm mb-3">তাহাজ্জুদ নামাজ পড়ার সময়, পদ্ধতি ও ফজিলত সম্পর্কে সম্পূর্ণ গাইড...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>১২ মিনিটের পড়া</span>
+                <span>৫ জুন ২০২৪</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- আর্টিকেল ৩ -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="https://via.placeholder.com/400x250?text=জিকির" alt="আর্টিকেল ছবি" class="w-full h-40 object-cover">
+            <div class="p-4">
+              <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">ইসলামিক ইতিহাস</span>
+              <h4 class="font-bold text-lg mb-2">সাহাবায়ে কেরামের জিকিরের অভ্যাস</h4>
+              <p class="text-gray-600 text-sm mb-3">রাসূল (সা.)-এর প্রিয় সাহাবিগণ কিভাবে দিনরাত জিকিরে মশগুল থাকতেন...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>১৫ মিনিটের পড়া</span>
+                <span>২৮ মে ২০২৪</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- মন্তব্য ফর্ম -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-green-800 mb-6 border-b pb-2">মন্তব্য করুন</h3>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">আপনার নাম *</label>
+            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">ইমেইল *</label>
+            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+          </div>
+          <div>
+            <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">মন্তব্য *</label>
+            <textarea id="comment" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"></textarea>
+          </div>
+          <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+            মন্তব্য জমা দিন
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+  
+  
+  <script src="./src/index.js"></script>
+  <script>
+    // আরবি টেক্সটের জন্য RTL সাপোর্ট
+    document.querySelectorAll('.font-arabic').forEach(el => {
+      el.style.direction = 'rtl';
+      el.style.fontFamily = "'Traditional Arabic', Arial, sans-serif";
+      el.style.fontSize = '1.2em';
+      el.style.lineHeight = '1.8';
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ছুটির দিন - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .holiday-card {
+      transition: all 0.3s ease;
+    }
+    
+    .holiday-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .islamic {
+      border-left: 4px solid #059669;
+    }
+    
+    .national {
+      border-left: 4px solid #3B82F6;
+    }
+    
+    .academic {
+      border-left: 4px solid #8B5CF6;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+  
+  <!-- হিরো সেকশন -->
+  <section class="bg-green-700 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">ছুটির দিনের তালিকা</h1>
+      <p class="text-xl mb-6">২০২৪ শিক্ষাবর্ষের সকল ছুটির দিন</p>
+    </div>
+  </section>
+  
+  <!-- ছুটির দিন সেকশন -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- ফিল্টার বাটন -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="filter-btn px-4 py-2 rounded-lg bg-green-600 text-white" data-filter="all">সব ছুটি</button>
+        <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-filter="islamic">ইসলামিক ছুটি</button>
+        <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-filter="national">জাতীয় ছুটি</button>
+        <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-filter="academic">একাডেমিক ছুটি</button>
+      </div>
+      
+      <!-- ক্যালেন্ডার ভিউ -->
+      <div class="max-w-4xl mx-auto mb-12 bg-gray-50 p-4 rounded-lg">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold text-gray-800">২০২৪ সালের ছুটির ক্যালেন্ডার</h3>
+          <a href="downloads/holiday-calendar-2024.pdf" download class="bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 px-3 rounded flex items-center">
+            <i class="fas fa-download mr-1"></i>
+            ডাউনলোড
+          </a>
+        </div>
+      </div>
+      
+      <!-- ছুটির দিনের তালিকা -->
+      <div class="max-w-4xl mx-auto">
+        <!-- জানুয়ারি-মার্চ -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-green-800 mb-4 border-b pb-2">জানুয়ারি - মার্চ ২০২৪</h3>
+          <div class="grid md:grid-cols-2 gap-4" id="holiday-container">
+            <!-- ছুটি 1 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow islamic" data-category="islamic">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">ঈদ-ই-মিলাদুন্নবী</h4>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ইসলামিক</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ১০ জানুয়ারি ২০২৪ (২৭ রবিউস সানি ১৪৪৫ হিজরি)
+              </div>
+              <p class="text-gray-700">পবিত্র ঈদ-ই-মিলাদুন্নবী (সা.) উপলক্ষে একদিনের ছুটি। বিশেষ দোয়া ও মিলাদ মাহফিলের আয়োজন করা হবে।</p>
+            </div>
+            
+            <!-- ছুটি 2 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow national" data-category="national">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">শহীদ দিবস</h4>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">জাতীয়</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ২১ ফেব্রুয়ারি ২০২৪
+              </div>
+              <p class="text-gray-700">আন্তর্জাতিক মাতৃভাষা দিবস ও শহীদ দিবস উপলক্ষে একদিনের ছুটি। সকাল ৮টায় শহীদ মিনারে শ্রদ্ধাঞ্জলি প্রদান করা হবে।</p>
+            </div>
+            
+            <!-- ছুটি 3 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow islamic" data-category="islamic">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">শবে মেরাজ</h4>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ইসলামিক</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ৭ মার্চ ২০২৪ (২৬ রজব ১৪৪৫ হিজরি)
+              </div>
+              <p class="text-gray-700">শবে মেরাজ উপলক্ষে পরদিন ছুটি। বিশেষ ইবাদত ও দোয়ার জন্য শিক্ষার্থীদের উৎসাহিত করা হবে।</p>
+            </div>
+            
+            <!-- ছুটি 4 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow national" data-category="national">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">স্বাধীনতা দিবস</h4>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">জাতীয়</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ২৬ মার্চ ২০২৪
+              </div>
+              <p class="text-gray-700">মহান স্বাধীনতা দিবস উপলক্ষে একদিনের ছুটি। সকাল ৯টায় বিশেষ সমাবেশ ও সাংস্কৃতিক অনুষ্ঠানের আয়োজন করা হবে।</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- এপ্রিল-জুন -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-green-800 mb-4 border-b pb-2">এপ্রিল - জুন ২০২৪</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <!-- ছুটি 5 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow islamic" data-category="islamic">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">ঈদুল ফিতর</h4>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ইসলামিক</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ১০-১৪ এপ্রিল ২০২৪ (১-৩ শাওয়াল ১৪৪৫ হিজরি)
+              </div>
+              <p class="text-gray-700">ঈদুল ফিতর উপলক্ষে ৫ দিনের ছুটি। ৯ এপ্রিল থেকে ক্লাস বন্ধ থাকবে এবং ১৫ এপ্রিল থেকে ক্লাস শুরু হবে।</p>
+            </div>
+            
+            <!-- ছুটি 6 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow national" data-category="national">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">মে দিবস</h4>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">জাতীয়</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ১ মে ২০২৪
+              </div>
+              <p class="text-gray-700">আন্তর্জাতিক শ্রম দিবস উপলক্ষে একদিনের ছুটি।</p>
+            </div>
+            
+            <!-- ছুটি 7 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow academic" data-category="academic">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">মধ্যবর্তী পরীক্ষার পর ছুটি</h4>
+                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">একাডেমিক</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ১৫-২০ মে ২০২৪
+              </div>
+              <p class="text-gray-700">মধ্যবর্তী পরীক্ষা শেষে ৫ দিনের ছুটি। শিক্ষকদের খাতা মূল্যায়নের জন্য এই সময় ব্যবহার করা হবে।</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- জুলাই-ডিসেম্বর -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-green-800 mb-4 border-b pb-2">জুলাই - ডিসেম্বর ২০২৪</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <!-- ছুটি 8 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow islamic" data-category="islamic">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">ঈদুল আযহা</h4>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ইসলামিক</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ১৬-২০ জুন ২০২৪ (১০-১৩ জিলহজ ১৪৪৫ হিজরি)
+              </div>
+              <p class="text-gray-700">ঈদুল আযহা উপলক্ষে ৫ দিনের ছুটি। ১৫ জুন থেকে ক্লাস বন্ধ থাকবে এবং ২১ জুন থেকে ক্লাস শুরু হবে।</p>
+            </div>
+            
+            <!-- ছুটি 9 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow national" data-category="national">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">জাতীয় শোক দিবস</h4>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">জাতীয়</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ১৫ আগস্ট ২০২৪
+              </div>
+              <p class="text-gray-700">জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমানের শাহাদাতবার্ষিকী উপলক্ষে একদিনের ছুটি। বিশেষ দোয়া ও আলোচনা অনুষ্ঠানের আয়োজন করা হবে।</p>
+            </div>
+            
+            <!-- ছুটি 10 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow islamic" data-category="islamic">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">আশুরা</h4>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ইসলামিক</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ১৬ জুলাই ২০২৪ (১০ মুহররম ১৪৪৬ হিজরি)
+              </div>
+              <p class="text-gray-700">পবিত্র আশুরা উপলক্ষে একদিনের ছুটি। বিশেষ মোনাজাত ও ধর্মীয় আলোচনার আয়োজন করা হবে।</p>
+            </div>
+            
+            <!-- ছুটি 11 -->
+            <div class="holiday-card bg-white p-4 rounded-lg shadow academic" data-category="academic">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold text-lg">বার্ষিক পরীক্ষার পর ছুটি</h4>
+                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">একাডেমিক</span>
+              </div>
+              <div class="flex items-center text-gray-600 text-sm mb-2">
+                <i class="fas fa-calendar-day mr-2"></i>
+                ২০ নভেম্বর - ৩১ ডিসেম্বর ২০২৪
+              </div>
+              <p class="text-gray-700">বার্ষিক পরীক্ষা শেষে শীতকালীন ছুটি। নতুন শিক্ষাবর্ষ শুরু হবে ১ জানুয়ারি ২০২৫।</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- বিশেষ নোট -->
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+          <div class="flex">
+            <div class="flex-shrink-0 text-yellow-500">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-yellow-800">গুরুত্বপূর্ণ তথ্য</h3>
+              <div class="mt-2 text-sm text-yellow-700">
+                <p>• জরুরি অবস্থায় প্রতিষ্ঠান কর্তৃপক্ষ যে কোনো সময় ছুটি বাতিল বা পরিবর্তন করতে পারে</p>
+                <p>• বিশেষ ছুটির দিনে প্রতিষ্ঠানের জরুরি সেবা চালু থাকবে</p>
+                <p>• ছুটির আগের দিন সাধারণত অর্ধদিবস কার্যক্রম চলবে</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+  
+  
+  <script src="./src/index.js"></script>
+  
+  <script>
+    // ফিল্টার ফাংশনালিটি
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        // সক্রিয় বাটন স্টাইল আপডেট
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('bg-green-600', 'text-white');
+          btn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+        });
+        this.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+        this.classList.add('bg-green-600', 'text-white');
+        
+        const filter = this.getAttribute('data-filter');
+        const holidays = document.querySelectorAll('.holiday-card');
+        
+        holidays.forEach(holiday => {
+          if (filter === 'all' || holiday.getAttribute('data-category') === filter) {
+            holiday.style.display = 'block';
+          } else {
+            holiday.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // কারেন্ট ইয়ার সেট করা
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentYear = new Date().getFullYear();
+      document.querySelectorAll('.current-year').forEach(el => {
+        el.textContent = currentYear;
+      });
+    });
+  </script>
+</body>
+
+</html>

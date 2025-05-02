@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অনলাইন ক্লাস - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .class-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .live-badge {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+      
+      50% {
+        opacity: 0.6;
+      }
+      
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+  
+  <!-- হিরো সেকশন -->
+  <section class="bg-green-700 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">আমাদের অনলাইন ক্লাস প্লাটফর্ম</h1>
+      <p class="text-xl mb-6">যেকোনো স্থান থেকে ইসলামিক শিক্ষা গ্রহণ করুন</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#live-classes" class="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-3 px-6 rounded-lg">লাইভ ক্লাস</a>
+        <a href="#recorded" class="bg-white hover:bg-gray-100 text-green-800 font-bold py-3 px-6 rounded-lg">রেকর্ডেড ক্লাস</a>
+        <a href="#how-to-join" class="bg-green-600 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg">কিভাবে যুক্ত হবেন</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- লাইভ ক্লাস সেকশন -->
+  <section id="live-classes" class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">বর্তমান লাইভ ক্লাসসমূহ</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- ক্লাস কার্ড 1 -->
+        <div class="bg-white border border-green-200 rounded-lg overflow-hidden shadow-md class-card transition duration-300">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400" alt="ক্লাস কভার" class="w-full h-48 object-cover">
+            <span class="live-badge absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">লাইভ</span>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold text-green-800">কুরআন তাজবিদ</h3>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">১০ম শ্রেণী</span>
+            </div>
+            <p class="text-gray-600 mb-4">মাওলানা মুহাম্মদ ইব্রাহীম</p>
+            <div class="flex items-center text-gray-500 text-sm mb-4">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              প্রতি সোম ও বুধবার, সকাল ১০টা
+            </div>
+            <a href="#" class="block w-full bg-green-600 hover:bg-green-700 text-white text-center font-bold py-2 px-4 rounded transition">
+              ক্লাসে যোগ দিন
+            </a>
+          </div>
+        </div>
+        
+        <!-- ক্লাস কার্ড 2 -->
+        <div class="bg-white border border-green-200 rounded-lg overflow-hidden shadow-md class-card transition duration-300">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400" alt="ক্লাস কভার" class="w-full h-48 object-cover">
+            <span class="live-badge absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">লাইভ</span>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold text-green-800">হাদিস শরিফ</h3>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">আলিম</span>
+            </div>
+            <p class="text-gray-600 mb-4">মুফতি আব্দুর রহমান</p>
+            <div class="flex items-center text-gray-500 text-sm mb-4">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              প্রতি রবি ও মঙ্গলবার, বিকাল ৪টা
+            </div>
+            <a href="#" class="block w-full bg-green-600 hover:bg-green-700 text-white text-center font-bold py-2 px-4 rounded transition">
+              ক্লাসে যোগ দিন
+            </a>
+          </div>
+        </div>
+        
+        <!-- ক্লাস কার্ড 3 -->
+        <div class="bg-white border border-green-200 rounded-lg overflow-hidden shadow-md class-card transition duration-300">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400" alt="ক্লাস কভার" class="w-full h-48 object-cover">
+            <span class="live-badge absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">লাইভ</span>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold text-green-800">ইসলামিক ইতিহাস</h3>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">সকল শ্রেণী</span>
+            </div>
+            <p class="text-gray-600 mb-4">ড. আয়েশা সিদ্দিকা</p>
+            <div class="flex items-center text-gray-500 text-sm mb-4">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              প্রতি শুক্রবার, সকাল ১১টা
+            </div>
+            <a href="#" class="block w-full bg-green-600 hover:bg-green-700 text-white text-center font-bold py-2 px-4 rounded transition">
+              ক্লাসে যোগ দিন
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- রেকর্ডেড ক্লাস সেকশন -->
+  <section id="recorded" class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">রেকর্ডেড ক্লাসসমূহ</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">যেকোনো সময় দেখুন পূর্বে রেকর্ডকৃত ক্লাসগুলো</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- ভিডিও কার্ড 1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+          <div class="relative">
+            <img src="https://via.placeholder.com/400x225" alt="ভিডিও থাম্বনেইল" class="w-full h-40 object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-black bg-opacity-50 rounded-full p-3">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-green-800 mb-2">তাফসীর ইবনে কাসীর</h3>
+            <p class="text-gray-600 text-sm mb-2">সূরা আল-বাকারা (আয়াত ১-১০)</p>
+            <div class="flex justify-between items-center text-sm text-gray-500">
+              <span>মাওলানা আব্দুল্লাহ</span>
+              <span>২ ঘণ্টা</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ভিডিও কার্ড 2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+          <div class="relative">
+            <img src="https://via.placeholder.com/400x225" alt="ভিডিও থাম্বনেইল" class="w-full h-40 object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-black bg-opacity-50 rounded-full p-3">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-green-800 mb-2">ফিকহুল ইসলাম</h3>
+            <p class="text-gray-600 text-sm mb-2">নামাজের মাসায়েল</p>
+            <div class="flex justify-between items-center text-sm text-gray-500">
+              <span>মুফতি ইব্রাহীম</span>
+              <span>১.৫ ঘণ্টা</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ভিডিও কার্ড 3 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+          <div class="relative">
+            <img src="https://via.placeholder.com/400x225" alt="ভিডিও থাম্বনেইল" class="w-full h-40 object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-black bg-opacity-50 rounded-full p-3">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-green-800 mb-2">আরবি ভাষা শিক্ষা</h3>
+            <p class="text-gray-600 text-sm mb-2">প্রাথমিক স্তর - পাঠ ৫</p>
+            <div class="flex justify-between items-center text-sm text-gray-500">
+              <span>শাইখ ইউসুফ</span>
+              <span>৪৫ মিনিট</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ভিডিও কার্ড 4 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+          <div class="relative">
+            <img src="https://via.placeholder.com/400x225" alt="ভিডিও থাম্বনেইল" class="w-full h-40 object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-black bg-opacity-50 rounded-full p-3">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-green-800 mb-2">সীরাতুন নবী</h3>
+            <p class="text-gray-600 text-sm mb-2">মক্কী জীবনের গুরুত্বপূর্ণ ঘটনা</p>
+            <div class="flex justify-between items-center text-sm text-gray-500">
+              <span>ড. মাহমুদ</span>
+              <span>২ ঘণ্টা</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-10">
+        <a href="#" class="inline-flex items-center bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg transition">
+          আরও রেকর্ডেড ক্লাস দেখুন
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- কীভাবে যুক্ত হবেন -->
+  <section id="how-to-join" class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">কীভাবে অনলাইন ক্লাসে যুক্ত হবেন</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- স্টেপ 1 -->
+          <div class="flex">
+            <div class="flex-shrink-0 bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4">১</div>
+            <div>
+              <h3 class="text-xl font-bold text-green-800 mb-2">অ্যাকাউন্ট তৈরি করুন</h3>
+              <p class="text-gray-700">আমাদের ওয়েবসাইটে রেজিস্ট্রেশন সম্পন্ন করুন এবং লগইন করুন</p>
+            </div>
+          </div>
+          
+          <!-- স্টেপ 2 -->
+          <div class="flex">
+            <div class="flex-shrink-0 bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4">২</div>
+            <div>
+              <h3 class="text-xl font-bold text-green-800 mb-2">ক্লাস সিলেক্ট করুন</h3>
+              <p class="text-gray-700">আপনার শ্রেণী অনুযায়ী ক্লাস নির্বাচন করুন</p>
+            </div>
+          </div>
+          
+          <!-- স্টেপ 3 -->
+          <div class="flex">
+            <div class="flex-shrink-0 bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4">৩</div>
+            <div>
+              <h3 class="text-xl font-bold text-green-800 mb-2">জয়েন করুন</h3>
+              <p class="text-gray-700">নির্ধারিত সময়ে "জয়েন ক্লাস" বাটনে ক্লিক করুন</p>
+            </div>
+          </div>
+          
+          <!-- স্টেপ 4 -->
+          <div class="flex">
+            <div class="flex-shrink-0 bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4">৪</div>
+            <div>
+              <h3 class="text-xl font-bold text-green-800 mb-2">অংশগ্রহণ করুন</h3>
+              <p class="text-gray-700">ক্লাসে সক্রিয়ভাবে অংশগ্রহণ করুন এবং প্রশ্ন জিজ্ঞাসা করুন</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-12 bg-blue-50 border-l-4 border-blue-500 p-4">
+          <div class="flex">
+            <div class="flex-shrink-0 text-blue-500">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-blue-800">গুরুত্বপূর্ণ তথ্য</h3>
+              <div class="mt-2 text-sm text-blue-700">
+                <p>• লাইভ ক্লাসের ৩০ মিনিট আগে প্রবেশ করার চেষ্টা করুন</p>
+                <p>• স্ট্যাবল ইন্টারনেট কানেকশন ব্যবহার করুন</p>
+                <p>• হেডফোন ব্যবহার করলে অডিও ভালো শোনা যাবে</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+
+  
+  <script src="./src/index.js"></script>
+</body>
+
+</html>

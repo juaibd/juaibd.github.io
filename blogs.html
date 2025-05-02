@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ইসলামিক জ্ঞানকোষ - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .article-card {
+      transition: all 0.3s ease;
+    }
+    
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fiqh {
+      border-left: 4px solid #059669;
+    }
+    
+    .tazkiyah {
+      border-left: 4px solid #3B82F6;
+    }
+    
+    .history {
+      border-left: 4px solid #8B5CF6;
+    }
+    
+    .news {
+      border-left: 4px solid #EC4899;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+  
+  
+  <!-- হিরো সেকশন -->
+  <section class="bg-green-700 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">ইসলামিক জ্ঞানকোষ</h1>
+      <p class="text-xl mb-6">ফিকহ, তাজকিয়া, ইসলামিক ইতিহাস ও অন্যান্য বিষয়ে গবেষণাধর্মী লেখা</p>
+      <div class="max-w-md mx-auto relative">
+        <input type="text" placeholder="আর্টিকেল খুঁজুন..." class="w-full py-3 px-4 rounded-lg text-gray-800 focus:outline-none">
+        <button class="absolute right-3 top-3 text-green-700">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ব্লগ সেকশন -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- ক্যাটাগরি ফিল্টার -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="filter-btn px-4 py-2 rounded-lg bg-green-600 text-white" data-filter="all">সব ক্যাটাগরি</button>
+        <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-filter="fiqh">ফিকহ ও ফতওয়া</button>
+        <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-filter="tazkiyah">তাজকিয়া ও আত্মশুদ্ধি</button>
+        <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-filter="history">ইসলামিক ইতিহাস</button>
+        <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-filter="news">মাদ্রাসা সংবাদ</button>
+      </div>
+      
+      <!-- ফিচার্ড আর্টিকেল -->
+      <div class="mb-12 bg-gray-50 p-6 rounded-xl">
+        <h3 class="text-2xl font-bold text-green-800 mb-6">প্রচ্ছদ আর্টিকেল</h3>
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <img src="https://via.placeholder.com/600x400?text=প্রচ্ছদ+ছবি" alt="প্রচ্ছদ আর্টিকেল" class="w-full rounded-lg shadow-md">
+          </div>
+          <div>
+            <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mb-2 inline-block">ফিকহ ও ফতওয়া</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">নামাজে মনোযোগ বৃদ্ধির ১০টি কার্যকরী উপায়</h2>
+            <p class="text-gray-600 mb-4">নামাজ ইসলামের দ্বিতীয় স্তম্ভ। কিন্তু অনেক সময় নামাজে মনোযোগ ধরে রাখা কঠিন হয়ে পড়ে। এই আর্টিকেলে নামাজে খুশু-খুজু অর্জনের জন্য প্রায়োগিক কিছু কৌশল আলোচনা করা হয়েছে...</p>
+            <div class="flex items-center text-sm text-gray-500">
+              <img src="https://via.placeholder.com/40" alt="লেখক" class="h-8 w-8 rounded-full mr-2">
+              <span>মুফতি আব্দুর রহমান</span>
+              <span class="mx-2">•</span>
+              <span>১৫ জুন ২০২৪</span>
+            </div>
+            <a href="article.html" class="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+              সম্পূর্ণ পড়ুন <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- আর্টিকেল গ্রিড -->
+      <div class="mb-12">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-2xl font-bold text-green-800">সাম্প্রতিক আর্টিকেল</h3>
+          <a href="#" class="text-green-600 hover:text-green-800 font-medium">সব দেখুন <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="article-container">
+          <!-- আর্টিকেল ১ -->
+          <div class="article-card bg-white rounded-lg overflow-hidden shadow-md fiqh" data-category="fiqh">
+            <img src="https://via.placeholder.com/400x250?text=ফিকহ+ছবি" alt="আর্টিকেল ছবি" class="w-full h-48 object-cover">
+            <div class="p-5">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">ফিকহ ও ফতওয়া</span>
+              <h4 class="font-bold text-lg mb-2">রোজা ভঙ্গের কারণসমূহ: একটি বিশদ বিশ্লেষণ</h4>
+              <p class="text-gray-600 text-sm mb-3">রমজান মাসে অনেক সময় অজ্ঞতাবশত কিছু কাজ করে ফেলি যা রোজা ভঙ্গের কারণ হতে পারে। এই আর্টিকেলে রোজা ভঙ্গের সকল কারণ কুরআন-সুন্নাহর আলোকে উপস্থাপন করা হয়েছে...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>১০ মিনিটের পড়া</span>
+                <span>২০ মে ২০২৪</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- আর্টিকেল ২ -->
+          <div class="article-card bg-white rounded-lg overflow-hidden shadow-md tazkiyah" data-category="tazkiyah">
+            <img src="https://via.placeholder.com/400x250?text=তাজকিয়া+ছবি" alt="আর্টিকেল ছবি" class="w-full h-48 object-cover">
+            <div class="p-5">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">তাজকিয়া ও আত্মশুদ্ধি</span>
+              <h4 class="font-bold text-lg mb-2">গীবত থেকে বেঁচে থাকার ৭টি উপায়</h4>
+              <p class="text-gray-600 text-sm mb-3">গীবত একটি মারাত্মক গুনাহ যা আমাদের সমাজে ব্যাপকভাবে ছড়িয়ে আছে। এই লেখায় গীবত থেকে বেঁচে থাকার কিছু কার্যকরী পদ্ধতি বর্ণনা করা হয়েছে...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>৮ মিনিটের পড়া</span>
+                <span>১২ মে ২০২৪</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- আর্টিকেল ৩ -->
+          <div class="article-card bg-white rounded-lg overflow-hidden shadow-md history" data-category="history">
+            <img src="https://via.placeholder.com/400x250?text=ইতিহাস+ছবি" alt="আর্টিকেল ছবি" class="w-full h-48 object-cover">
+            <div class="p-5">
+              <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">ইসলামিক ইতিহাস</span>
+              <h4 class="font-bold text-lg mb-2">বাংলায় ইসলামের আগমন: একটি ঐতিহাসিক পর্যালোচনা</h4>
+              <p class="text-gray-600 text-sm mb-3">বাংলাদেশে ইসলাম কিভাবে এসেছে? এই অঞ্চলে ইসলাম প্রচারে সাহাবায়ে কেরাম ও সুফি-দরবেশদের ভূমিকা কী ছিল? এই গবেষণাধর্মী লেখায় তারই বিস্তারিত বর্ণনা...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>১৫ মিনিটের পড়া</span>
+                <span>৫ মে ২০২৪</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- আর্টিকেল ৪ -->
+          <div class="article-card bg-white rounded-lg overflow-hidden shadow-md news" data-category="news">
+            <img src="https://via.placeholder.com/400x250?text=সংবাদ+ছবি" alt="আর্টিকেল ছবি" class="w-full h-48 object-cover">
+            <div class="p-5">
+              <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">মাদ্রাসা সংবাদ</span>
+              <h4 class="font-bold text-lg mb-2">আল-হেরা একাডেমির বার্ষিক মাহফিল সম্পন্ন</h4>
+              <p class="text-gray-600 text-sm mb-3">গত শুক্রবার আল-হেরা ইসলামিক একাডেমির প্রাঙ্গণে বার্ষিক মিলাদ ও দোয়া মাহফিল অনুষ্ঠিত হয়েছে। মাহফিলে প্রধান অতিথি হিসেবে উপস্থিত ছিলেন...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>৫ মিনিটের পড়া</span>
+                <span>২৮ এপ্রিল ২০২৪</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- আর্টিকেল ৫ -->
+          <div class="article-card bg-white rounded-lg overflow-hidden shadow-md fiqh" data-category="fiqh">
+            <img src="https://via.placeholder.com/400x250?text=ফিকহ+ছবি" alt="আর্টিকেল ছবি" class="w-full h-48 object-cover">
+            <div class="p-5">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">ফিকহ ও ফতওয়া</span>
+              <h4 class="font-bold text-lg mb-2">জাকাত গণনার পদ্ধতি ও বর্তমান যুগের প্রয়োগ</h4>
+              <p class="text-gray-600 text-sm mb-3">জাকাত ইসলামের তৃতীয় স্তম্ভ। কিন্তু বর্তমান যুগে জাকাতের হিসাব কিভাবে করতে হবে? ব্যাংক ব্যালেন্স, শেয়ার, বন্ডসহ আধুনিক সম্পদে জাকাতের নিয়ম কী...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>১২ মিনিটের পড়া</span>
+                <span>২০ এপ্রিল ২০২৪</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- আর্টিকেল ৬ -->
+          <div class="article-card bg-white rounded-lg overflow-hidden shadow-md tazkiyah" data-category="tazkiyah">
+            <img src="https://via.placeholder.com/400x250?text=তাজকিয়া+ছবি" alt="আর্টিকেল ছবি" class="w-full h-48 object-cover">
+            <div class="p-5">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">তাজকিয়া ও আত্মশুদ্ধি</span>
+              <h4 class="font-bold text-lg mb-2">দৈনন্দিন জীবনে ধৈর্য্য ধারণের কলাকৌশল</h4>
+              <p class="text-gray-600 text-sm mb-3">ধৈর্য্য ঈমানের অর্ধেক। কিন্তু বর্তমান যুগের চাপ ও প্রতিকূলতায় কিভাবে ধৈর্য্য ধারণ করব? এই লেখায় রাসূল (সা.) ও সাহাবায়ে কেরামের জীবন থেকে ধৈর্য্যের কিছু অনুপ্রেরণাদায়ক ঘটনা...</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>১০ মিনিটের পড়া</span>
+                <span>১৫ এপ্রিল ২০২৪</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- পেজিনেশন -->
+      <div class="flex justify-center">
+        <nav class="inline-flex rounded-md shadow">
+          <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-green-600 font-medium">1</a>
+          <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">2</a>
+          <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">3</a>
+          <a href="#" class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </section>
+  
+  <!-- নিউজলেটার -->
+  <section class="py-12 bg-green-50">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-green-800 mb-2">নতুন আর্টিকেলের নোটিফিকেশন পেতে সাবস্ক্রাইব করুন</h2>
+      <p class="text-gray-600 mb-6">সাপ্তাহিক ইসলামিক আর্টিকেল ও মাদ্রাসা সংবাদ আপনার ইমেইলে পেতে আজই সাবস্ক্রাইব করুন</p>
+      <div class="max-w-md mx-auto flex">
+        <input type="email" placeholder="আপনার ইমেইল" class="flex-grow py-3 px-4 rounded-l-lg focus:outline-none">
+        <button class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-r-lg transition duration-300">
+          সাবস্ক্রাইব
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+  
+  
+  <script src="./src/index.js"></script>
+  
+  <script>
+    // ফিল্টার ফাংশনালিটি
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        // সক্রিয় বাটন স্টাইল আপডেট
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('bg-green-600', 'text-white');
+          btn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+        });
+        this.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+        this.classList.add('bg-green-600', 'text-white');
+        
+        const filter = this.getAttribute('data-filter');
+        const articles = document.querySelectorAll('.article-card');
+        
+        articles.forEach(article => {
+          if (filter === 'all' || article.getAttribute('data-category') === filter) {
+            article.style.display = 'block';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

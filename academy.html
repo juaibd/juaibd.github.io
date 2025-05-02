@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>একাডেমিক প্রোগ্রাম - আল-হেরা ইসলামিক একাডেমি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-button.active {
+            background-color: #065F46;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+    
+    <!-- হিরো সেকশন -->
+    <section class="bg-green-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">আমাদের একাডেমিক প্রোগ্রামসমূহ</h1>
+            <p class="text-xl mb-6">ইসলামিক ও আধুনিক শিক্ষার সমন্বয়ে গড়ে উঠা আমাদের শিক্ষা কার্যক্রম</p>
+        </div>
+    </section>
+    
+    <!-- প্রোগ্রাম সেকশন -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- ট্যাব মেনু -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button class="tab-button active px-6 py-2 rounded-lg transition" data-tab="school">স্কুল বিভাগ</button>
+                <button class="tab-button px-6 py-2 rounded-lg transition" data-tab="alim">আলিম বিভাগ</button>
+                <button class="tab-button px-6 py-2 rounded-lg transition" data-tab="hifz">হিফজ বিভাগ</button>
+                <button class="tab-button px-6 py-2 rounded-lg transition" data-tab="language">ভাষা কোর্স</button>
+                <button class="tab-button px-6 py-2 rounded-lg transition" data-tab="short">স্বল্পমেয়াদী কোর্স</button>
+            </div>
+            
+            <!-- স্কুল বিভাগ কন্টেন্ট -->
+            <div id="school" class="tab-content active">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">স্কুল বিভাগ</h2>
+                    <div class="w-20 h-1 bg-yellow-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto">প্রাথমিক থেকে মাধ্যমিক স্তর পর্যন্ত ইসলামিক ও আধুনিক শিক্ষার সমন্বয়ে আমাদের শিক্ষা কার্যক্রম</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- প্রোগ্রাম কার্ড 1 -->
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="প্রাথমিক স্তর" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">প্রাথমিক স্তর (১ম-৫ম শ্রেণী)</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>কুরআন তাজবিদ সহ পাঠদান</li>
+                                <li>ইসলামিক স্টাডিজ</li>
+                                <li>আধুনিক শিক্ষার মূল বিষয়সমূহ</li>
+                                <li>নৈতিক শিক্ষা ও চরিত্র গঠন</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">বয়স: ৬-১১ বছর</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- প্রোগ্রাম কার্ড 2 -->
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="মাধ্যমিক স্তর" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">মাধ্যমিক স্তর (৬ষ্ঠ-১০ম শ্রেণী)</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>কুরআন-হাদিসের মৌলিক জ্ঞান</li>
+                                <li>ইসলামিক ইতিহাস ও সংস্কৃতি</li>
+                                <li>বিজ্ঞান ও প্রযুক্তি শিক্ষা</li>
+                                <li>ক্যারিয়ার গাইডেন্স</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">বয়স: ১২-১৬ বছর</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- প্রোগ্রাম কার্ড 3 -->
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="এসএসসি প্রোগ্রাম" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">এসএসসি প্রোগ্রাম</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ডের সিলেবাস</li>
+                                <li>বিজ্ঞান, মানবিক ও ব্যবসায় শিক্ষা শাখা</li>
+                                <li>বিশেষ কোচিং ক্লাস</li>
+                                <li>মডেল টেস্ট ও মক এক্সাম</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">শ্রেণী: ৯ম-১০ম</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- আলিম বিভাগ কন্টেন্ট -->
+            <div id="alim" class="tab-content hidden">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">আলিম বিভাগ</h2>
+                    <div class="w-20 h-1 bg-yellow-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto">উচ্চতর ইসলামিক শিক্ষা ও আধুনিক শিক্ষার সমন্বয়ে ২ বছর মেয়াদী প্রোগ্রাম</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="আলিম প্রথম বর্ষ" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">আলিম প্রথম বর্ষ</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>তাফসীরুল কুরআন</li>
+                                <li>হাদিস শরীফ</li>
+                                <li>ফিকহ ও উসুলুল ফিকহ</li>
+                                <li>আরবি ভাষা ও সাহিত্য</li>
+                                <li>ইসলামিক ইতিহাস</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ১ বছর</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="আলিম দ্বিতীয় বর্ষ" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">আলিম দ্বিতীয় বর্ষ</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>উচ্চতর হাদিস অধ্যয়ন</li>
+                                <li>ফিকহের জটিল মাসায়েল</li>
+                                <li>তাজবিদ ও কিরাত</li>
+                                <li>ইসলামী দর্শন</li>
+                                <li>সমকালীন ইসলামিক বিষয়</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ১ বছর</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- হিফজ বিভাগ কন্টেন্ট -->
+            <div id="hifz" class="tab-content hidden">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">হিফজুল কুরআন প্রোগ্রাম</h2>
+                    <div class="w-20 h-1 bg-yellow-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto">পবিত্র কুরআন মুখস্থকরণ ও তাজবিদ শেখার বিশেষ প্রোগ্রাম</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="ফুল টাইম হিফজ" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">ফুল টাইম হিফজ</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>সম্পূর্ণ কুরআন শরীফ মুখস্থকরণ</li>
+                                <li>তাজবিদের নিয়মাবলী</li>
+                                <li>প্রতিদিন নতুন সূরা ও পূর্বের সূরা রিভিশন</li>
+                                <li>বাসায় রিভিশনের জন্য গাইডেন্স</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ২-৩ বছর</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="পার্ট টাইম হিফজ" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">পার্ট টাইম হিফজ</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>নির্বাচিত সূরা মুখস্থকরণ</li>
+                                <li>নামাজের সূরা ও দোয়া</li>
+                                <li>সপ্তাহে ৩ দিন ক্লাস</li>
+                                <li>শুক্রবার বিশেষ রিভিশন ক্লাস</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ১ বছর</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="হিফজ রিভিশন" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">হিফজ রিভিশন কোর্স</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>পূর্বে মুখস্থকৃত কুরআন রিভিশন</li>
+                                <li>তাজবিদ সংশোধন</li>
+                                <li>শুদ্ধ উচ্চারণ চর্চা</li>
+                                <li>কিরাতের নিয়ম শেখা</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ৬ মাস</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ভাষা কোর্স কন্টেন্ট -->
+            <div id="language" class="tab-content hidden">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">ভাষা শিক্ষা প্রোগ্রাম</h2>
+                    <div class="w-20 h-1 bg-yellow-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto">আরবি, ইংরেজি ও অন্যান্য ভাষা শিক্ষার বিশেষ কোর্স</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="আরবি ভাষা" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">আরবি ভাষা কোর্স</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>প্রাথমিক থেকে উন্নত স্তর</li>
+                                <li>আরবি ব্যাকরণ (নাহু-সরফ)</li>
+                                <li>কথোপকথন ও রাইটিং স্কিল</li>
+                                <li>কুরআনিক আরবি</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ৬ মাস</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="ইংরেজি ভাষা" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">ইংরেজি ভাষা কোর্স</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>বেসিক থেকে এডভান্সড লেভেল</li>
+                                <li>স্পোকেন ইংলিশ</li>
+                                <li>গ্রামার ও রাইটিং</li>
+                                <li>একাডেমিক ইংলিশ</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ৪ মাস</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="উর্দু ভাষা" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">উর্দু ভাষা কোর্স</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>উর্দু ভাষার মৌলিক জ্ঞান</li>
+                                <li>কথোপকথন ও পড়ার দক্ষতা</li>
+                                <li>ইসলামিক সাহিত্য বুঝার দক্ষতা</li>
+                                <li>মৌলিক লিখন দক্ষতা</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ৩ মাস</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- স্বল্পমেয়াদী কোর্স কন্টেন্ট -->
+            <div id="short" class="tab-content hidden">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">স্বল্পমেয়াদী বিশেষ কোর্স</h2>
+                    <div class="w-20 h-1 bg-yellow-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto">বিভিন্ন বিষয়ের উপর বিশেষায়িত স্বল্পমেয়াদী প্রশিক্ষণ প্রোগ্রাম</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="তাজবিদ কোর্স" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">তাজবিদ মাস্টারি কোর্স</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>কুরআন তিলাওয়াতের নিয়ম</li>
+                                <li>মাখরাজ ও সিফাত শিক্ষা</li>
+                                <li>প্র্যাকটিক্যাল তাজবিদ চর্চা</li>
+                                <li>সনদপ্রাপ্ত প্রশিক্ষক দ্বারা শিক্ষা</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ২ মাস</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="ইসলামিক ফাইন্যান্স" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">ইসলামিক ফাইন্যান্স কোর্স</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>ইসলামিক ব্যাংকিং ও ফাইন্যান্স</li>
+                                <li>মুদ্রা ও বিনিয়োগ ইসলামিক দৃষ্টিকোণ</li>
+                                <li>জাকাত ও তার ব্যবস্থাপনা</li>
+                                <li>প্র্যাকটিক্যাল কেস স্টাডি</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ১ মাস</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card bg-white border border-green-200 rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <img src="https://via.placeholder.com/600x400" alt="পরিবারিক বিষয়" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">ইসলামিক ফ্যামিলি লাইফ কোর্স</h3>
+                            <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
+                                <li>ইসলামিক দাম্পত্য জীবন</li>
+                                <li>শিশু প্রতিপালন ইসলামিক পদ্ধতিতে</li>
+                                <li>পরিবারিক সমস্যা সমাধান</li>
+                                <li>ইসলামিক কাউন্সেলিং</li>
+                            </ul>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500">মেয়াদ: ৬ সপ্তাহ</span>
+                                <a href="#" class="text-green-600 hover:text-green-800 font-medium">বিস্তারিত</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- একাডেমিক স্ট্রাকচার সেকশন -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-green-800 mb-2">আমাদের একাডেমিক স্ট্রাকচার</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">ক্লাস শিডিউল, পরীক্ষা পদ্ধতি ও গ্রেডিং সিস্টেম</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                    <h3 class="text-xl font-bold text-green-800 mb-4">ক্লাস শিডিউল</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-200">
+                            <thead class="bg-green-100">
+                                <tr>
+                                    <th class="py-2 px-4 border text-left">দিন</th>
+                                    <th class="py-2 px-4 border text-left">সময়</th>
+                                    <th class="py-2 px-4 border text-left">কার্যক্রম</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4 border">শনি-বুধ</td>
+                                    <td class="py-2 px-4 border">সকাল ৮:৩০ - দুপুর ১:৩০</td>
+                                    <td class="py-2 px-4 border">নিয়মিত ক্লাস</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="py-2 px-4 border">বৃহস্পতি</td>
+                                    <td class="py-2 px-4 border">সকাল ৮:৩০ - দুপুর ১২:৩০</td>
+                                    <td class="py-2 px-4 border">সাপ্তাহিক পরীক্ষা ও বিশেষ ক্লাস</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border">শুক্রবার</td>
+                                    <td class="py-2 px-4 border">স���াল ৯:০০ - ১১:৩০</td>
+                                    <td class="py-2 px-4 border">জুমার প্রস্তুতি ও বিশেষ প্রোগ্রাম</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">পরীক্ষা পদ্ধতি</h3>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>সাপ্তাহিক পরীক্ষা (প্রতি বৃহস্পতিবার)</li>
+                            <li>মাসিক পরীক্ষা (মাসের শেষ সপ্তাহে)</li>
+                            <li>মধ্যবর্তী পরীক্ষা (প্রতি ৪ মাস পর)</li>
+                            <li>বার্ষিক পরীক্ষা (শিক্ষাবর্ষের শেষে)</li>
+                            <li>বিশেষ পরীক্ষা (হিফজ ও ভাষা কোর্সের জন্য)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">গ্রেডিং সিস্টেম</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border border-gray-200">
+                                <thead class="bg-green-100">
+                                    <tr>
+                                        <th class="py-2 px-4 border text-left">মার্কস</th>
+                                        <th class="py-2 px-4 border text-left">গ্রেড</th>
+                                        <th class="py-2 px-4 border text-left">জিপিএ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="py-2 px-4 border">৮০-১০০</td>
+                                        <td class="py-2 px-4 border">A+</td>
+                                        <td class="py-2 px-4 border">৫.০</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="py-2 px-4 border">৭০-৭৯</td>
+                                        <td class="py-2 px-4 border">A</td>
+                                        <td class="py-2 px-4 border">৪.০</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 border">৬০-৬৯</td>
+                                        <td class="py-2 px-4 border">A-</td>
+                                        <td class="py-2 px-4 border">৩.৫</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="py-2 px-4 border">৫০-৫৯</td>
+                                        <td class="py-2 px-4 border">B</td>
+                                        <td class="py-2 px-4 border">৩.০</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- যোগাযোগ সেকশন -->
+    <section class="py-12 bg-green-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-6">আরও তথ্যের জন্য যোগাযোগ করুন</h2>
+            <p class="mb-6 max-w-2xl mx-auto">আমাদের একাডেমিক প্রোগ্রাম সম্পর্কে বিস্তারিত জানতে বা ভর্তি সংক্রান্ত যেকোনো প্রশ্নের জন্য আমাদের সাথে যোগাযোগ করুন</p>
+            <a href="contact.html" class="inline-block bg-white text-green-800 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition">
+                যোগাযোগ করুন
+            </a>
+        </div>
+    </section>
+    
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+
+  <script src="./src/index.js"></script>
+    
+</body>
+
+</html>

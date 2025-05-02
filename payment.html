@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অনলাইন পেমেন্ট - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .payment-card {
+      transition: all 0.3s ease;
+    }
+    
+    .payment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .input-field:focus {
+      border-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="/src/components/header"></include>
+  
+  <!-- হিরো সেকশন -->
+  <section class="bg-green-700 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">অনলাইন পেমেন্ট সিস্টেম</h1>
+      <p class="text-xl mb-6">আপনার ফি/প্রিমিয়ামের তথ্য জমা দিন</p>
+    </div>
+  </section>
+  
+  <!-- পেমেন্ট সেকশন -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden payment-card mb-8">
+          <div class="bg-green-100 text-green-800 p-4 border-b border-green-200">
+            <h2 class="text-xl font-bold flex items-center">
+              <i class="fas fa-info-circle mr-2"></i>
+              গুরুত্বপূর্ণ তথ্য
+            </h2>
+          </div>
+          <div class="p-6">
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+              <p class="text-blue-700">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                এই পেজ থেকে সরাসরি পেমেন্ট করা যাবে না। পেমেন্ট তথ্য জমা দেওয়ার পর প্রতিষ্ঠান থেকে পেমেন্ট কনফার্মেশন দেওয়া হবে।
+              </p>
+            </div>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li>পেমেন্ট সম্পন্ন করার জন্য নিচের ফর্মটি পূরণ করুন</li>
+              <li>ফি জমা দেওয়ার জন্য আমাদের অফিসে যোগাযোগ করুন বা নিচের ব্যাংক তথ্য ব্যবহার করুন</li>
+              <li>পেমেন্ট রিসিপ্ট জমা দেওয়ার পর ২৪-৪৮ ঘন্টার মধ্যে কনফার্মেশন পাবেন</li>
+              <li>কোনো সমস্যা হলে আমাদের হেল্পলাইনে যোগাযোগ করুন</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- ব্যাংক তথ্য -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden payment-card mb-8">
+          <div class="bg-green-100 text-green-800 p-4 border-b border-green-200">
+            <h2 class="text-xl font-bold flex items-center">
+              <i class="fas fa-university mr-2"></i>
+              ব্যাংক তথ্য
+            </h2>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-bold text-gray-800 mb-2">ইসলামী ব্যাংক বাংলাদেশ লিমিটেড</h3>
+                <ul class="text-gray-600 space-y-1">
+                  <li><span class="font-medium">অ্যাকাউন্ট নাম:</span> আল-হেরা ইসলামিক একাডেমি</li>
+                  <li><span class="font-medium">অ্যাকাউন্ট নম্বর:</span> ২০৩০৫৬৮৮৯০০১</li>
+                  <li><span class="font-medium">শাখা:</span> মোহাম্মদপুর ব্রাঞ্চ, ঢাকা</li>
+                  <li><span class="font-medium">রাউটিং নম্বর:</span> ১২৫৬৭৮৯০</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 mb-2">বিকাশ</h3>
+                <ul class="text-gray-600 space-y-1">
+                  <li><span class="font-medium">নম্বর:</span> ০১৯১১২২৩৩৪৪</li>
+                  <li><span class="font-medium">টাইপ:</span> মার্চেন্ট অ্যাকাউন্ট</li>
+                  <li><span class="font-medium">রেফারেন্স:</span> ছাত্র আইডি নম্বর</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- পেমেন্ট ফর্ম -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden payment-card">
+          <div class="bg-green-100 text-green-800 p-4 border-b border-green-200">
+            <h2 class="text-xl font-bold flex items-center">
+              <i class="fas fa-credit-card mr-2"></i>
+              পেমেন্ট তথ্য জমা দিন
+            </h2>
+          </div>
+          <div class="p-6">
+            <form id="paymentForm">
+              <!-- ছাত্র তথ্য -->
+              <div class="mb-8">
+                <h3 class="text-lg font-bold text-green-800 mb-4 border-b pb-2">ছাত্র তথ্য</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label for="studentId" class="block text-gray-700 text-sm font-medium mb-2">
+                      ছাত্র/ছাত্রীর আইডি নম্বর <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="studentId" name="studentId" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500" placeholder="AHIA-2023-1234">
+                  </div>
+                  <div>
+                    <label for="studentName" class="block text-gray-700 text-sm font-medium mb-2">
+                      ছাত্র/ছাত্রীর নাম <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="studentName" name="studentName" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500" placeholder="পূর্ণ নাম লিখুন">
+                  </div>
+                  <div>
+                    <label for="class" class="block text-gray-700 text-sm font-medium mb-2">
+                      শ্রেণী <span class="text-red-500">*</span>
+                    </label>
+                    <select id="class" name="class" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500">
+                      <option value="">-- নির্বাচন করুন --</option>
+                      <option value="1">প্রথম শ্রেণী</option>
+                      <option value="2">দ্বিতীয় শ্রেণী</option>
+                      <option value="3">তৃতীয় শ্রেণী</option>
+                      <option value="4">চতুর্থ শ্রেণী</option>
+                      <option value="5">পঞ্চম শ্রেণী</option>
+                      <option value="6">ষষ্ঠ শ্রেণী</option>
+                      <option value="7">সপ্তম শ্রেণী</option>
+                      <option value="8">অষ্টম শ্রেণী</option>
+                      <option value="9">নবম শ্রেণী</option>
+                      <option value="10">দশম শ্রেণী</option>
+                      <option value="alim1">আলিম প্রথম বর্ষ</option>
+                      <option value="alim2">আলিম দ্বিতীয় বর্ষ</option>
+                      <option value="hifz">হিফজ বিভাগ</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="section" class="block text-gray-700 text-sm font-medium mb-2">
+                      বিভাগ/শাখা
+                    </label>
+                    <input type="text" id="section" name="section" class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500" placeholder="যেমন: বিজ্ঞান, মানবিক">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- পেমেন্ট তথ্য -->
+              <div class="mb-8">
+                <h3 class="text-lg font-bold text-green-800 mb-4 border-b pb-2">পেমেন্ট তথ্য</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label for="paymentType" class="block text-gray-700 text-sm font-medium mb-2">
+                      পেমেন্ট টাইপ <span class="text-red-500">*</span>
+                    </label>
+                    <select id="paymentType" name="paymentType" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500">
+                      <option value="">-- নির্বাচন করুন --</option>
+                      <option value="monthly">মাসিক ফি</option>
+                      <option value="admission">ভর্তি ফি</option>
+                      <option value="exam">পরীক্ষার ফি</option>
+                      <option value="library">লাইব্রেরি ফি</option>
+                      <option value="other">অন্যান্য</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="amount" class="block text-gray-700 text-sm font-medium mb-2">
+                      পরিমাণ (টাকা) <span class="text-red-500">*</span>
+                    </label>
+                    <input type="number" id="amount" name="amount" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500" placeholder="টাকার পরিমাণ লিখুন">
+                  </div>
+                  <div>
+                    <label for="paymentMethod" class="block text-gray-700 text-sm font-medium mb-2">
+                      পেমেন্ট মাধ্যম <span class="text-red-500">*</span>
+                    </label>
+                    <select id="paymentMethod" name="paymentMethod" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500">
+                      <option value="">-- নির্বাচন করুন --</option>
+                      <option value="bank">ব্যাংক ট্রান্সফার</option>
+                      <option value="bKash">বিকাশ</option>
+                      <option value="nagad">নগদ</option>
+                      <option value="rocket">রকেট</option>
+                      <option value="cash">নগদ (অফিসে)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="transactionId" class="block text-gray-700 text-sm font-medium mb-2">
+                      ট্রানজেকশন আইডি <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="transactionId" name="transactionId" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500" placeholder="ট্রানজেকশন নম্বর দিন">
+                  </div>
+                  <div class="md:col-span-2">
+                    <label for="paymentDate" class="block text-gray-700 text-sm font-medium mb-2">
+                      পেমেন্ট তারিখ <span class="text-red-500">*</span>
+                    </label>
+                    <input type="date" id="paymentDate" name="paymentDate" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500">
+                  </div>
+                  <div class="md:col-span-2">
+                    <label for="note" class="block text-gray-700 text-sm font-medium mb-2">
+                      নোট (যদি থাকে)
+                    </label>
+                    <textarea id="note" name="note" rows="3" class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500" placeholder="কোনো বিশেষ নির্দেশনা থাকলে লিখুন"></textarea>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- রিসিপ্ট আপলোড -->
+              <div class="mb-8">
+                <h3 class="text-lg font-bold text-green-800 mb-4 border-b pb-2">পেমেন্ট রিসিপ্ট আপলোড</h3>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                  <input type="file" id="receipt" name="receipt" accept="image/*,.pdf" required class="hidden">
+                  <label for="receipt" class="cursor-pointer">
+                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                    <p class="text-gray-600">পেমেন্ট রিসিপ্টের স্ক্যান কপি বা স্ক্রিনশট আপলোড করুন</p>
+                    <p class="text-sm text-gray-500 mt-1">(ছবি বা PDF, সর্বোচ্চ সাইজ 2MB)</p>
+                    <button type="button" class="mt-4 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg transition">
+                      ফাইল নির্বাচন করুন
+                    </button>
+                  </label>
+                </div>
+              </div>
+              
+              <!-- সাবমিট বাটন -->
+              <div class="flex justify-center">
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition flex items-center">
+                  <i class="fas fa-paper-plane mr-2"></i>
+                  পেমেন্ট তথ্য জমা দিন
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার সেকশন -->
+  <include src="/src/components/footer"></include>
+  <include src="/src/components/bottom-nav"></include>
+  
+  
+  <script src="/src/index.js"></script>
+  
+  <script>
+    // ফর্ম সাবমিশন
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // এখানে ফর্ম ভ্যালিডেশন যোগ করা যেতে পারে
+      const formData = new FormData(this);
+      
+      // সিমুলেটেড AJAX রিকুয়েস্ট
+      console.log('পেমেন্ট তথ্য জমা দেওয়া হয়েছে:', Object.fromEntries(formData));
+      
+      // সাবমিশন কনফার্মেশন
+      alert('আপনার পেমেন্ট তথ্য সফলভাবে জমা দেওয়া হয়েছে। ২৪ ঘন্টার মধ্যে কনফার্মেশন পাবেন।');
+      this.reset();
+      
+      // আসলে এখানে আপনার বেকেন্ডে ডাটা সেভ করার কোড থাকবে
+      // fetch('/api/payments', {
+      //     method: 'POST',
+      //     body: formData
+      // })
+      // .then(response => response.json())
+      // .then(data => {
+      //     alert('Payment submitted successfully!');
+      // })
+      // .catch(error => {
+      //     console.error('Error:', error);
+      // });
+    });
+    
+    // ফাইল আপলোড UI আপডেট
+    document.getElementById('receipt').addEventListener('change', function(e) {
+      const fileName = e.target.files[0]?.name || 'কোনো ফাইল নির্বাচন করা হয়নি';
+      const label = e.target.nextElementSibling;
+      label.querySelector('p:first-of-type').textContent = fileName;
+    });
+  </script>
+</body>
+
+</html>

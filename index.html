@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="bn" x-data="{ currentSlide: 0, language: 'bangla' }" x-init="setInterval(() => { currentSlide = (currentSlide + 1) % 3 }, 5000)">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#065f46">
+  <link rel="manifest" href="./manifest.json">
+  
+  <!-- iOS সাপোর্ট -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="./images/logo.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/logo.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/logo.jpg">
+  <title>আন নূর ইসলামিক একাডেমী</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .hero-slide {
+      transition: opacity 1s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+  <!-- হিরো সেকশন -->
+  <section class="relative h-96 overflow-hidden">
+    <!-- স্লাইডার -->
+    <div class="relative h-full">
+      <!-- স্লাইড 1 -->
+      <div x-show="currentSlide === 0" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 bg-green-700 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">আন নূর ইসলামিক একাডেমীতে স্বাগতম</h2>
+          <p class="text-xl mb-6">আধুনিক শিক্ষা ও ইসলামিক মূল্যবোধের সমন্বয়</p>
+          <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-2 px-6 rounded-lg">ভর্তি তথ্য</a>
+        </div>
+      </div>
+      
+      <!-- স্লাইড 2 -->
+      <div x-show="currentSlide === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 bg-blue-800 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">আসন্ন বার্ষিক মিলাদ মাহফিল</h2>
+          <p class="text-xl mb-6">১৫ই নভেম্বর, ২০২৩ - সকাল ৯টা থেকে</p>
+          <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-lg">বিস্তারিত জানুন</a>
+        </div>
+      </div>
+      
+      <!-- স্লাইড 3 -->
+      <div x-show="currentSlide === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 bg-purple-800 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">"জ্ঞান অর্জন করা প্রত্যেক মুসলিম নর-নারীর উপর ফরজ"</h2>
+          <p class="text-xl italic">- হাদিস শরিফ</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- স্লাইড কন্ট্রোল -->
+    <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+      <button @click="currentSlide = 0" class="w-3 h-3 rounded-full" :class="{'bg-white': currentSlide === 0, 'bg-gray-400': currentSlide !== 0}"></button>
+      <button @click="currentSlide = 1" class="w-3 h-3 rounded-full" :class="{'bg-white': currentSlide === 1, 'bg-gray-400': currentSlide !== 1}"></button>
+      <button @click="currentSlide = 2" class="w-3 h-3 rounded-full" :class="{'bg-white': currentSlide === 2, 'bg-gray-400': currentSlide !== 2}"></button>
+    </div>
+  </section>
+  
+  <!-- কুইক লিংক -->
+  <section class="bg-white py-6 shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="#" class="bg-green-100 hover:bg-green-200 rounded-lg p-4 text-center transition">
+          <div class="text-green-800 font-bold">অনলাইন ভর্তি</div>
+        </a>
+        <a href="#" class="bg-blue-100 hover:bg-blue-200 rounded-lg p-4 text-center transition">
+          <div class="text-blue-800 font-bold">একাডেমীক ক্যালেন্ডার</div>
+        </a>
+        <a href="#" class="bg-yellow-100 hover:bg-yellow-200 rounded-lg p-4 text-center transition">
+          <div class="text-yellow-800 font-bold">ফলাফল</div>
+        </a>
+        <a href="#" class="bg-purple-100 hover:bg-purple-200 rounded-lg p-4 text-center transition">
+          <div class="text-purple-800 font-bold">অনলাইন ক্লাস</div>
+        </a>
+        <a href="#" class="bg-green-100 hover:bg-green-200 rounded-lg p-4 text-center transition">
+          <div class="text-green-800 font-bold">বালক শাখা</div>
+        </a>
+        <a href="#" class="bg-blue-100 hover:bg-blue-200 rounded-lg p-4 text-center transition">
+          <div class="text-blue-800 font-bold">বালিকা শাখা</div>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- সংক্ষিপ্ত পরিচিতি -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">আমাদের সম্পর্কে</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="flex flex-col md:flex-row md:items-center">
+        <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+          <p class="text-lg text-gray-700 mb-6">
+            ১৯৮৫ সালে প্রতিষ্ঠিত আন নূর ইসলামিক একাডেমী বাংলাদেশের একটি শীর্ষস্থানীয় কওমি মাদ্রাসা।
+            আমরা ইসলামিক শিক্ষা ও আধুনিক শিক্ষার সমন্বয়ে একটি ভারসাম্যপূর্ণ শিক্ষাব্যবস্থা প্রদান করি।
+            আমাদের লক্ষ্য হল আদর্শবান, নৈতিকতাসম্পন্ন ও জ্ঞানী নাগরিক গড়ে তোলা।
+          </p>
+          <a href="#" class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-6 rounded-lg inline-block">আরও জানুন</a>
+        </div>
+        
+        <div class="md:w-1/2 grid grid-cols-2 gap-4">
+          <div class="bg-white p-6 rounded-lg shadow text-center">
+            <div class="text-4xl font-bold text-green-700 mb-2">৩৫+</div>
+            <div class="text-gray-600">বছরের অভিজ্ঞতা</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow text-center">
+            <div class="text-4xl font-bold text-green-700 mb-2">১২০০+</div>
+            <div class="text-gray-600">শিক্ষার্থী</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow text-center">
+            <div class="text-4xl font-bold text-green-700 mb-2">৪৫+</div>
+            <div class="text-gray-600">শিক্ষক</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow text-center">
+            <div class="text-4xl font-bold text-green-700 mb-2">৯৫%</div>
+            <div class="text-gray-600">সাফল্যের হার</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- হোমপেজে About সেকশনের পরে -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-green-800">আমাদের মুহতামিম</h3>
+      </div>
+      
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-green-100">
+          <img src="/images/logo.jpg" alt="মুহতামিম" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-md text-center md:text-left">
+          <h4 class="text-xl font-bold text-gray-800">মাওলানা মুহাম্মদ আব্দুল্লাহ</h4>
+          <p class="text-green-700 font-medium">প্রিন্সিপাল/মুহতামিম</p>
+          <p class="mt-2 text-gray-600">"শিক্ষা ও চরিত্র গঠনের সমন্বয়ই আমাদের লক্ষ্য"</p>
+          <a href="about.html#principal" class="inline-block mt-3 text-green-600 hover:underline">বিস্তারিত জানুন →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- একাডেমীক প্রোগ্রাম -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">আমাদের একাডেমীক প্রোগ্রাম</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- প্রোগ্রাম কার্ড 1 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="/images/logo.jpg" alt="ইবতেদায়ী" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-2">ইবতেদায়ী বিভাগ</h3>
+            <p class="text-gray-600 mb-4">প্রাথমিক স্তরের শিক্ষার্থীদের জন্য ইসলামিক ও সাধারণ শিক্ষার সমন্বয়।</p>
+            <a href="#" class="text-green-700 font-semibold hover:underline">বিস্তারিত দেখুন →</a>
+          </div>
+        </div>
+        
+        <!-- প্রোগ্রাম কার্ড 2 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/400x250" alt="দাখিল" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-2">দাখিল বিভাগ</h3>
+            <p class="text-gray-600 mb-4">মাধ্যমিক স্তরের শিক্ষা যেখানে ইসলামিক বিষয়সমূহ গভীরভাবে পড়ানো হয়।</p>
+            <a href="#" class="text-green-700 font-semibold hover:underline">বিস্তারিত দেখুন →</a>
+          </div>
+        </div>
+        
+        <!-- প্রোগ্রাম কার্ড 3 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/400x250" alt="আলিম" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-2">আলিম বিভাগ</h3>
+            <p class="text-gray-600 mb-4">উচ্চমাধ্যমিক স্তরের শিক্ষা যেখানে ইসলামিক বিষয়সমূহ গভীরভাবে পড়ানো হয়।</p>
+            <a href="#" class="text-green-700 font-semibold hover:underline">বিস্তারিত দেখুন →</a>
+          </div>
+        </div>
+        
+        <!-- প্রোগ্রাম কার্ড 4 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/400x250" alt="ফাজিল" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-2">ফাজিল বিভাগ</h3>
+            <p class="text-gray-600 mb-4">স্নাতক স্তরের ইসলামিক শিক্ষা ও সাধারণ শিক্ষার সমন্বয়।</p>
+            <a href="#" class="text-green-700 font-semibold hover:underline">বিস্তারিত দেখুন →</a>
+          </div>
+        </div>
+        
+        <!-- প্রোগ্রাম কার্ড 5 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/400x250" alt="কামিল" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-2">কামিল বিভাগ</h3>
+            <p class="text-gray-600 mb-4">স্নাতকোত্তর স্তরের উচ্চতর ইসলামিক শিক্ষা ও গবেষণা।</p>
+            <a href="#" class="text-green-700 font-semibold hover:underline">বিস্তারিত দেখুন →</a>
+          </div>
+        </div>
+        
+        <!-- প্রোগ্রাম কার্ড 6 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/400x250" alt="হিফজ" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-2">হিফজুল কুরআন</h3>
+            <p class="text-gray-600 mb-4">পবিত্র কুরআন মুখস্থ করার বিশেষ প্রোগ্রাম।</p>
+            <a href="#" class="text-green-700 font-semibold hover:underline">বিস্তারিত দেখুন →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- বৈশিষ্ট্যসমূহ -->
+  <section class="py-12 bg-green-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold mb-2">আমাদের বিশেষ সুবিধাসমূহ</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- বৈশিষ্ট্য 1 -->
+        <div class="text-center">
+          <div class="bg-green-700 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">সমৃদ্ধ লাইব্রেরি</h3>
+          <p class="text-gray-300">১০,০০০+ বই সমৃদ্ধ লাইব্রেরি যেখানে ইসলামিক ও সাধারণ জ্ঞান সম্পর্কিত বই রয়েছে।</p>
+        </div>
+        
+        <!-- বৈশিষ্ট্য 2 -->
+        <div class="text-center">
+          <div class="bg-green-700 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">আধুনিক কম্পিউটার ল্যাব</h3>
+          <p class="text-gray-300">আধুনিক কম্পিউটার ল্যাব যেখানে শিক্ষার্থীরা প্রযুক্তি শিক্ষা লাভ করে।</p>
+        </div>
+        
+        <!-- বৈশিষ্ট্য 3 -->
+        <div class="text-center">
+          <div class="bg-green-700 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">আরামদায়ক ছাত্রাবাস</h3>
+          <p class="text-gray-300">নিরাপদ ও সুসজ্জিত ছাত্রাবাস যেখানে দূর-দূরান্তের শিক্ষার্থীরা থাকতে পারে।</p>
+        </div>
+        
+        <!-- বৈশিষ্ট্য 4 -->
+        <div class="text-center">
+          <div class="bg-green-700 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">অভিজ্ঞ শিক্ষকমণ্ডলী</h3>
+          <p class="text-gray-300">অভিজ্ঞ ও প্রশিক্ষিত শিক্ষক দ্বারা পাঠদান করা হয়।</p>
+        </div>
+        
+        <!-- বৈশিষ্ট্য 5 -->
+        <div class="text-center">
+          <div class="bg-green-700 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">বৃত্তি সুবিধা</h3>
+          <p class="text-gray-300">মেধাবী ও অসচ্ছল শিক্ষার্থীদের জন্য বৃত্তি প্রদান করা হয়।</p>
+        </div>
+        
+        <!-- বৈশিষ্ট্য 6 -->
+        <div class="text-center">
+          <div class="bg-green-700 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">সহশিক্ষা কার্যক্রম</h3>
+          <p class="text-gray-300">বিতর্ক, খেলাধুলা, সাংস্কৃতিক অনুষ্ঠানসহ নানা সহশিক্ষা কার্যক্রম।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ইভেন্টস ও নোটিশ -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- ইভেন্টস -->
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-green-800 mb-6 pb-2 border-b-2 border-yellow-500">আসন্ন ইভেন্টস</h2>
+          
+          <div class="space-y-4">
+            <div class="bg-gray-50 p-4 rounded-lg shadow">
+              <div class="flex items-start">
+                <div class="bg-green-700 text-white text-center p-2 rounded-lg mr-4 w-16">
+                  <div class="text-xl font-bold">১৫</div>
+                  <div class="text-xs">নভেম্বর</div>
+                </div>
+                <div>
+                  <h3 class="font-bold text-green-800">বার্ষিক মিলাদ মাহফিল</h3>
+                  <p class="text-gray-600 text-sm">সকাল ৯টা, মাদ্রাসা মাঠ</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg shadow">
+              <div class="flex items-start">
+                <div class="bg-green-700 text-white text-center p-2 rounded-lg mr-4 w-16">
+                  <div class="text-xl font-bold">২০</div>
+                  <div class="text-xs">ডিসেম্বর</div>
+                </div>
+                <div>
+                  <h3 class="font-bold text-green-800">বার্ষিক ক্রীড়া প্রতিযোগিতা</h3>
+                  <p class="text-gray-600 text-sm">সকাল ৮টা থেকে বিকাল ৪টা</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg shadow">
+              <div class="flex items-start">
+                <div class="bg-green-700 text-white text-center p-2 rounded-lg mr-4 w-16">
+                  <div class="text-xl font-bold">২৫</div>
+                  <div class="text-xs">ডিসেম্বর</div>
+                </div>
+                <div>
+                  <h3 class="font-bold text-green-800">বর্ষসেরা শিক্ষার্থী পুরস্কার</h3>
+                  <p class="text-gray-600 text-sm">সন্ধ্যা ৬টা, অডিটোরিয়াম</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#" class="inline-block mt-4 text-green-700 font-semibold hover:underline">সমস্ত ইভেন্ট দেখুন →</a>
+        </div>
+        
+        <!-- নোটিশ -->
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-green-800 mb-6 pb-2 border-b-2 border-yellow-500">নোটিশ বোর্ড</h2>
+          
+          <div class="bg-gray-50 p-4 rounded-lg shadow h-64 overflow-y-auto">
+            <div class="space-y-4">
+              <div class="pb-4 border-b border-gray-200">
+                <h3 class="font-bold text-green-800">দাখিল পরীক্ষার রুটিন প্রকাশ</h3>
+                <p class="text-gray-600 text-sm mt-1">২০২৩ সালের দাখিল পরীক্ষার রুটিন প্রকাশিত হয়েছে। অফিস থেকে সংগ্রহ করুন।</p>
+                <p class="text-gray-500 text-xs mt-2">২ দিন আগে</p>
+              </div>
+              
+              <div class="pb-4 border-b border-gray-200">
+                <h3 class="font-bold text-green-800">ছুটির ঘোষণা</h3>
+                <p class="text-gray-600 text-sm mt-1">২১শে নভেম্বর থেকে ২৫শে নভেম্বর পর্যন্ত মাদ্রাসা বন্ধ থাকবে।</p>
+                <p class="text-gray-500 text-xs mt-2">১ সপ্তাহ আগে</p>
+              </div>
+              
+              <div class="pb-4 border-b border-gray-200">
+                <h3 class="font-bold text-green-800">শিক্ষক নিয়োগ</h3>
+                <p class="text-gray-600 text-sm mt-1">ইসলামিক স্টাডিজ বিষয়ে অভিজ্ঞ শিক্ষক প্রয়োজন। আবেদনের শেষ তারিখ ৩০শে নভেম্বর।</p>
+                <p class="text-gray-500 text-xs mt-2">২ সপ্তাহ আগে</p>
+              </div>
+              
+              <div class="pb-4 border-b border-gray-200">
+                <h3 class="font-bold text-green-800">লাইব্রেরি সময় পরিবর্তন</h3>
+                <p class="text-gray-600 text-sm mt-1">শীতকালীন সময় অনুযায়ী লাইব্রেরি খোলার সময় সকাল ৯টা থেকে বিকাল ৫টা।</p>
+                <p class="text-gray-500 text-xs mt-2">৩ সপ্তাহ আগে</p>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#" class="inline-block mt-4 text-green-700 font-semibold hover:underline">সমস্ত নোটিশ দেখুন →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- গ্যালারি -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">আমাদের গ্যালারি</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 1" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 2" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 3" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 4" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 5" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 6" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 7" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+        <a href="#" class="group">
+          <img src="https://via.placeholder.com/300x200" alt="গ্যালারি ইমেজ 8" class="w-full h-48 object-cover rounded-lg group-hover:opacity-90 transition">
+        </a>
+      </div>
+      
+      <div class="text-center mt-8">
+        <a href="#" class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-6 rounded-lg inline-block">সমস্ত ছবি দেখুন</a>
+      </div>
+    </div>
+  </section>
+  <!-- টেস্টিমোনিয়াল সেকশন -->
+  <section class="py-16 bg-gray-50" x-data="{ activeTestimonial: 0, totalTestimonials: 3, autoPlay: true }" x-init="if(autoPlay) { setInterval(() => { activeTestimonial = (activeTestimonial + 1) % totalTestimonials }, 5000) }">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">শিক্ষার্থী ও অভিভাবকদের মতামত</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <!-- টেস্টিমোনিয়াল ক্যারোজেল -->
+      <div class="relative overflow-hidden">
+        <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${activeTestimonial * 100}%)`">
+          
+          <!-- টেস্টিমোনিয়াল 1 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <div class="flex items-center mb-6">
+                <img src="https://via.placeholder.com/80" alt="শিক্ষার্থী" class="w-16 h-16 rounded-full object-cover border-4 border-green-100 mr-6">
+                <div>
+                  <h3 class="text-xl font-bold text-green-800">মোহাম্মদ রফিক</h3>
+                  <p class="text-gray-600">প্রাক্তন শিক্ষার্থী, কামিল (হাদিস)</p>
+                </div>
+              </div>
+              <div class="text-yellow-400 mb-4">
+                ★★★★★
+              </div>
+              <p class="text-gray-700 italic leading-relaxed">
+                "আন নূর ইসলামিক একাডেমী শুধু আমাকে ইসলামিক শিক্ষাই দেয়নি, বরং একজন সত্যিকারের ভালো মানুষ হয়ে উঠতে সাহায্য করেছে। শিক্ষকদের আন্তরিকতা ও স্নেহ আমাকে আজকের অবস্থানে নিয়ে এসেছে।"
+              </p>
+            </div>
+          </div>
+          
+          <!-- টেস্টিমোনিয়াল 2 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <div class="flex items-center mb-6">
+                <img src="https://via.placeholder.com/80/cccccc/ffffff" alt="অভিভাবক" class="w-16 h-16 rounded-full object-cover border-4 border-green-100 mr-6">
+                <div>
+                  <h3 class="text-xl font-bold text-green-800">আয়েশা সিদ্দিকা</h3>
+                  <p class="text-gray-600">অভিভাবক, দাখিল শিক্ষার্থী</p>
+                </div>
+              </div>
+              <div class="text-yellow-400 mb-4">
+                ★★★★★
+              </div>
+              <p class="text-gray-700 italic leading-relaxed">
+                "আমার মেয়ে এই মাদ্রাসায় পড়ার পর তার মধ্যে যে ইতিবাচক পরিবর্তন এসেছে তা দেখে আমি অভিভূত। শুধু পড়াশোনা নয়, তার চরিত্র গঠন ও নৈতিক শিক্ষায় এই প্রতিষ্ঠানের ভূমিকা অপরিসীম।"
+              </p>
+            </div>
+          </div>
+          
+          <!-- টেস্টিমোনিয়াল 3 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <div class="flex items-center mb-6">
+                <img src="https://via.placeholder.com/80/999999/ffffff" alt="শিক্ষার্থী" class="w-16 h-16 rounded-full object-cover border-4 border-green-100 mr-6">
+                <div>
+                  <h3 class="text-xl font-bold text-green-800">আব্দুল্লাহ আল মামুন</h3>
+                  <p class="text-gray-600">হিফজ বিভাগের শিক্ষার্থী</p>
+                </div>
+              </div>
+              <div class="text-yellow-400 mb-4">
+                ★★★★★
+              </div>
+              <p class="text-gray-700 italic leading-relaxed">
+                "আন নূর হিফজ বিভাগে কুরআন মুখস্থ করার সুযোগ পেয়ে আমি ধন্য। আমাদের ক্বারি সাহেবের ধৈর্য্য ও আন্তরিকতা ছাড়া এত অল্প সময়ে এত সুরাহ মুখস্থ করা সম্ভব হতো না।"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- কন্ট্রোল বাটন -->
+      <div class="flex justify-center space-x-4 mt-8">
+        <template x-for="i in totalTestimonials">
+          <button @click="activeTestimonial = i - 1" :class="activeTestimonial === i - 1 ? 'bg-green-700 w-8' : 'bg-gray-300 w-4'" class="h-2 rounded-full transition-all duration-300"></button>
+        </template>
+      </div>
+      
+      <!-- ম্যানুয়াল কন্ট্রোল -->
+      <div class="flex justify-center space-x-6 mt-6">
+        <button @click="activeTestimonial = activeTestimonial === 0 ? totalTestimonials - 1 : activeTestimonial - 1" class="text-green-700 hover:text-green-800 transition-colors">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        
+        <button @click="activeTestimonial = (activeTestimonial + 1) % totalTestimonials" class="text-green-700 hover:text-green-800 transition-colors">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- নামাজের সময় সেকশন -->
+  <section class="py-16 bg-green-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">নামাজের সময়সূচি</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- নামাজের সময় টেবিল -->
+        <div class="bg-green-700 rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-center border-b pb-2">আজকের নামাজের সময়</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-600 p-3 rounded text-center">
+              <div class="font-bold">ফজর</div>
+              <div class="text-xl mt-1">৪:৫৬ AM</div>
+            </div>
+            <div class="bg-green-600 p-3 rounded text-center">
+              <div class="font-bold">যোহর</div>
+              <div class="text-xl mt-1">১২:০৮ PM</div>
+            </div>
+            <div class="bg-green-600 p-3 rounded text-center">
+              <div class="font-bold">আসর</div>
+              <div class="text-xl mt-1">৪:৪৫ PM</div>
+            </div>
+            <div class="bg-green-600 p-3 rounded text-center">
+              <div class="font-bold">মাগরিব</div>
+              <div class="text-xl mt-1">৬:৩২ PM</div>
+            </div>
+            <div class="bg-green-600 p-3 rounded text-center col-span-2">
+              <div class="font-bold">ইশা</div>
+              <div class="text-xl mt-1">৭:৪৮ PM</div>
+            </div>
+          </div>
+          <div class="mt-4 text-sm text-center text-green-200">
+            সর্বশেষ আপডেট: ২৫ জুন, ২০২৩
+          </div>
+        </div>
+        
+        <!-- ইসলামিক ক্যালেন্ডার -->
+        <div class="bg-white text-green-900 rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-center border-b pb-2">ইসলামিক তারিখ</h3>
+          <div class="text-center">
+            <div class="text-5xl font-bold mb-2">১০</div>
+            <div class="text-2xl font-semibold mb-1">জিলহজ</div>
+            <div class="text-lg">১৪৪৪ হিজরি</div>
+            <div class="mt-4 text-gray-600">গ্রেগরিয়ান: ৩০ জুন, ২০২৩</div>
+            <div class="mt-2 text-yellow-600 font-medium">ঈদুল আযহা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- শিক্ষকবৃন্দ সেকশন -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">আমাদের শিক্ষকবৃন্দ</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- শিক্ষক ১ -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition">
+          <img src="https://via.placeholder.com/400x300" alt="মুফতি সাইফুল ইসলাম" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-lg text-green-800">মুফতি সাইফুল ইসলাম</h3>
+            <p class="text-gray-600 text-sm">প্রধান মুফতি, হাদিস বিভাগ</p>
+            <div class="mt-2 flex space-x-2">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">হাদিস</span>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ফিকহ</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- শিক্ষক ২ -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition">
+          <img src="https://via.placeholder.com/400x300" alt="মাওলানা আব্দুর রহমান" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-lg text-green-800">মাওলানা আব্দুর রহমান</h3>
+            <p class="text-gray-600 text-sm">প্রধান ক্বারী, হিফজ বিভাগ</p>
+            <div class="mt-2 flex space-x-2">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">তাজবিদ</span>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">কিরাত</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- শিক্ষক ৩ -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition">
+          <img src="https://via.placeholder.com/400x300" alt="ড. আয়েশা সিদ্দিকা" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-lg text-green-800">ড. আয়েশা সিদ্দিকা</h3>
+            <p class="text-gray-600 text-sm">প্রধান, মহিলা বিভাগ</p>
+            <div class="mt-2 flex space-x-2">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">তাফসীর</span>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">আকিদা</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- শিক্ষক ৪ -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition">
+          <img src="https://via.placeholder.com/400x300" alt="মাওলানা ইব্রাহীম খলিল" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-lg text-green-800">মাওলানা ইব্রাহীম খলিল</h3>
+            <p class="text-gray-600 text-sm">সিনিয়র শিক্ষক, দাখিল বিভাগ</p>
+            <div class="mt-2 flex space-x-2">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">বাংলা</span>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ইংরেজি</span>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">গণিত</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-10">
+        <a href="#" class="inline-flex items-center bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg transition">
+          সমস্ত শিক্ষক দেখুন
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- ভর্তি প্রক্রিয়া সেকশন -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">ভর্তি প্রক্রিয়া</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">আমাদের মাদ্রাসায় ভর্তি হতে নিচের ধাপগুলো অনুসরণ করুন</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          <!-- ধাপ ১ -->
+          <div class="flex flex-col md:flex-row items-start">
+            <div class="bg-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl md:mr-6 mb-4 md:mb-0 flex-shrink-0">১</div>
+            <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+              <h3 class="text-xl font-bold text-green-800 mb-2">অনলাইন আবেদন</h3>
+              <p class="text-gray-700">আমাদের ওয়েবসাইটে গিয়ে অনলাইন ফর্ম পূরণ করুন এবং প্রয়োজনীয় ডকুমেন্ট আপলোড করুন।</p>
+              <a href="#" class="inline-block mt-3 text-green-700 font-medium hover:underline">আবেদন ফর্ম →</a>
+            </div>
+          </div>
+          
+          <!-- ধাপ ২ -->
+          <div class="flex flex-col md:flex-row items-start">
+            <div class="bg-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl md:mr-6 mb-4 md:mb-0 flex-shrink-0">২</div>
+            <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+              <h3 class="text-xl font-bold text-green-800 mb-2">লিখিত পরীক্ষা</h3>
+              <p class="text-gray-700">আবেদন জমা দেওয়ার পর নির্ধারিত তারিখে লিখিত পরীক্ষায় অংশগ্রহণ করুন।</p>
+              <div class="mt-2 text-sm text-gray-500">
+                <span class="font-medium">পরীক্ষার বিষয়:</span> বাংলা, ইংরেজি, গণিত, সাধারণ জ্ঞান
+              </div>
+            </div>
+          </div>
+          
+          <!-- ধাপ ৩ -->
+          <div class="flex flex-col md:flex-row items-start">
+            <div class="bg-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl md:mr-6 mb-4 md:mb-0 flex-shrink-0">৩</div>
+            <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+              <h3 class="text-xl font-bold text-green-800 mb-2">মৌখিক পরীক্ষা</h3>
+              <p class="text-gray-700">লিখিত পরীক্ষায় উত্তীর্ণদের মৌখিক পরীক্ষা ও সাক্ষাৎকারে অংশ নিতে হবে।</p>
+            </div>
+          </div>
+          
+          <!-- ধাপ ৪ -->
+          <div class="flex flex-col md:flex-row items-start">
+            <div class="bg-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl md:mr-6 mb-4 md:mb-0 flex-shrink-0">৪</div>
+            <div class="bg-white p-6 rounded-lg shadow-md flex-1">
+              <h3 class="text-xl font-bold text-green-800 mb-2">ফলাফল ও ভর্তি</h3>
+              <p class="text-gray-700">চূড়ান্ত ফলাফল প্রকাশিত হবে আমাদের ওয়েবসাইটে। নির্বাচিত শিক্ষার্থীদের নির্ধারিত সময়ে ভর্তি সম্পন্ন করতে হবে।</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-12 bg-yellow-50 border-l-4 border-yellow-500 p-4">
+          <div class="flex">
+            <div class="flex-shrink-0 text-yellow-500">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-yellow-800">গুরুত্বপূর্ণ তথ্য</h3>
+              <div class="mt-2 text-sm text-yellow-700">
+                <p>• ভর্তি ফি: ৫০০ টাকা (অপরিবর্তনীয়)</p>
+                <p>• ভর্তির শেষ তারিখ: ৩০ নভেম্বর, ২০২৩</p>
+                <p>• ক্লাস শুরু: ১ জানুয়ারি, ২০২৪</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- প্রাক্তন শিক্ষার্থীদের সাফল্য -->
+  <section class="py-16 bg-green-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">আমাদের প্রাক্তন শিক্ষার্থীদের সাফল্য</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- সাফল্য ১ -->
+        <div class="bg-green-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition">
+          <div class="flex items-center mb-4">
+            <img src="https://via.placeholder.com/60" alt="ড. মোহাম্মদ আলী" class="w-14 h-14 rounded-full object-cover border-2 border-green-200 mr-4">
+            <div>
+              <h3 class="font-bold">ড. মোহাম্মদ আলী</h3>
+              <p class="text-green-200 text-sm">কামিল (হাদিস), ২০০৫</p>
+            </div>
+          </div>
+          <p class="text-green-100 mb-4">
+            বর্তমানে ইসলামিক ইউনিভার্সিটি অব মদিনায় সহকারী অধ্যাপক হিসেবে কর্মরত। হাদিস শাস্ত্রে পিএইচডি ডিগ্রিধারী।
+          </p>
+          <div class="flex space-x-2">
+            <span class="bg-green-600 text-xs px-2 py-1 rounded">হাদিস বিশেষজ্ঞ</span>
+            <span class="bg-green-600 text-xs px-2 py-1 rounded">লেখক</span>
+          </div>
+        </div>
+        
+        <!-- সাফল্য ২ -->
+        <div class="bg-green-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition">
+          <div class="flex items-center mb-4">
+            <img src="https://via.placeholder.com/60/cccccc/ffffff" alt="মুফতি আব্দুল্লাহ" class="w-14 h-14 rounded-full object-cover border-2 border-green-200 mr-4">
+            <div>
+              <h3 class="font-bold">মুফতি আব্দুল্লাহ</h3>
+              <p class="text-green-200 text-sm">ফাজিল (ফিকহ), ২০১০</p>
+            </div>
+          </div>
+          <p class="text-green-100 mb-4">
+            বাংলাদেশের শীর্ষস্থানীয় ফতোয়া বোর্ডের সদস্য এবং জাতীয় মসজিদের খতিব। ইসলামিক ফিকহ শাস্ত্রে বিশেষজ্ঞ।
+          </p>
+          <div class="flex space-x-2">
+            <span class="bg-green-600 text-xs px-2 py-1 rounded">ফিকহ বিশেষজ্ঞ</span>
+            <span class="bg-green-600 text-xs px-2 py-1 rounded">খতিব</span>
+          </div>
+        </div>
+        
+        <!-- সাফল্য ৩ -->
+        <div class="bg-green-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition">
+          <div class="flex items-center mb-4">
+            <img src="https://via.placeholder.com/60/999999/ffffff" alt="হাফেজা মরিয়ম" class="w-14 h-14 rounded-full object-cover border-2 border-green-200 mr-4">
+            <div>
+              <h3 class="font-bold">হাফেজা মরিয়ম</h3>
+              <p class="text-green-200 text-sm">হিফজ, ২০১৫</p>
+            </div>
+          </div>
+          <p class="text-green-100 mb-4">
+            বাংলাদেশের প্রথম নারী হাফেজ যিনি আন্তর্জাতিক কুরআন প্রতিযোগিতায় পুরস্কার জিতেছেন। বর্তমানে হিফজ স্কুল পরিচালনা করেন।
+          </p>
+          <div class="flex space-x-2">
+            <span class="bg-green-600 text-xs px-2 py-1 rounded">হাফেজা</span>
+            <span class="bg-green-600 text-xs px-2 py-1 rounded">ক্বারিয়া</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center bg-white hover:bg-gray-100 text-green-800 font-bold py-3 px-6 rounded-lg transition">
+          আরও সাফল্যের গল্প দেখুন
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- যোগাযোগ ও ম্যাপ সেকশন -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">আমাদের সাথে যোগাযোগ করুন</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- যোগাযোগ তথ্য -->
+        <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-green-800 mb-6 pb-2 border-b border-green-200">যোগাযোগ তথ্য</h3>
+          
+          <div class="space-y-4">
+            <div class="flex">
+              <div class="flex-shrink-0 text-green-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-gray-700">১২৩ ইসলামিক রোড, মাদ্রাসা মোড়</p>
+                <p class="text-gray-700">ধানমন্ডি, ঢাকা-১২০৫</p>
+                <p class="text-gray-700">বাংলাদেশ</p>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="flex-shrink-0 text-green-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-gray-700">+৮৮০ ১৯১১ ২২৩৩৪৪</p>
+                <p class="text-gray-700">+৮৮০ ২৯৬৬ ১১২২</p>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="flex-shrink-0 text-green-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-gray-700">info@alhera.edu.bd</p>
+                <p class="text-gray-700">admission@alhera.edu.bd</p>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="flex-shrink-0 text-green-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-gray-700">শনি - বৃহস্পতি: সকাল ৮টা - সন্ধ্যা ৬টা</p>
+                <p class="text-gray-700">শুক্রবার: বন্ধ</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <h4 class="font-bold text-green-800 mb-3">সামাজিক যোগাযোগ</h4>
+            <div class="flex space-x-4">
+              <a href="#" class="text-green-700 hover:text-green-900">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                </svg>
+              </a>
+              <a href="#" class="text-green-700 hover:text-green-900">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748 1.857.344.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                </svg>
+              </a>
+              <a href="#" class="text-green-700 hover:text-green-900">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                </svg>
+              </a>
+              <a href="#" class="text-green-700 hover:text-green-900">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- যোগাযোগ ফর্ম -->
+        <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-green-800 mb-6 pb-2 border-b border-green-200">যোগাযোগ ফর্ম</h3>
+          <form>
+            <div class="mb-4">
+              <label for="name" class="block text-gray-700 text-sm font-bold mb-2">আপনার নাম</label>
+              <input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-gray-700 text-sm font-bold mb-2">ইমেইল ঠিকানা</label>
+              <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="mb-4">
+              <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">ফোন নম্বর</label>
+              <input type="tel" id="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="mb-4">
+              <label for="message" class="block text-gray-700 text-sm font-bold mb-2">বার্তা</label>
+              <textarea id="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md transition">
+              পাঠান
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- গুগল ম্যাপ -->
+      <div class="mt-12 rounded-lg overflow-hidden shadow-xl">
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.79371505258!2d90.3855233154316!3d23.750966984587366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b33cffc3fb%3A0x4a826f475fd312af!2sDhaka!5e0!3m2!1sen!2sbd!4v1625060000000!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg"></iframe>
+        </div>
+        <div class="bg-green-800 text-white p-4 text-center">
+          <p class="font-medium">আমাদের অবস্থান: ধানমন্ডি, ঢাকা-১২০৫, বাংলাদেশ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-green-800">আমাদের পৃষ্ঠপোষকগণ</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <img src="/images/others-logo.jpg" alt="স্পন্সর ১" class="h-32 object-contai mx-auto rounded-lg md:rounded-full shadow-md hover:rounded-full">
+        <img src="/images/others-logo.jpg" alt="স্পন্সর ১" class="h-32 object-contai mx-auto rounded-lg md:rounded-full shadow-md hover:rounded-full">
+        <img src="/images/others-logo.jpg" alt="স্পন্সর ১" class="h-32 object-contai mx-auto rounded-lg md:rounded-full shadow-md hover:rounded-full">
+        <img src="/images/others-logo.jpg" alt="স্পন্সর ১" class="h-32 object-contai mx-auto rounded-lg md:rounded-full shadow-md hover:rounded-full">
+        
+      </div>
+    </div>
+  </section>
+  <section class="py-12 bg-green-700 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold mb-4">আমাদের নিউজলেটার সাবস্ক্রাইব করুন</h2>
+      <p class="mb-6 max-w-2xl mx-auto">আমাদের সর্বশেষ খবর ও আপডেট পেতে ইমেইল দিয়ে সাবস্ক্রাইব করুন</p>
+      <form class="flex flex-col sm:flex-row max-w-md mx-auto gap-2">
+        <input type="email" placeholder="আপনার ইমেইল" class="flex-grow px-4 py-2 rounded text-gray-800">
+        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold px-6 py-2 rounded transition">
+          সাবস্ক্রাইব
+        </button>
+      </form>
+    </div>
+  </section>
+  <section class="py-8 bg-red-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        </svg>
+        <div>
+          <h3 class="font-bold text-lg">জরুরি হেল্পলাইন</h3>
+          <p class="text-sm">যেকোনো জরুরি প্রয়োজনে কল করুন: <a href="tel:+880123456789" class="font-bold">+৮৮০ ১২৩৪ ৫৬৭৮৯</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="install-btn fixed bottom-20 right-4 bg-green-600 text-white p-3 rounded-full shadow-lg hidden">
+    <i class="fas fa-download"></i>
+  </div>
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+  
+  
+  <script src="./src/index.js"></script>
+</body>
+
+</html>

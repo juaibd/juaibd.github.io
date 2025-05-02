@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="bn" x-data="coursePlayer">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কোর্স প্লেয়ার - মাদ্রাসা লাইব্রেরি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lesson-item.active {
+            background-color: #f0fdf4;
+            border-left: 4px solid #059669;
+        }
+        
+        .lesson-item:hover:not(.active) {
+            background-color: #f9f9f9;
+        }
+        
+        .completed-lesson {
+            position: relative;
+        }
+        
+        .completed-lesson::after {
+            content: "✓";
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #059669;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 pb-14 md:pb-0 font-sans" x-cloak>
+    <!-- হেডার -->
+    <header class="bg-green-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span class="font-bold text-xl">মাদ্রাসা লাইব্রেরি</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:block">
+                    <div class="w-64 bg-green-700 bg-opacity-30 rounded-full px-4 py-1 flex items-center">
+                        <span class="text-sm truncate" x-text="course.title"></span>
+                    </div>
+                </div>
+                <a href="courses.html" class="hover:text-green-200 text-sm">অন্যান্য কোর্স</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- মেইন কন্টেন্ট -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- বাম কলাম - ভিডিও প্লেয়ার -->
+            <div class="lg:w-3/4">
+                <!-- ভিডিও প্লেয়ার -->
+                <div class="video-container mb-4 rounded-lg overflow-hidden shadow-lg bg-black">
+                    <iframe :src="currentLesson.videoUrl + '?autoplay=1'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <!-- লেসন ডিটেইলস -->
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h2 class="text-2xl font-bold mb-2" x-text="currentLesson.title"></h2>
+                    <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
+                        <span x-text="'সেকশন: ' + currentSection.title"></span>
+                        <span x-text="'লেকচার ' + (currentLessonIndex + 1) + '/' + currentSection.lessons.length"></span>
+                        <span x-text="currentLesson.duration"></span>
+                    </div>
+                    
+                    <div class="prose max-w-none" x-html="currentLesson.description"></div>
+                    
+                    <!-- নেভিগেশন বাটন -->
+                    <div class="flex justify-between mt-6">
+                        <button @click="prevLesson" :disabled="!hasPrevLesson" :class="{ 'opacity-50 cursor-not-allowed': !hasPrevLesson }" class="px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                            পূর্ববর্তী
+                        </button>
+                        <button @click="nextLesson" :disabled="!hasNextLesson" :class="{ 'opacity-50 cursor-not-allowed': !hasNextLesson }" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 flex items-center">
+                            পরবর্তী
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- কোর্স ডিটেইলস -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">এই কোর্স সম্পর্কে</h3>
+                    <div class="prose max-w-none" x-html="course.description"></div>
+                </div>
+            </div>
+            
+            <!-- ডান কলাম - লেসন প্লেলিস্ট -->
+            <div class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden sticky top-4">
+                    <!-- কোর্স প্রোগ্রেস -->
+                    <div class="bg-green-50 p-4 border-b">
+                        <h3 class="font-bold mb-2">আপনার অগ্রগতি</h3>
+                        <div class="mb-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span x-text="`${completedLessonsCount}/${totalLessons} লেকচার`"></span>
+                                <span x-text="`${progressPercentage}%`"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" :style="`width: ${progressPercentage}%`"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- প্লেলিস্ট -->
+                    <div class="overflow-y-auto max-h-screen">
+                        <template x-for="(section, sectionIndex) in course.sections" :key="sectionIndex">
+                            <div>
+                                <div class="px-4 py-3 bg-gray-50 border-b flex justify-between items-center cursor-pointer" @click="toggleSection(sectionIndex)">
+                                    <h3 class="font-medium" x-text="section.title"></h3>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 transition-transform duration-300" :class="{ 'transform rotate-90': openSections.includes(sectionIndex) }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                                <div x-show="openSections.includes(sectionIndex)" class="divide-y">
+                                    <template x-for="(lesson, lessonIndex) in section.lessons" :key="lessonIndex">
+                                        <div @click="selectLesson(sectionIndex, lessonIndex)" :class="{ 
+                                                 'active': currentSectionIndex === sectionIndex && currentLessonIndex === lessonIndex,
+                                                 'completed-lesson': isLessonCompleted(sectionIndex, lessonIndex)
+                                             }" class="lesson-item px-4 py-3 cursor-pointer flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 flex-shrink-0" :class="{ 'text-green-600': isLessonCompleted(sectionIndex, lessonIndex), 'text-gray-400': !isLessonCompleted(sectionIndex, lessonIndex) }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="isLessonCompleted(sectionIndex, lessonIndex) ? 'M5 13l4 4L19 7' : 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z'" />
+                                            </svg>
+                                            <div>
+                                                <h4 class="text-sm" x-text="lesson.title"></h4>
+                                                <span class="text-xs text-gray-500" x-text="lesson.duration"></span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- ফুটার সেকশন -->
+    <footer class="bg-green-900 text-white pt-12 pb-6 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- লাইব্রেরি সম্পর্কে -->
+                <div class="col-span-1">
+                    <h3 class="text-xl font-bold mb-4 border-b-2 border-green-700 pb-2">মাদ্রাসা লাইব্রেরি</h3>
+                    <p class="text-green-200">ইসলামিক জ্ঞানের বিশাল সংগ্রহশালা। কুরআন, হাদিস, ফিকহ, তাফসীর ও ইসলামিক সাহিত্যের হাজারো বই একত্রে।</p>
+                    <div class="flex mt-4 space-x-4">
+                        <a href="#" class="text-green-300 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-green-300 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-green-300 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- দ্রুত লিঙ্ক -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 border-b-2 border-green-700 pb-2">দ্রুত লিঙ্ক</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-green-200 hover:text-white transition" @click="activeTab = 'all'">সব বই</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition" @click="activeTab = 'popular'">জনপ্রিয় বই</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition" @click="activeTab = 'recommended'">সুপারিশকৃত</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition">নতুন সংযোজন</a></li>
+                        <li><a href="#" class="text-green-200 hover:text-white transition">লেখকগণ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- ক্যাটাগরি -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 border-b-2 border-green-700 pb-2">ক্যাটাগরি</h3>
+                    <ul class="space-y-2">
+                        <template x-for="category in categories.slice(0, 5)" :key="category">
+                            <li><a href="#" class="text-green-200 hover:text-white transition" @click="selectedCategory = category; activeTab = 'all'"><span x-text="category"></span></a></li>
+                        </template>
+                        <li><a href="#" class="text-green-200 hover:text-white transition">সমস্ত ক্যাটাগরি</a></li>
+                    </ul>
+                </div>
+                
+                <!-- যোগাযোগ -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 border-b-2 border-green-700 pb-2">যোগাযোগ</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-green-200">১২৩ মাদ্রাসা স্ট্রিট, ইসলামাবাদ, ঢাকা</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span class="text-green-200">+৮৮০ ১২৩৪ ৫৬৭৮৯</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-green-200">info@madrasalibrary.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- কপিরাইট সেকশন -->
+            <div class="border-t border-green-800 mt-8 pt-6 text-center text-green-300">
+                <p>&copy; ২০২৩ মাদ্রাসা লাইব্রেরি। সকল স্বত্ব সংরক্ষিত।</p>
+                <div class="mt-2 text-sm">
+                    <a href="#" class="hover:text-white">গোপনীয়তা নীতি</a> |
+                    <a href="#" class="hover:text-white">ব্যবহারের শর্তাবলী</a> |
+                    <a href="#" class="hover:text-white">সাহায্য</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+      <include src="./src/components/bottom-nav"></include>
+ 
+  <script src="./src/index.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('coursePlayer', () => ({
+                categories: [],
+                openSections: [0],
+                currentSectionIndex: 0,
+                currentLessonIndex: 0,
+                completedLessons: [],
+                course: {
+                    title: 'কুরআনের মৌলিক শিক্ষা',
+                    description: '<p>কোর্স ডেসক্রিপশন...</p>',
+                    sections: [
+                    {
+                        title: 'কুরআনের পরিচিতি',
+                        lessons: [
+                            { title: 'লেকচার ১', duration: '৩০ মিনিট', videoUrl: 'https://www.youtube.com/embed/8jGalaSh3oI', description: '...' },
+                            { title: 'লেকচার ২', duration: '৪৫ মিনিট', videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_2', description: '...' }
+                        ]
+                    },
+                    {
+                        title: 'তাজবিদের মৌলিক নিয়ম',
+                        lessons: [
+                            { title: 'লেকচার ৩', duration: '৩৫ মিনিট', videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_3', description: '...' },
+                            { title: 'লেকচার ৪', duration: '৪০ মিনিট', videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_4', description: '...' }
+                        ]
+                    }]
+                },
+                
+                // কম্পিউটেড প্রোপার্টি
+                get currentSection() {
+                    return this.course.sections[this.currentSectionIndex];
+                },
+                
+                get currentLesson() {
+                    return this.currentSection.lessons[this.currentLessonIndex];
+                },
+                
+                get totalLessons() {
+                    return this.course.sections.reduce((total, section) => total + section.lessons.length, 0);
+                },
+                
+                get completedLessonsCount() {
+                    return this.completedLessons.length;
+                },
+                
+                get progressPercentage() {
+                    return this.totalLessons > 0 ? Math.round((this.completedLessonsCount / this.totalLessons) * 100) : 0;
+                },
+                
+                get hasPrevLesson() {
+                    return !(this.currentSectionIndex === 0 && this.currentLessonIndex === 0);
+                },
+                
+                get hasNextLesson() {
+                    return !(this.currentSectionIndex === this.course.sections.length - 1 &&
+                        this.currentLessonIndex === this.currentSection.lessons.length - 1);
+                },
+                
+                // মেথডস
+                init() {
+                    // localStorage থেকে কমপ্লিটেড লেসন লোড করুন
+                    const savedProgress = localStorage.getItem('courseProgress');
+                    if (savedProgress) {
+                        this.completedLessons = JSON.parse(savedProgress);
+                    }
+                    
+                    // URL থেকে লেসন সিলেক্ট করা হলে
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const sectionIndex = parseInt(urlParams.get('section')) || 0;
+                    const lessonIndex = parseInt(urlParams.get('lesson')) || 0;
+                    
+                    if (sectionIndex < this.course.sections.length &&
+                        lessonIndex < this.course.sections[sectionIndex].lessons.length) {
+                        this.selectLesson(sectionIndex, lessonIndex);
+                    }
+                },
+                
+                toggleSection(index) {
+                    if (this.openSections.includes(index)) {
+                        this.openSections = this.openSections.filter(i => i !== index);
+                    } else {
+                        this.openSections.push(index);
+                    }
+                },
+                
+                selectLesson(sectionIndex, lessonIndex) {
+                    this.currentSectionIndex = sectionIndex;
+                    this.currentLessonIndex = lessonIndex;
+                    
+                    // URL আপডেট করুন
+                    history.pushState(null, null, `?section=${sectionIndex}&lesson=${lessonIndex}`);
+                    
+                    // সংশ্লিষ্ট সেকশনটি খুলে রাখা
+                    if (!this.openSections.includes(sectionIndex)) {
+                        this.openSections.push(sectionIndex);
+                    }
+                    
+                    // লেসন কমপ্লিট হিসেবে মার্ক করুন
+                    this.markLessonCompleted(sectionIndex, lessonIndex);
+                },
+                
+                prevLesson() {
+                    if (this.currentLessonIndex > 0) {
+                        this.selectLesson(this.currentSectionIndex, this.currentLessonIndex - 1);
+                    } else if (this.currentSectionIndex > 0) {
+                        const prevSection = this.currentSectionIndex - 1;
+                        const prevLesson = this.course.sections[prevSection].lessons.length - 1;
+                        this.selectLesson(prevSection, prevLesson);
+                    }
+                },
+                
+                nextLesson() {
+                    if (this.currentLessonIndex < this.currentSection.lessons.length - 1) {
+                        this.selectLesson(this.currentSectionIndex, this.currentLessonIndex + 1);
+                    } else if (this.currentSectionIndex < this.course.sections.length - 1) {
+                        this.selectLesson(this.currentSectionIndex + 1, 0);
+                    }
+                },
+                
+                markLessonCompleted(sectionIndex, lessonIndex) {
+                    const lessonId = `${sectionIndex}-${lessonIndex}`;
+                    if (!this.completedLessons.includes(lessonId)) {
+                        this.completedLessons.push(lessonId);
+                        // localStorage এ সেভ করুন
+                        localStorage.setItem('courseProgress', JSON.stringify(this.completedLessons));
+                    }
+                },
+                
+                isLessonCompleted(sectionIndex, lessonIndex) {
+                    return this.completedLessons.includes(`${sectionIndex}-${lessonIndex}`);
+                }
+            }));
+        });
+    </script>
+</body>
+
+</html>

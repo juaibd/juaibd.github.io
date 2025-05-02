@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফলাফল - আল-হেরা ইসলামিক একাডেমি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        .result-table th {
+            background-color: #2E8B57;
+            color: white;
+        }
+        .result-table tr:nth-child(even) {
+            background-color: #f0fdf4;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 pb-14 md:pb-0" x-data="data()">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+
+    <!-- রেজাল্ট হিরো সেকশন -->
+    <section class="bg-green-700 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">পরীক্ষার ফলাফল</h1>
+            <p class="text-xl">আপনার ফলাফল দেখতে রোল নম্বর ও পরীক্ষার নাম নির্বাচন করুন</p>
+        </div>
+    </section>
+
+    <!-- রেজাল্ট সার্চ ফর্ম -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto bg-gray-50 p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-green-800 mb-6 text-center">ফলাফল অনুসন্ধান</h2>
+                
+                <div id="resultForm" class="space-y-6">
+                    <div>
+                        <label for="exam-type" class="block text-gray-700 font-medium mb-2">পরীক্ষার ধরন *</label>
+                        <select id="exam-type" x-model="examType" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <option value="annual">বার্ষিক পরীক্ষা</option>
+                            <option value="half-yearly">অর্ধবার্ষিক পরীক্ষা</option>
+                            <option value="test">নিরীক্ষণ পরীক্ষা</option>
+                            <option value="model-test">মডেল টেস্ট</option>
+                        </select>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="year" class="block text-gray-700 font-medium mb-2">সাল *</label>
+                            <select id="year" x-model="year" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="2023">২০২৩</option>
+                                <option value="2022">২০২২</option>
+                                <option value="2021">২০২১</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="class" class="block text-gray-700 font-medium mb-2">শ্রেণী *</label>
+                            <select id="class" x-model="clas" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="dakhil">দাখিল (১০ম)</option>
+                                <option value="alim">আলিম (১২শ)</option>
+                                <option value="fazil">ফাজিল</option>
+                                <option value="kamil">কামিল</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="roll" class="block text-gray-700 font-medium mb-2">রোল নম্বর *</label>
+                        <input type="text" id="roll" placeholder="রোল নম্বর লিখুন" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+
+                    <div>
+                        <label for="registration" class="block text-gray-700 font-medium mb-2">রেজিস্ট্রেশন নম্বর</label>
+                        <input type="text" id="registration" placeholder="প্রযোজ্য ক্ষেত্রে" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+
+                    <button @click="showResult = true" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-md transition">
+                        ফলাফল দেখুন
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- রেজাল্ট ডিসপ্লে সেকশন -->
+    <section class="py-12 bg-gray-50" id="resultSection">
+        <div class="container mx-auto px-4">
+            <!-- রেজাল্ট কার্ড -->
+            <div x-show="showResult" x-transition class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+                <div class="p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-green-800">বার্ষিক পরীক্ষা ২০২৩</h3>
+                            <p class="text-gray-600">দাখিল (১০ম শ্রেণী)</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 bg-green-100 text-green-800 px-4 py-2 rounded-full">
+                            রোল: ১২৩৪৫ | রেজি: ২০২৩১০১২৩
+                        </div>
+                    </div>
+
+                    <!-- স্টুডেন্ট ইনফো -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <img class="h-16 w-16 rounded-full border-2 border-green-200" src="https://via.placeholder.com/80" alt="ছাত্রের ছবি">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">মোহাম্মদ রফিক</h4>
+                                <p class="text-sm text-gray-600">পিতা: আব্দুল করিম</p>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-gray-700"><span class="font-medium">শাখা:</span> বিজ্ঞান</p>
+                            <p class="text-gray-700"><span class="font-medium">গ্রুপ:</span> সাধারণ</p>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-gray-700"><span class="font-medium">ইনস্টিটিউট কোড:</span> ৪৫৬৭</p>
+                            <p class="text-gray-700"><span class="font-medium">জিপিএ:</span> <span class="font-bold text-green-700">৫.০০</span></p>
+                        </div>
+                    </div>
+
+                    <!-- রেজাল্ট টেবিল -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full result-table">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-3 text-left">বিষয়</th>
+                                    <th class="px-4 py-3 text-center">পূর্ণমান</th>
+                                    <th class="px-4 py-3 text-center">প্রাপ্ত নম্বর</th>
+                                    <th class="px-4 py-3 text-center">গ্রেড</th>
+                                    <th class="px-4 py-3 text-center">জিপিএ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3">কুরআন মাজিদ ও তাজবিদ</td>
+                                    <td class="px-4 py-3 text-center">100</td>
+                                    <td class="px-4 py-3 text-center">95</td>
+                                    <td class="px-4 py-3 text-center">A+</td>
+                                    <td class="px-4 py-3 text-center">5.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">হাদিস ও ফিকহ</td>
+                                    <td class="px-4 py-3 text-center">100</td>
+                                    <td class="px-4 py-3 text-center">92</td>
+                                    <td class="px-4 py-3 text-center">A+</td>
+                                    <td class="px-4 py-3 text-center">5.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">বাংলা</td>
+                                    <td class="px-4 py-3 text-center">100</td>
+                                    <td class="px-4 py-3 text-center">88</td>
+                                    <td class="px-4 py-3 text-center">A+</td>
+                                    <td class="px-4 py-3 text-center">5.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">ইংরেজি</td>
+                                    <td class="px-4 py-3 text-center">100</td>
+                                    <td class="px-4 py-3 text-center">85</td>
+                                    <td class="px-4 py-3 text-center">A+</td>
+                                    <td class="px-4 py-3 text-center">5.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3">গণিত</td>
+                                    <td class="px-4 py-3 text-center">100</td>
+                                    <td class="px-4 py-3 text-center">90</td>
+                                    <td class="px-4 py-3 text-center">A+</td>
+                                    <td class="px-4 py-3 text-center">5.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- সামারি -->
+                    <div class="grid md:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <p class="text-gray-600">মোট বিষয়</p>
+                            <p class="text-2xl font-bold text-green-800">7</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <p class="text-gray-600">মোট প্রাপ্ত নম্বর</p>
+                            <p class="text-2xl font-bold text-green-800">635</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-lg">
+                            <p class="text-gray-600">সিজিপিএ</p>
+                            <p class="text-2xl font-bold text-green-800">5.00</p>
+                        </div>
+                    </div>
+
+                    <!-- একশন বাটন -->
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                        <button onclick="window.print()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md">
+                            প্রিন্ট করুন
+                        </button>
+                        <button class="bg-white hover:bg-gray-100 border border-green-600 text-green-700 px-6 py-2 rounded-md">
+                            পিডিএফ ডাউনলোড
+                        </button>
+                        <button @click="showResult = false" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-2 rounded-md">
+                            নতুন অনুসন্ধান
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- নোটিশ বোর্ড -->
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-green-800 text-white px-6 py-3">
+                    <h3 class="text-lg font-bold">ফলাফল সংক্রান্ত নোটিশ</h3>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="pb-4 border-b border-gray-200">
+                            <h4 class="font-bold text-green-800">ফলাফল পুনঃনিরীক্ষণের আবেদন</h4>
+                            <p class="text-gray-700 mt-1">যারা ফলাফল পুনঃনিরীক্ষণ করাতে চান, তারা ৩০ দিনের মধ্যে অফিসে যোগাযোগ করুন।</p>
+                            <p class="text-sm text-gray-500 mt-2">প্রকাশের তারিখ: ১৫ ডিসেম্বর, ২০২৩</p>
+                        </div>
+                        <div class="pb-4 border-b border-gray-200">
+                            <h4 class="font-bold text-green-800">পরবর্তী শ্রেণীতে উত্তীর্ণ শিক্ষার্থীদের তথ্য</h4>
+                            <p class="text-gray-700 mt-1">উত্তীর্ণ সকল শিক্ষার্থী ১০ জানুয়ারির মধ্যে নতুন শ্রেণীতে রেজিস্ট্রেশন সম্পন্ন করুন।</p>
+                            <p class="text-sm text-gray-500 mt-2">প্রকাশের তারিখ: ১০ ডিসেম্বর, ২০২৩</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ফুটার -->
+    <footer class="bg-green-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; ২০২৩ আল-হেরা ইসলামিক একাডেমি। সকল স্বত্ব সংরক্ষিত।</p>
+                <p class="mt-2 text-green-300 text-sm">ডিজাইন ও ডেভেলপমেন্ট: আল-হেরা আইটি বিভাগ</p>
+            </div>
+        </div>
+    </footer>
+    <include src="./src/components/bottom-nav"></include>
+    <script src="./src/index.js"></script>
+    <script>
+     function data(){
+       return {
+         showResult: false,
+         examType: 'annual', 
+         year: '2023', 
+         clas: 'dakhil'
+       }
+     }
+        /* ফর্ম সাবমিশন হ্যান্ডলার
+        document.getElementById('resultForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // রেজাল্ট সেকশন দেখানো
+            const resultSection = document.querySelector('[x-data]').__x.$data;
+            resultSection.showResult = true;
+            
+            // স্ক্রল টু রেজাল্ট সেকশন
+            setTimeout(() => {
+                document.getElementById('resultSection').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }); */
+
+        // প্রিন্ট ফাংশনালিটি
+        function printResult() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

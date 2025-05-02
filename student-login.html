@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>লগইন - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script>
+    let loggedinUser = localStorage.getItem('logged_in_user');
+    if (loggedinUser) {
+      location.assign('/student-dashboard.html')
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    }
+    
+    .login-card {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .login-card:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .input-field:focus {
+      border-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4">
+  <div class="login-card bg-white rounded-xl overflow-hidden w-full max-w-md">
+    <!-- লোগো সেকশন -->
+    <div class="bg-green-700 text-white py-6 text-center">
+      <div class="flex justify-center mb-3">
+        <img src="/images/logo.jpg" alt="লোগো" class="h-16 rounded-full">
+      </div>
+      <h1 class="text-2xl font-bold">আল-হেরা ইসলামিক একাডেমি</h1>
+      <p class="text-green-100 mt-1">ছাত্র লগইন পোর্টাল</p>
+    </div>
+    
+    <!-- লগইন ফর্ম -->
+    <div class="p-8">
+      <form id="loginForm">
+        <!-- ইউজারনেম/ইমেইল ইনপুট -->
+        <div class="mb-6">
+          <label for="username" class="block text-gray-700 text-sm font-medium mb-2">
+            <i class="fas fa-user text-green-600 mr-2"></i>
+            ইউজারনেম বা ইমেইল
+          </label>
+          <div class="relative">
+            <input type="text" id="username" name="username" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500 pl-10" placeholder="আপনার ইউজারনেম বা ইমেইল দিন">
+            <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        
+        <!-- পাসওয়ার্ড ইনপুট -->
+        <div class="mb-6">
+          <label for="password" class="block text-gray-700 text-sm font-medium mb-2">
+            <i class="fas fa-lock text-green-600 mr-2"></i>
+            পাসওয়ার্ড
+          </label>
+          <div class="relative">
+            <input type="password" id="password" name="password" required class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500 pl-10" placeholder="আপনার পাসওয়ার্ড দিন">
+            <i class="fas fa-key absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <button type="button" id="togglePassword" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-green-600">
+              <i class="far fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- রিমেম্বার মি ও ফরগেট পাসওয়ার্ড -->
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+            <label for="remember" class="ml-2 block text-sm text-gray-700">
+              আমাকে মনে রাখুন
+            </label>
+          </div>
+          <div>
+            <a href="forgot-password.html" class="text-sm text-green-600 hover:text-green-800 font-medium">
+              পাসওয়ার্ড ভুলে গেছেন?
+            </a>
+          </div>
+        </div>
+        
+        <!-- লগইন বাটন -->
+        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+          <i class="fas fa-sign-in-alt mr-2"></i>
+          লগইন করুন
+        </button>
+        
+        <!-- রেজিস্ট্রেশন লিংক -->
+        <div class="mt-6 text-center">
+          <p class="text-sm text-gray-600">
+            একাউন্ট নেই?
+            <a href="register.html" class="text-green-600 hover:text-green-800 font-medium">
+              নতুন একাউন্ট তৈরি করুন
+            </a>
+          </p>
+        </div>
+      </form>
+      
+      <!-- সোশ্যাল লগইন অপশন -->
+      <div class="mt-8">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-2 bg-white text-gray-500">
+              বা সোশ্যাল মিডিয়া দিয়ে লগইন করুন
+            </span>
+          </div>
+        </div>
+        
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
+            <i class="fab fa-google text-red-500 mr-2"></i>
+            গুগল
+          </a>
+          <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
+            <i class="fab fa-facebook-f text-blue-600 mr-2"></i>
+            ফেসবুক
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script>
+    const serverpassword = "20240001";
+    
+    const hashedPassword = CryptoJS.SHA256(serverpassword).toString();
+    
+    console.log(hashedPassword);
+    document.getElementById('togglePassword').addEventListener('click', function() {
+      const passwordInput = document.getElementById('password');
+      const icon = this.querySelector('i');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+    
+    // ফর্ম সাবমিশন
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // এখানে লগইন ভ্যালিডেশন ও AJAX রিকুয়েস্ট যোগ করতে পারেন
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      
+      console.log('লগইন প্রচেষ্টা:', { username, password });
+      
+      if (CryptoJS.SHA256(password).toString() === hashedPassword) {
+        setTimeout(() => {
+          alert('লগইন সফল! ড্যাশবোর্ডে রিডাইরেক্ট করা হচ্ছে...');
+          localStorage.setItem('logged_in_user', 'hashedPassword');
+          location.assign('/student-dashboard.html')
+        }, 1000);
+      } else {
+        alert('ভুল ইউজারনেম বা পাসওয়ার্ড! আবার চেষ্টা করুন।');
+      }
+    });
+    
+    // ডেমো ক্রেডেনশিয়ালস অটোফিল (ডেভেলপমেন্টের জন্য)
+    document.addEventListener('DOMContentLoaded', function() {
+      // এই অংশটি প্রডাকশনে রিমুভ করে দিবেন
+      document.getElementById('username').value = '20240001';
+      document.getElementById('password').value = serverpassword;
+    });
+    
+  </script>
+</body>
+
+</html>

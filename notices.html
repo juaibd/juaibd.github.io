@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>নোটিশ বোর্ড - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    .notice-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .important {
+      border-left: 4px solid #EF4444;
+    }
+    
+    .routine {
+      border-left: 4px solid #3B82F6;
+    }
+    
+    .general {
+      border-left: 4px solid #10B981;
+    }
+    
+    .academic {
+      border-left: 4px solid #8B5CF6;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- হেডার সেকশন -->
+  <include src="./src/components/header"></include>
+  
+  <!-- হিরো সেকশন -->
+  <section class="bg-green-700 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">নোটিশ বোর্ড</h1>
+      <p class="text-xl mb-6">সকল গুরুত্বপূর্ণ নোটিশ ও ঘোষণা</p>
+    </div>
+  </section>
+  
+  <!-- নোটিশ সেকশন -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- ফিল্টার বাটন -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="filter-btn px-4 py-2 rounded-full bg-green-600 text-white" data-filter="all">সব নোটিশ</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="important">জরুরি</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="academic">একাডেমিক</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="routine">রুটিন</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="general">সাধারণ</button>
+      </div>
+      
+      <!-- সার্চ বক্স -->
+      <div class="max-w-md mx-auto mb-12">
+        <div class="relative">
+          <input type="text" id="notice-search" placeholder="নোটিশ খুঁজুন..." class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+          <div class="absolute right-3 top-2.5 text-gray-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- নোটিশ লিস্ট -->
+      <div class="max-w-4xl mx-auto space-y-6" id="notice-container">
+        <!-- নোটিশ 1 -->
+        <div class="notice-card bg-white p-6 rounded-lg shadow-md transition duration-300 important" data-category="important">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-gray-800">জরুরি: আগামীকাল ছুটি</h3>
+            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">জরুরি</span>
+          </div>
+          <p class="text-gray-600 mb-4">আগামীকাল ১৫ জুন জাতীয় শোক দিবস উপলক্ষে একাডেমি বন্ধ থাকবে। সকল শিক্ষার্থী ও শিক্ষকবৃন্দকে বিশেষ দোয়া ও মোনাজাতে অংশগ্রহণের জন্য অনুরোধ করা হলো।</p>
+          <div class="flex justify-between items-center text-sm text-gray-500">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              প্রকাশ: ১৪ জুন ২০২৪
+            </div>
+            <a href="#" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+              বিস্তারিত দেখুন
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- নোটিশ 2 -->
+        <div class="notice-card bg-white p-6 rounded-lg shadow-md transition duration-300 academic" data-category="academic">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-gray-800">বার্ষিক পরীক্ষার সময়সূচী</h3>
+            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">একাডেমিক</span>
+          </div>
+          <p class="text-gray-600 mb-4">২০২৪ শিক্ষাবর্ষের বার্ষিক পরীক্ষা শুরু হবে আগামী ১ নভেম্বর থেকে। সকল শ্রেণীর জন্য বিস্তারিত সময়সূচী ডাউনলোড করুন নিচের লিঙ্ক থেকে।</p>
+          <div class="flex justify-between items-center text-sm text-gray-500">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              প্রকাশ: ১০ জুন ২০২৪
+            </div>
+            <div>
+              <a href="#" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+                ডাউনলোড
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- নোটিশ 3 -->
+        <div class="notice-card bg-white p-6 rounded-lg shadow-md transition duration-300 routine" data-category="routine">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-gray-800">নতুন ক্লাস রুটিন</h3>
+            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">রুটিন</span>
+          </div>
+          <p class="text-gray-600 mb-4">আগামী সপ্তাহ থেকে নতুন ক্লাস রুটিন কার্যকর হবে। সকল শিক্ষার্থী ও শিক্ষকবৃন্দকে সংশোধিত রুটিন অনুসরণ করার জন্য অনুরোধ করা হলো।</p>
+          <div class="flex justify-between items-center text-sm text-gray-500">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              প্রকাশ: ৫ জুন ২০২৪
+            </div>
+            <a href="#" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+              রুটিন দেখুন
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- নোটিশ 4 -->
+        <div class="notice-card bg-white p-6 rounded-lg shadow-md transition duration-300 general" data-category="general">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-gray-800">শিক্ষক সম্মেলন</h3>
+            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">সাধারণ</span>
+          </div>
+          <p class="text-gray-600 mb-4">আগামী শনিবার সকাল ১০টায় একাডেমির সমস্ত শিক্ষকবৃন্দের জন্য একটি গুরুত্বপূর্ণ সম্মেলনের আয়োজন করা হয়েছে। সকলকে উপস্থিত থাকার জন্য বিশেষভাবে অনুরোধ করা হলো।</p>
+          <div class="flex justify-between items-center text-sm text-gray-500">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              প্রকাশ: ১ জুন ২০২৪
+            </div>
+            <a href="#" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+              বিস্তারিত
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- নোটিশ 5 -->
+        <div class="notice-card bg-white p-6 rounded-lg shadow-md transition duration-300 important" data-category="important">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-gray-800">ফি জমাদানের শেষ তারিখ</h3>
+            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">জরুরি</span>
+          </div>
+          <p class="text-gray-600 mb-4">সকল শিক্ষার্থীকে অবগত করা যাচ্ছে যে, চলতি মাসের ফি জমাদানের শেষ তারিখ আগামী ২০ জুন। দেরীতে জমা দিলে অতিরিক্ত ফি প্রদান করতে হবে।</p>
+          <div class="flex justify-between items-center text-sm text-gray-500">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              প্রকাশ: ৩০ মে ২০২৪
+            </div>
+            <a href="#" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+              ফি কাঠামো
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- পেজিনেশন -->
+      <div class="flex justify-center mt-12">
+        <nav class="inline-flex rounded-md shadow">
+          <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">1</a>
+          <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">2</a>
+          <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">3</a>
+          <a href="#" class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার সেকশন -->
+  <include src="./src/components/footer"></include>
+  <include src="./src/components/bottom-nav"></include>
+
+  
+  <script src="./src/index.js"></script>
+  
+  <script>
+    // ফিল্টার ফাংশনালিটি
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        // সক্রিয় বাটন স্টাইল আপডেট
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('bg-green-600', 'text-white');
+          btn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+        });
+        button.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+        button.classList.add('bg-green-600', 'text-white');
+        
+        const filter = button.getAttribute('data-filter');
+        const notices = document.querySelectorAll('.notice-card');
+        
+        notices.forEach(notice => {
+          if (filter === 'all' || notice.getAttribute('data-category') === filter) {
+            notice.style.display = 'block';
+          } else {
+            notice.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // সার্চ ফাংশনালিটি
+    document.getElementById('notice-search').addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const notices = document.querySelectorAll('.notice-card');
+      
+      notices.forEach(notice => {
+        const title = notice.querySelector('h3').textContent.toLowerCase();
+        const content = notice.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || content.includes(searchTerm)) {
+          notice.style.display = 'block';
+        } else {
+          notice.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

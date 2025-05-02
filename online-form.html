@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অনলাইন ভর্তি - আল-হেরা ইসলামিক একাডেমি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    
+    input,
+    textarea,
+    select {
+      outline: none;
+      background: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 pb-14 md:pb-0">
+  <!-- হেডার সেকশন -->
+  <include src="/src/components/header"></include>
+  
+  <!-- ভর্তি হিরো সেকশন -->
+  <section class="bg-green-700 text-white py-12">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">২০২৪ শিক্ষাবর্ষের জন্য অনলাইন ভর্তি</h1>
+      <p class="text-xl mb-6">ইবতেদায়ী থেকে কামিল পর্যন্ত সকল শ্রেণীতে ভর্তি চলছে</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#apply-now" class="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-3 px-6 rounded-lg">এখনই আবেদন করুন</a>
+        <a href="#requirements" class="bg-white hover:bg-gray-100 text-green-800 font-bold py-3 px-6 rounded-lg">ভর্তির শর্তাবলী</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ভর্তি প্রক্রিয়া -->
+  <section class="py-12 bg-white" id="requirements">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">ভর্তি প্রক্রিয়া</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-gray-50 p-6 rounded-lg shadow text-center">
+          <div class="bg-green-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-green-800 text-2xl font-bold mb-4">১</div>
+          <h3 class="font-bold text-green-800 mb-2">অনলাইন আবেদন</h3>
+          <p class="text-gray-600">এই পৃষ্ঠায় ফর্ম পূরণ করুন</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow text-center">
+          <div class="bg-green-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-green-800 text-2xl font-bold mb-4">২</div>
+          <h3 class="font-bold text-green-800 mb-2">ডকুমেন্ট জমা</h3>
+          <p class="text-gray-600">প্রয়োজনীয় কাগজপত্র আপলোড করুন</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow text-center">
+          <div class="bg-green-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-green-800 text-2xl font-bold mb-4">৩</div>
+          <h3 class="font-bold text-green-800 mb-2">পরীক্ষা ও সাক্ষাৎকার</h3>
+          <p class="text-gray-600">নির্ধারিত তারিখে অংশগ্রহণ করুন</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow text-center">
+          <div class="bg-green-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center text-green-800 text-2xl font-bold mb-4">৪</div>
+          <h3 class="font-bold text-green-800 mb-2">ফলাফল ও ভর্তি</h3>
+          <p class="text-gray-600">ফলাফল দেখুন ও ভর্তি সম্পন্ন করুন</p>
+        </div>
+      </div>
+      
+      <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-8">
+        <div class="flex">
+          <div class="flex-shrink-0 text-yellow-500">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-yellow-800">গুরুত্বপূর্ণ তথ্য</h3>
+            <div class="mt-2 text-sm text-yellow-700">
+              <p>• ভর্তি ফি: ৫০০ টাকা (অপরিবর্তনীয়)</p>
+              <p>• ভর্তির শেষ তারিখ: ৩০ নভেম্বর, ২০২৪</p>
+              <p>• ক্লাস শু���ু: ১ জানুয়ারি, ২০২৫</p>
+              <p>• বয়স সীমা: ইবতেদায়ীর জন্য ৬-৮ বছর</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- প্রয়োজনীয় ডকুমেন্টস -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">প্রয়োজনীয় কাগজপত্র</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <ul class="space-y-3 list-disc pl-5">
+          <li class="text-gray-700">সদ্য তোলা পাসপোর্ট সাইজের ছবি (৩ কপি)</li>
+          <li class="text-gray-700">জন্ম নিবন্ধন সনদের ফটোকপি</li>
+          <li class="text-gray-700">পূর্ববর্তী শিক্ষাপ্রতিষ্ঠানের ট্রান্সফার সার্টিফিকেট</li>
+          <li class="text-gray-700">সর্বশেষ শ্রেণীর মার্কশিট/প্রমাণপত্র</li>
+          <li class="text-gray-700">অভিভাবকের জাতীয় পরিচয়পত্রের ফটোকপি</li>
+          <li class="text-gray-700">হিফজ বিভাগের জন্য সুরা তেলাওয়াতের ভিডিও (যদি প্রযোজ্য)</li>
+        </ul>
+        
+        <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4">
+          <p class="text-blue-700 text-sm">
+            <strong>নোট:</strong> সকল কাগজপত্র স্ক্যান করে JPG বা PDF ফরম্যাটে আপলোড করতে হবে। প্রতিটি ফাইলের সাইজ 2MB এর কম হতে হবে।
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ভর্তি ফর্ম -->
+  <section x-data="formSteps" class="py-12 bg-white" id="apply-now">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-green-800 mb-2">অনলাইন ভর্তি ফর্ম</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+        <p class="text-gray-600 mt-4">সকল তথ্য সঠিকভাবে পূরণ করুন। * চিহ্নিত ফিল্ডগুলো আবশ্যক</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
+        <!-- প্রগ্রেস বার -->
+        <div class="bg-gray-100 px-4 py-3">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="h-2 bg-gray-300 rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full bg-green-600" style="width: 25%"></div>
+              </div>
+            </div>
+            <div class="ml-4 text-sm font-medium text-gray-700">
+              <span id="step-counter">ধাপ ১/৪</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ফর্ম স্টেপস -->
+        <form class="p-6 md:p-8">
+          <!-- ধাপ ১: ব্যক্তিগত তথ্য -->
+          <div x-show="currentStep === 1" class="form-step">
+            <h3 class="text-xl font-bold text-green-800 mb-6 pb-2 border-b border-gray-200">ব্যক্তিগত তথ্য</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="full-name" class="block text-gray-700 font-medium mb-2">পূর্ণ নাম (বাংলায়) *</label>
+                <input type="text" id="full-name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="full-name-english" class="block text-gray-700 font-medium mb-2">পূর্ণ নাম (ইংরেজিতে) *</label>
+                <input type="text" id="full-name-english" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="birth-date" class="block text-gray-700 font-medium mb-2">জন্ম তারিখ *</label>
+                <input type="date" id="birth-date" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="gender" class="block text-gray-700 font-medium mb-2">লিঙ্গ *</label>
+                <select id="gender" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                  <option value="">নির্বাচন করুন</option>
+                  <option value="male">পুরুষ</option>
+                  <option value="female">মহিলা</option>
+                  <option value="other">অন্যান্য</option>
+                </select>
+              </div>
+              <div>
+                <label for="blood-group" class="block text-gray-700 font-medium mb-2">রক্তের গ্রুপ</label>
+                <select id="blood-group" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                  <option value="">নির্বাচন করুন</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+              <div>
+                <label for="religion" class="block text-gray-700 font-medium mb-2">ধর্ম *</label>
+                <select id="religion" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                  <option value="">নির্বাচন করুন</option>
+                  <option value="islam">ইসলাম</option>
+                  <option value="hinduism">হিন্দু</option>
+                  <option value="christianity">খ্রিস্টান</option>
+                  <option value="buddhism">বৌদ্ধ</option>
+                  <option value="other">অন্যান্য</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <label for="photo" class="block text-gray-700 font-medium mb-2">ছবি আপলোড * (পাসপোর্ট সাইজ)</label>
+              <input type="file" id="photo" accept="image/*" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              <p class="text-xs text-gray-500 mt-1">ফাইলের সাইজ 2MB এর কম হতে হবে (JPG/PNG)</p>
+            </div>
+          </div>
+          
+          <!-- ধাপ ২: যোগাযোগ তথ্য -->
+          <div x-show="currentStep === 2" class="form-step">
+            <h3 class="text-xl font-bold text-green-800 mb-6 pb-2 border-b border-gray-200">যোগাযোগ তথ্য</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="present-address" class="block text-gray-700 font-medium mb-2">বর্তমান ঠিকানা *</label>
+                <textarea id="present-address" rows="3" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
+              </div>
+              <div>
+                <label for="permanent-address" class="block text-gray-700 font-medium mb-2">স্থায়ী ঠিকানা *</label>
+                <textarea id="permanent-address" rows="3" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
+                <div class="flex items-center mt-2">
+                  <input type="checkbox" id="same-as-present" class="mr-2">
+                  <label for="same-as-present" class="text-gray-700 text-sm">বর্তমান ঠিকানা হিসেবেই একই</label>
+                </div>
+              </div>
+              <div>
+                <label for="mobile" class="block text-gray-700 font-medium mb-2">মোবাইল নম্বর *</label>
+                <input type="tel" id="mobile" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2">ইমেইল</label>
+                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="father-name" class="block text-gray-700 font-medium mb-2">পিতার নাম *</label>
+                <input type="text" id="father-name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="father-mobile" class="block text-gray-700 font-medium mb-2">পিতার মোবাইল নম্বর *</label>
+                <input type="tel" id="father-mobile" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+            </div>
+          </div>
+          
+          <!-- ধাপ ৩: একাডেমিক তথ্য -->
+          <div x-show="currentStep === 3" class="form-step">
+            <h3 class="text-xl font-bold text-green-800 mb-6 pb-2 border-b border-gray-200">একাডেমিক তথ্য</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="class" class="block text-gray-700 font-medium mb-2">ভর্তি হতে ইচ্ছুক শ্রেণী *</label>
+                <select id="class" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                  <option value="">নির্বাচন করুন</option>
+                  <option value="ibtedayi">ইবতেদায়ী (১ম-৫ম)</option>
+                  <option value="dakhil">দাখিল (৬ষ্ঠ-১০ম)</option>
+                  <option value="alim">আলিম (১১শ-১২শ)</option>
+                  <option value="fazil">ফাজিল (ডিগ্রি)</option>
+                  <option value="kamil">কামিল (মাস্টার্স)</option>
+                  <option value="hifz">হিফজুল কুরআন</option>
+                </select>
+              </div>
+              <div>
+                <label for="previous-school" class="block text-gray-700 font-medium mb-2">পূর্ববর্তী শিক্ষাপ্রতিষ্ঠানের নাম *</label>
+                <input type="text" id="previous-school" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="last-class" class="block text-gray-700 font-medium mb-2">সর্বশেষ পাসকৃত শ্রেণী *</label>
+                <input type="text" id="last-class" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="last-gpa" class="block text-gray-700 font-medium mb-2">সর্বশেষ GPA/মার্ক *</label>
+                <input type="text" id="last-gpa" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <label class="block text-gray-700 font-medium mb-2">ডকুমেন্ট আপলোড *</label>
+              <div class="space-y-4">
+                <div>
+                  <label for="marksheet" class="block text-gray-600 mb-1">সর্বশেষ মার্কশিট/প্রমাণপত্র *</label>
+                  <input type="file" id="marksheet" accept=".pdf,.jpg,.jpeg,.png" required class="w-full px-4 py-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                  <label for="birth-certificate" class="block text-gray-600 mb-1">জন্ম নিবন্ধন সনদ *</label>
+                  <input type="file" id="birth-certificate" accept=".pdf,.jpg,.jpeg,.png" required class="w-full px-4 py-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                  <label for="transfer-certificate" class="block text-gray-600 mb-1">ট্রান্সফার সার্টিফিকেট</label>
+                  <input type="file" id="transfer-certificate" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-2 border border-gray-300 rounded-md">
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">সকল ফাইল PDF বা JPG ফরম্যাটে এবং 2MB এর কম সাইজের হতে হবে</p>
+            </div>
+          </div>
+          
+          <!-- ধাপ ৪: রিভিউ ও সাবমিশন -->
+          <div x-show="currentStep === 4" class="form-step">
+            <h3 class="text-xl font-bold text-green-800 mb-6 pb-2 border-b border-gray-200">রিভিউ ও সাবমিশন</h3>
+            
+            <div class="bg-gray-50 p-6 rounded-lg mb-6">
+              <h4 class="font-bold text-lg text-green-800 mb-4">আপনার প্রদত্ত তথ্য</h4>
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h5 class="font-medium text-gray-700">ব্যক্তিগত তথ্য</h5>
+                  <p id="review-name" class="text-gray-600">নাম: </p>
+                  <p id="review-birthdate" class="text-gray-600">জন্ম তারিখ: </p>
+                  <p id="review-gender" class="text-gray-600">লিঙ্গ: </p>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-700">যোগাযোগ তথ্য</h5>
+                  <p id="review-address" class="text-gray-600">ঠিকানা: </p>
+                  <p id="review-mobile" class="text-gray-600">মোবাইল: </p>
+                  <p id="review-father" class="text-gray-600">পিতার নাম: </p>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-700">একাডেমিক তথ্য</h5>
+                  <p id="review-class" class="text-gray-600">ভর্তি শ্রেণী: </p>
+                  <p id="review-school" class="text-gray-600">পূর্ববর্তী স্কুল: </p>
+                  <p id="review-gpa" class="text-gray-600">সর্বশেষ GPA: </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="terms" type="checkbox" required class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded">
+                </div>
+                <div class="ml-3">
+                  <label for="terms" class="text-gray-700">আমি ঘোষণা করছি যে উপরে প্রদত্ত সকল তথ্য সঠিক এবং সম্পূর্ণ। ভুল তথ্য প্রদানের দায়দায়িত্ব সম্পূর্ণভাবে আমার। *</label>
+                </div>
+              </div>
+              <div class="flex items-start mt-4">
+                <div class="flex items-center h-5">
+                  <input id="policy" type="checkbox" required class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded">
+                </div>
+                <div class="ml-3">
+                  <label for="policy" class="text-gray-700">আমি <a href="#" class="text-green-600 hover:underline">প্রাইভেসি পলিসি</a> ও <a href="#" class="text-green-600 hover:underline">শর্তাবলী</a> পড়েছি এবং সম্মত হয়েছি। *</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+              <div class="flex">
+                <div class="flex-shrink-0 text-blue-500">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-blue-700">
+                    আবেদন জমা দেওয়ার পর আপনি একটি কনফার্মেশন ইমেইল পাবেন। ভর্তি ফি প্রদানের জন্য পরবর্তী নির্দেশনা ইমেইলে দেওয়া হবে।
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- নেভিগেশন বাটন -->
+          <div class="mt-8 flex justify-between">
+            <button type="button" x-show="currentStep > 1" @click="currentStep--" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">
+              পূর্ববর্তী
+            </button>
+            <button type="button" x-show="currentStep < 4" @click="currentStep++" class="ml-auto px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
+              পরবর্তী
+            </button>
+            <button type="submit" x-show="currentStep === 4" class="ml-auto px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" @click="console.log(formData)">
+              আবেদন জমা দিন
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ফুটার -->
+  <footer class="bg-green-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <p>&copy; ২০২৪ আল-হেরা ইসলামিক একাডেমি। সকল স্বত্ব সংরক্ষিত।</p>
+        <p class="mt-2 text-green-300 text-sm">ডিজাইন ও ডেভেলপমেন্ট: আল-হেরা আইটি বিভাগ</p>
+      </div>
+    </div>
+  </footer>
+  <include src="/src/components/bottom-nav"></include>
+  <script src="/src/index.js"></script>
+  
+  <script>
+    // প্রগ্রেস বার ও স্টেপ কাউন্টার আপডেট
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('formSteps', () => ({
+        currentStep: 1,
+        formData: {},
+        updateProgress() {
+          const progress = (this.currentStep / 4) * 100;
+          document.getElementById('progress-bar').style.width = `${progress}%`;
+          document.getElementById('step-counter').textContent = `ধাপ ${this.currentStep}/৪`;
+        },
+        init() {
+          this.$watch('currentStep', () => this.updateProgress());
+          this.updateProgress();
+        }
+      }));
+    });
+    
+    // ফর্ম ভ্যালিডেশন ও ডেটা রিভিউ
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('আপনার আবেদন সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
+        // এখানে AJAX রিকোয়েস্ট বা ফর্ম সাবমিশন লজিক যোগ করতে পারেন
+      });
+      
+      // Same as present address checkbox
+      document.getElementById('same-as-present').addEventListener('change', function() {
+        if (this.checked) {
+          const presentAddress = document.getElementById('present-address').value;
+          document.getElementById('permanent-address').value = presentAddress;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
