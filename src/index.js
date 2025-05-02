@@ -33,6 +33,16 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+// অফলাইন ডিটেকশন
+window.addEventListener('online', () => {
+  document.querySelector('.offline-alert').classList.add('hidden')
+});
+
+window.addEventListener('offline', () => {
+  document.querySelector('.offline-alert').classList.remove('hidden')
+});
+
+
 // PWA রেজিস্ট্রেশন
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -45,15 +55,6 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
-
-// অফলাইন ডিটেকশন
-window.addEventListener('online', () => {
-  document.querySelector('.offline-alert').classList.add('hidden')
-});
-
-window.addEventListener('offline', () => {
-  document.querySelector('.offline-alert').classList.remove('hidden')
-});
 
 // ইন্সটল প্রম্পট
 let deferredPrompt;
